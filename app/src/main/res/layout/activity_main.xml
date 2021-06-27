@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/r_bgimage"
+    tools:context=".MainActivity">
+
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/profile_image"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:src="@drawable/r_logo"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/basic"
+        android:gravity="center"
+        android:text="Reverb"
+        android:textColor="@color/white"
+        android:textFontWeight="22"
+        android:textSize="50dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:fontFamily="@font/arsenal_bold_italic"
+        android:gravity="center"
+        android:text="The Media Player App"
+        android:textColor="@color/white"
+        android:textStyle="italic" />
+
+</LinearLayout>
