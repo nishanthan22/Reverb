@@ -15,7 +15,6 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="25dp"/>
-
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -26,30 +25,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="How about this"
-        android:textColor="@color/white"
-        android:textSize="25dp"
+        android:text="Anusri"
         android:gravity="center"
-        android:layout_margin="20dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="This is done by nishanth"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:textSize="25dp"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="hello"/>
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="hello"/>
-
-
-
+        android:textColor="#fff"
+        />
 
 </LinearLayout>
-
