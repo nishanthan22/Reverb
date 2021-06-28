@@ -22,6 +22,7 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:layout_margin="20dp"/>
+ Anusri
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,3 +40,30 @@
         />
 
 </LinearLayout>
+=======
+    
+     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="You can edit background,add functions here"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:layout_margin="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="How about this"
+        android:textColor="@color/white"
+        android:textSize="25dp"
+        android:gravity="center"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="This is done by anusri"
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:textSize="25dp"/>
+</LinearLayout>
+ master
