@@ -33,8 +33,9 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="You can edit background,add functions here"
+        android:text="How about this"
         android:textColor="@color/white"
+        android:textSize="25dp"
         android:gravity="center"
         android:layout_margin="20dp"/>
 
