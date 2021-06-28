@@ -15,34 +15,8 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="25dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="You can edit background,add functions here"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:layout_margin="20dp"/>
- Anusri
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Anusri"
-        android:gravity="center"
-        android:textColor="#fff"
-        />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Nishanth"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:textColor="#fff"
-        />
 
-</LinearLayout>
-=======
-    
-     <TextView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="You can edit background,add functions here"
@@ -61,9 +35,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is done by anusri"
+        android:text="This is done by nishanth"
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="25dp"/>
+
+
+    
+
 </LinearLayout>
- master
+
