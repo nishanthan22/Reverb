@@ -41,7 +41,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HomePage"
+        android:text="This is done by 2nd account"
         android:textColor="@color/white"
         android:gravity="center"
         android:textSize="25dp"/>
