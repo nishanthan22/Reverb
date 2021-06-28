@@ -22,6 +22,25 @@
         android:textColor="@color/white"
         android:gravity="center"
         android:layout_margin="20dp"/>
+ Anusri
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Anusri"
+        android:gravity="center"
+        android:textColor="#fff"
+        />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Nishanth"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textColor="#fff"
+        />
+
+</LinearLayout>
+=======
     
      <TextView
         android:layout_width="match_parent"
@@ -47,3 +66,4 @@
         android:gravity="center"
         android:textSize="25dp"/>
 </LinearLayout>
+ master
