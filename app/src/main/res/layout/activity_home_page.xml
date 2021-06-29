@@ -28,5 +28,11 @@
         android:text="Task 1: Navigation bar and search - Anusri\nTask 2:Audio and Video ImageButtons - Ria Ammu\nTask 3: Player tab+Voice search - Nishanth\nTask 4: ChromeCast - Deepak"
         android:gravity="center"
         android:textColor="@color/white"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:text="Good Luck !!"
+        android:textStyle="bold"/>
 
 </LinearLayout>
