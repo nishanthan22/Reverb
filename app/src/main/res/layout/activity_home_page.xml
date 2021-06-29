@@ -4,35 +4,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/r_bgimage"
-    android:orientation="vertical"
-    android:gravity="center"
-    tools:context=".HomePage">
+    android:background="@drawable/bgalanblurred"
+    tools:context=".HomePage"
+    android:orientation="vertical">
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="HomePage"
+        android:layout_margin="30dp"
+        android:fontFamily="@font/belleza"
+        android:textStyle="bold"
+        android:text="Song Lyrics...."
         android:textColor="@color/white"
-        android:gravity="center"
-        android:textSize="25dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="You can edit background,add functions here"
-        android:textColor="@color/white"
-        android:gravity="center"
-        android:layout_margin="20dp"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Task 1: Navigation bar and search - Anusri\nTask 2:Audio and Video ImageButtons - Ria Ammu\nTask 3: Player tab+Voice search - Nishanth\nTask 4: ChromeCast - Deepak"
-        android:gravity="center"
-        android:textColor="@color/white"/>
+        android:textSize="30dp" />
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
+        android:src="@drawable/alanedited2"/>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="@font/basic"
+        android:text="Song name"
         android:textColor="@color/white"
-        android:text="Good Luck !!"
-        android:textStyle="bold"/>
+        android:textSize="20dp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Author"
+        android:textColor="@color/grey"
+        android:textSize="15dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginLeft="15dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+        <SeekBar
+            android:id="@+id/seekbar"
+            android:layout_centerInParent="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="20dp"
+            android:layout_marginBottom="40dp"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"></SeekBar>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0.00"
+            android:id="@+id/txtstart"
+            android:layout_toLeftOf="@+id/seekbar"
+            android:layout_centerInParent="true"
+            android:layout_alignParentLeft="false"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/grey"
+            android:textSize="14sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="4.00"
+            android:id="@+id/txtstop"
+            android:layout_toRightOf="@+id/seekbar"
+            android:layout_centerInParent="true"
+            android:layout_alignParentRight="false"
+            android:layout_marginRight="20dp"
+            android:textColor="@color/grey"
+            android:textSize="14sp"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="45dp"
+            android:background="@drawable/ic_baseline_loop_24"
+            android:src="@drawable/ic_baseline_loop_24"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_replay_10_24"
+            android:background="@drawable/ic_baseline_replay_10_24"
+            android:layout_marginLeft="20dp"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_play_arrow_24"
+            android:background="@drawable/ic_baseline_play_arrow_24"
+            android:layout_marginLeft="20dp"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_forward_10_24"
+            android:background="@drawable/ic_baseline_forward_10_24"
+            android:layout_marginLeft="20dp"/>
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_favorite_border_24"
+            android:background="@drawable/ic_baseline_favorite_border_24"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="22dp"/>
+
+    </LinearLayout>
+
+
 
 </LinearLayout>
