@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <array name="preloaded_fonts" translatable="false">
+        <item>@font/arimo_italic</item>
         <item>@font/arsenal_bold_italic</item>
         <item>@font/basic</item>
+        <item>@font/belleza</item>
     </array>
 </resources>
