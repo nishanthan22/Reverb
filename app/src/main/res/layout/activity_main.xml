@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#9C8ABA"
+    android:background="@color/black"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
@@ -36,6 +36,6 @@
         android:text="Media Player "
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:textStyle="bold" />
+        android:textStyle="normal|bold" />
 
 </LinearLayout>

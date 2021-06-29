@@ -94,6 +94,33 @@
 
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="70dp"
+                android:layout_marginLeft="70dp"
+                android:text="All Songs"
+                android:textColor="#fff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:gravity="center"
+                android:text="Playlists"
+                android:textColor="#fff"
+                android:textSize="18dp" />
+        </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -155,7 +182,33 @@
                 app:iconSize="100dp" />
 
 
+        </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="66dp"
+                android:layout_marginLeft="66dp"
+                android:text="All Videos"
+                android:textColor="#fff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:gravity="center"
+                android:text="Playlists"
+                android:textColor="#fff"
+                android:textSize="18dp" />
         </LinearLayout>
 
     </LinearLayout>
