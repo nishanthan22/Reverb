@@ -42,7 +42,53 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/lay"
-        android:orientation="vertical" />
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/Audio"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Audio"
+            android:textColor="#fff"
+            android:textSize="26dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/AllSongs"
+                android:layout_width="118dp"
+                android:layout_height="123dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/lay"
+                app:icon="@drawable/ic_baseline_library_music_24"
+                app:iconSize="84dp" />
+
+            <Button
+                android:id="@+id/Playlists"
+                android:layout_width="118dp"
+                android:layout_height="123dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/lay"
+                app:iconSize="84dp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,7 +99,23 @@
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/lay"
-        android:orientation="vertical" />
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Video"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Video"
+            android:textColor="#fff"
+            android:textSize="26dp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
 
     <LinearLayout
         android:layout_width="match_parent"
