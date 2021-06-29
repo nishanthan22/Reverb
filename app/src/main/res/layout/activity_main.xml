@@ -4,18 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#9C8ABA"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/r_bgimage"
     tools:context=".MainActivity">
 
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        xmlns:app="http://schemas.android.com/apk/res-auto"
+    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:id="@+id/profile_image"
         android:layout_width="220dp"
         android:layout_height="220dp"
-        android:src="@drawable/r_logo"/>
+        android:src="@drawable/r_logo" />
 
     <TextView
         android:layout_width="match_parent"

@@ -12,17 +12,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/Searchbtn"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:background="@drawable/lay"
             android:editable="true"
             android:gravity="center|left"
@@ -30,7 +30,7 @@
             android:inputType="textAutoCorrect|text"
             android:textColorHint="#fff"
             android:textSize="14sp"
-            app:backgroundTint="#9C27B0"
+            app:backgroundTint="@color/purple_200"
             app:icon="@drawable/ic_baseline_search_24" />
     </LinearLayout>
 
@@ -72,8 +72,8 @@
                 android:layout_marginLeft="48dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/lay"
-                app:backgroundTint="#9C27B0"
+                android:background="@drawable/lay1"
+                app:backgroundTint="@color/teal_700"
                 app:icon="@drawable/ic_baseline_library_music_24"
                 app:iconSize="84dp" />
 
@@ -87,8 +87,8 @@
                 android:layout_marginEnd="48dp"
                 android:layout_marginRight="48dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/lay"
-                app:backgroundTint="#9C27B0"
+                android:background="@drawable/lay1"
+                app:backgroundTint="#FFC107"
                 app:icon="@drawable/ic_baseline_playlist_play_24"
                 app:iconSize="100dp" />
 
@@ -136,8 +136,8 @@
                 android:layout_marginEnd="48dp"
                 android:layout_marginRight="48dp"
                 android:layout_marginBottom="16dp"
-                android:background="@drawable/lay"
-                app:backgroundTint="#9C27B0"
+                android:background="@drawable/lay1"
+                app:backgroundTint="#CDDC39"
                 app:icon="@drawable/ic_baseline_video_library_24"
                 app:iconSize="84dp" />
 
@@ -149,45 +149,45 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="43dp"
+        android:layout_gravity="end"
         android:layout_marginTop="32dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/VideoPlayer"
-            android:layout_width="39dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:background="@drawable/ic_baseline_movie_24"
             app:backgroundTint="#fff" />
 
         <Button
             android:id="@+id/MusicPlayer"
             android:layout_width="32dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginLeft="64dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
             android:background="@drawable/sound"
             android:backgroundTint="#fff"
             app:backgroundTint="#fff" />
 
         <Button
             android:id="@+id/User"
-            android:layout_width="39dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginLeft="64dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
             android:background="@drawable/user"
             android:gravity="center_horizontal"
             app:backgroundTint="#fff" />
 
         <Button
             android:id="@+id/Chromecast"
-            android:layout_width="33dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="64dp"
-            android:layout_marginLeft="64dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
             android:background="@drawable/ic_baseline_cast_connected_24"
             app:backgroundTint="#fff" />
 
