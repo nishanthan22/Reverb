@@ -193,8 +193,8 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:layout_marginStart="66dp"
-                android:layout_marginLeft="66dp"
+                android:layout_marginStart="68dp"
+                android:layout_marginLeft="68dp"
                 android:text="All Videos"
                 android:textColor="#fff"
                 android:textSize="18dp" />
