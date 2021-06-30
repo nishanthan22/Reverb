@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.PermissionToken;
@@ -46,7 +47,7 @@ public class SongList extends AppCompatActivity {
 
                     @Override
                     public void onPermissionDenied(PermissionDeniedResponse permissionDeniedResponse) {
-
+                        Toast.makeText(getApplicationContext(),"Please allow media access",Toast.LENGTH_SHORT).show();
                     }
 
                     @Override
@@ -60,15 +61,20 @@ public class SongList extends AppCompatActivity {
         ArrayList<File> arrayList=new ArrayList<>();
 
         File[] files=file.listFiles();
-        for(File singlefile: files){
-            if(singlefile.isDirectory() && !singlefile.isHidden()){
-                arrayList.addAll(findSong(singlefile));
-            }
-            else{
-                if (singlefile.getName().endsWith(".mp3") || singlefile.getName().endsWith(".wav")){
-                    arrayList.add(singlefile);
+        if(files != null) {
+            for (File singlefile : files) {
+                if (singlefile.isDirectory() && !singlefile.isHidden()) {
+                    arrayList.addAll(findSong(singlefile));
+                } else {
+                    if (singlefile.getName().endsWith(".mp3") || singlefile.getName().endsWith(".wav")) {
+                        arrayList.add(singlefile);
+                    }
                 }
             }
+
+        }
+        else{
+            Toast.makeText(getApplicationContext(),"Files Accessed",Toast.LENGTH_SHORT).show();
         }
         return arrayList;
     }
