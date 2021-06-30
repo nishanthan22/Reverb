@@ -19,7 +19,7 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent allsongs = new Intent(HomePage.this,SongList.class);
                 startActivity(allsongs);
-                finish();
+                //finish();
             }
         });
         b2 = findViewById(R.id.MusicPlayer);
@@ -28,7 +28,7 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent audioplayer = new Intent(HomePage.this,AudioPlayer.class);
                 startActivity(audioplayer);
-                finish();
+                //finish();
             }
         });
 
