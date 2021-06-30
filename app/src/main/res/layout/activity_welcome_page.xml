@@ -32,6 +32,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="313dp"
+
         android:layout_marginTop="16dp"
         android:gravity="center">
 
@@ -39,10 +40,11 @@
             android:id="@+id/button"
             android:layout_width="108dp"
             android:layout_height="99dp"
-            android:layout_gravity="center"
+            android:layout_gravity="center|center_horizontal"
             android:layout_marginStart="150dp"
             android:layout_marginLeft="150dp"
             android:background="@drawable/lay3"
+            android:gravity="center|center_horizontal"
             app:backgroundTint="#B19ED3"
             app:icon="@drawable/user"
             app:iconPadding="8dp"
