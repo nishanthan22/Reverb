@@ -71,7 +71,8 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginRight="16dp"
                 android:backgroundTint="#fff"
-                android:hint="Enter your name"
+                android:gravity="center"
+                android:hint="Your Name here"
                 android:textColorHint="#fff">
 
 
