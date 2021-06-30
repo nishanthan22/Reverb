@@ -39,7 +39,7 @@
         android:layout_height="254dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/lay"
@@ -201,8 +201,7 @@
             android:text="Video"
             android:textAllCaps="false"
             android:textColor="#fff"
-            app:backgroundTint="@color/black"
-            app:iconSize="32dp" />
+            app:backgroundTint="@color/black" />
 
         <Button
             android:id="@+id/Music"
@@ -214,8 +213,7 @@
             android:text="Music"
             android:textAllCaps="false"
             android:textColor="#fff"
-            app:backgroundTint="@color/black"
-            app:iconSize="32dp" />
+            app:backgroundTint="@color/black" />
 
         <Button
             android:id="@+id/User"
@@ -227,8 +225,7 @@
             android:text="Me"
             android:textAllCaps="false"
             android:textColor="#fff"
-            app:backgroundTint="@color/black"
-            app:iconSize="32dp" />
+            app:backgroundTint="@color/black" />
 
         <Button
             android:id="@+id/Chromecast"
@@ -240,8 +237,7 @@
             android:text="Cast"
             android:textAllCaps="false"
             android:textColor="#fff"
-            app:backgroundTint="@color/black"
-            app:iconSize="32dp" />
+            app:backgroundTint="@color/black" />
 
     </LinearLayout>
 
