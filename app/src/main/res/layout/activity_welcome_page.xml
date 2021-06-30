@@ -81,14 +81,15 @@
 
     <Button
         android:id="@+id/homepage"
-        android:layout_width="54dp"
-        android:layout_height="49dp"
+        android:layout_width="46dp"
+        android:layout_height="47dp"
         android:layout_gravity="center"
         android:layout_marginTop="16dp"
         android:background="@drawable/lay3"
         app:backgroundTint="#B19ED3"
         app:icon="@drawable/ic_baseline_music_note_24"
-        app:iconGravity="top" />
+        app:iconGravity="top"
+        app:iconTint="#fff" />
 
 </LinearLayout>
 
