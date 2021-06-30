@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    android:background="@drawable/r_bgimage"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
 
@@ -34,7 +34,7 @@
         android:layout_margin="10dp"
         android:fontFamily="@font/arsenal_bold_italic"
         android:gravity="center"
-        android:text="The Media Player App"
+        android:text="Media Player"
         android:textColor="@color/white"
         android:textStyle="italic" />
 
