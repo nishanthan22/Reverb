@@ -18,7 +18,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
 // Intent from splash screen to home page
-                Intent mainIntent = new Intent(MainActivity.this,HomePage.class);
+                Intent mainIntent = new Intent(MainActivity.this,WelcomePage.class);
                 startActivity(mainIntent);
                 finish();
             }

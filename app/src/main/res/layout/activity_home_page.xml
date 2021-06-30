@@ -12,17 +12,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="32dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/Searchbtn"
             android:layout_width="match_parent"
-            android:layout_height="36dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
             android:background="@drawable/lay"
             android:editable="true"
             android:gravity="center|left"
@@ -30,77 +30,203 @@
             android:inputType="textAutoCorrect|text"
             android:textColorHint="#fff"
             android:textSize="14sp"
+            app:backgroundTint="@color/purple_200"
             app:icon="@drawable/ic_baseline_search_24" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="254dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/lay"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/Audio"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginRight="16dp"
+            android:text="Audio"
+            android:textColor="#fff"
+            android:textSize="26dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/AllSongs"
+                android:layout_width="286dp"
+                android:layout_height="69dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/lay1"
+                android:gravity="center|start"
+                android:text="All Songs"
+                app:backgroundTint="#07A3A2"
+                app:icon="@drawable/ic_baseline_library_music_24"
+                app:iconSize="64dp" />
+
+            <Button
+                android:id="@+id/Playlists"
+                android:layout_width="286dp"
+                android:layout_height="69dp"
+                android:layout_marginLeft="32dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/lay1"
+                android:gravity="center|start"
+                android:text="Playlists"
+                app:backgroundTint="#FBC215"
+                app:icon="@drawable/ic_baseline_playlist_play_24"
+                app:iconSize="64dp" />
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="264dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:background="@drawable/lay"
         android:orientation="vertical">
 
-        <ImageView
-            android:id="@+id/transparent"
-            android:layout_width="381dp"
-            android:layout_height="263dp"
-            android:layout_gravity="center"
+        <TextView
+            android:id="@+id/Video"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-            app:srcCompat="@drawable/lay" />
+            android:text="Video"
+            android:textColor="#fff"
+            android:textSize="26dp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/AllVideos"
+                android:layout_width="118dp"
+                android:layout_height="123dp"
+                android:layout_marginStart="48dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginRight="48dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/lay1"
+                app:backgroundTint="#CDDC39"
+                app:icon="@drawable/ic_baseline_video_library_24"
+                app:iconSize="84dp" />
+
+            <Button
+                android:id="@+id/VPlaylists"
+                android:layout_width="118dp"
+                android:layout_height="123dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginRight="48dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/lay1"
+                app:backgroundTint="#FF5722"
+                app:icon="@drawable/ic_baseline_playlist_play_24"
+                app:iconSize="100dp" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/text3"
+                android:layout_width="wrap_content"
+                android:layout_height="32dp"
+                android:layout_marginStart="68dp"
+                android:layout_marginLeft="68dp"
+                android:text="All Videos"
+                android:textColor="#fff"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/text4"
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:gravity="center"
+                android:text="Playlists"
+                android:textColor="#fff"
+                android:textSize="18dp" />
+        </LinearLayout>
 
     </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="312dp"
-        android:orientation="vertical">
-
-        <ImageView
-            android:id="@+id/transparent1"
-            android:layout_width="381dp"
-            android:layout_height="263dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="32dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            app:srcCompat="@drawable/lay" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/VideoPlayer"
-            android:layout_width="39dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:background="@drawable/ic_baseline_movie_24"
             app:backgroundTint="#fff" />
 
         <Button
+            android:id="@+id/MusicPlayer"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
+            android:background="@drawable/sound"
+            android:backgroundTint="#fff"
+            app:backgroundTint="#fff" />
+
+        <Button
             android:id="@+id/User"
-            android:layout_width="39dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="200dp"
-            android:layout_marginLeft="200dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
             android:background="@drawable/user"
             android:gravity="center_horizontal"
             app:backgroundTint="#fff" />
 
         <Button
             android:id="@+id/Chromecast"
-            android:layout_width="33dp"
-            android:layout_height="37dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginLeft="70dp"
             android:background="@drawable/ic_baseline_cast_connected_24"
             app:backgroundTint="#fff" />
 
