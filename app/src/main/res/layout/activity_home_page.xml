@@ -39,7 +39,7 @@
         android:layout_height="254dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/lay"
@@ -124,14 +124,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <Button
                 android:id="@+id/AllVideos"
                 android:layout_width="118dp"
                 android:layout_height="123dp"
-                android:layout_marginStart="48dp"
-                android:layout_marginLeft="48dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="48dp"
                 android:layout_marginRight="48dp"
@@ -146,8 +145,6 @@
                 android:layout_width="118dp"
                 android:layout_height="123dp"
                 android:layout_marginTop="16dp"
-                android:layout_marginEnd="48dp"
-                android:layout_marginRight="48dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/lay1"
                 app:backgroundTint="#FF5722"
@@ -160,25 +157,27 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/text3"
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:layout_marginStart="68dp"
-                android:layout_marginLeft="68dp"
+                android:layout_marginEnd="48dp"
+                android:layout_marginRight="48dp"
+                android:gravity="top"
                 android:text="All Videos"
                 android:textColor="#fff"
                 android:textSize="18dp" />
 
             <TextView
                 android:id="@+id/text4"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="32dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:gravity="center"
+                android:layout_marginStart="48dp"
+                android:layout_marginLeft="48dp"
+                android:gravity="top"
                 android:text="Playlists"
                 android:textColor="#fff"
                 android:textSize="18dp" />
@@ -186,49 +185,63 @@
 
     </LinearLayout>
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="32dp"
         android:gravity="center"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/VideoPlayer"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:background="@drawable/ic_baseline_movie_24"
-            app:backgroundTint="#fff" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_baseline_movie_24"
+            android:gravity="bottom|center"
+            android:text="Video"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            app:backgroundTint="@color/black"
+            app:iconSize="32dp" />
 
         <Button
-            android:id="@+id/MusicPlayer"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
-            android:background="@drawable/sound"
-            android:backgroundTint="#fff"
-            app:backgroundTint="#fff" />
+            android:id="@+id/Music"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/audio"
+            android:gravity="bottom|center"
+            android:text="Music"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            app:backgroundTint="@color/black"
+            app:iconSize="32dp" />
 
         <Button
             android:id="@+id/User"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
-            android:background="@drawable/user"
-            android:gravity="center_horizontal"
-            app:backgroundTint="#fff" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/user"
+            android:gravity="bottom|center"
+            android:text="Me"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            app:backgroundTint="@color/black"
+            app:iconSize="32dp" />
 
         <Button
             android:id="@+id/Chromecast"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_marginStart="70dp"
-            android:layout_marginLeft="70dp"
-            android:background="@drawable/ic_baseline_cast_connected_24"
-            app:backgroundTint="#fff" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:drawableTop="@drawable/ic_baseline_cast_connected_24"
+            android:gravity="bottom|center"
+            android:text="Cast"
+            android:textAllCaps="false"
+            android:textColor="#fff"
+            app:backgroundTint="@color/black"
+            app:iconSize="32dp" />
 
     </LinearLayout>
 

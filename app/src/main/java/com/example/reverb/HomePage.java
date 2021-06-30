@@ -22,7 +22,7 @@ public class HomePage extends AppCompatActivity {
                 //finish();
             }
         });
-        b2 = findViewById(R.id.MusicPlayer);
+        b2 = findViewById(R.id.Music);
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

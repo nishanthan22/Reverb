@@ -20,7 +20,7 @@ public class WelcomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent homeintent = new Intent(WelcomePage.this,HomePage.class);
                 startActivity(homeintent);
-                //finish();
+                finish();
             }
         });
     }
