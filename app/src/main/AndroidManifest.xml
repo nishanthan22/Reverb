@@ -13,6 +13,8 @@
         android:theme="@style/Theme.Reverb">
         <activity android:name=".WelcomePage"></activity>
         <activity android:name=".HomePage" />
+        <activity android:name=".AudioPlayer" />
+        <activity android:name=".SongList" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

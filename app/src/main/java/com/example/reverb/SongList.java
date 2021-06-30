@@ -78,7 +78,6 @@ public class SongList extends AppCompatActivity {
         items=new String[mySongs.size()];
         for(int i=0;i<mySongs.size();i++){
             items[i] = mySongs.get(i).getName().toString().replace(".mp3","").replace(".wav","");
-
         }
 //        ArrayAdapter<String> myAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1,items);
 //        listview.setAdapter(myAdapter);
