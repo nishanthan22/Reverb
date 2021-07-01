@@ -32,21 +32,21 @@
             android:layout_marginLeft="32dp"
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
-            android:text="Enter your name and upload your picture to start using your         "
+            android:text="Enter your name and upload your picture to start using your\nMedia Player"
             android:textColor="#fff"
             android:textSize="22sp" />
 
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="42dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginLeft="32dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginRight="32dp"
-            android:text="Media Player"
-            android:textColor="#fff"
-            android:textSize="22sp" />
+<!--        <TextView-->
+<!--            android:id="@+id/textView2"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="42dp"-->
+<!--            android:layout_marginStart="32dp"-->
+<!--            android:layout_marginLeft="32dp"-->
+<!--            android:layout_marginEnd="32dp"-->
+<!--            android:layout_marginRight="32dp"-->
+<!--            android:text="Media Player"-->
+<!--            android:textColor="#fff"-->
+<!--            android:textSize="22sp" />-->
     </LinearLayout>
 
     <RelativeLayout
@@ -60,16 +60,13 @@
             android:id="@+id/button"
             android:layout_width="108dp"
             android:layout_height="99dp"
+            android:layout_centerHorizontal="true"
             android:layout_gravity="center"
-            android:layout_marginStart="140dp"
-            android:layout_marginLeft="140dp"
-            android:layout_marginEnd="140dp"
-            android:layout_marginRight="140dp"
             android:background="@drawable/lay3"
-            android:gravity="center"
             app:backgroundTint="#B19ED3"
             app:icon="@drawable/user"
-            app:iconPadding="8dp"
+            android:paddingRight="17dp"
+            android:paddingLeft="17dp"
             app:iconSize="74dp"
             app:iconTint="#fff" />
 
