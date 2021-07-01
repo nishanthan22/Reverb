@@ -42,9 +42,9 @@
         android:text="PLAY"
         android:textColor="#fff"
         android:textSize="12dp"
-        app:backgroundTint="#@drawable/bg1"
+        app:backgroundTint="@drawable/bg1"
         app:icon="@drawable/ic_baseline_play_circle_outline_24"
-        app:iconTint="#fff" />
+         />
   </LinearLayout>
 
 

@@ -23,6 +23,7 @@ import com.karumi.dexter.listener.single.PermissionListener;
 import java.io.File;
 import java.util.ArrayList;
 
+
 public class SongList extends AppCompatActivity {
 
     ListView listview;
@@ -61,21 +62,26 @@ public class SongList extends AppCompatActivity {
         ArrayList<File> arrayList=new ArrayList<>();
 
         File[] files=file.listFiles();
-        if(files != null) {
-            for (File singlefile : files) {
-                if (singlefile.isDirectory() && !singlefile.isHidden()) {
-                    arrayList.addAll(findSong(singlefile));
-                } else {
-                    if (singlefile.getName().endsWith(".mp3") || singlefile.getName().endsWith(".wav")) {
-                        arrayList.add(singlefile);
+        try{
+            if(files != null) {
+                for (File singlefile : files) {
+                    if (singlefile.isDirectory() && !singlefile.isHidden()) {
+                        arrayList.addAll(findSong(singlefile));
+                    } else {
+                        if (singlefile.getName().endsWith(".mp3") || singlefile.getName().endsWith(".wav")) {
+                            arrayList.add(singlefile);
+                        }
                     }
                 }
-            }
 
+            }
+            else{
+                Toast.makeText(getApplicationContext(),"Files Accessed",Toast.LENGTH_SHORT).show();
+            }
+        }catch (NullPointerException e){
+            Toast.makeText(getApplicationContext(),"Something went wrong",Toast.LENGTH_SHORT).show();
         }
-        else{
-            Toast.makeText(getApplicationContext(),"Files Accessed",Toast.LENGTH_SHORT).show();
-        }
+
         return arrayList;
     }
 
