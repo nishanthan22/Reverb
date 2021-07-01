@@ -12,7 +12,7 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
       android:layout_marginTop="16dp"
-      android:background="@drawable/lay1"
+      android:background="@drawable/bgsong"
       android:gravity="center|left"
       android:orientation="vertical">
 
@@ -38,13 +38,13 @@
         android:layout_marginTop="16dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/bg1"
-        android:gravity="center|left"
+        android:gravity="center|start"
         android:text="PLAY"
         android:textColor="#fff"
         android:textSize="12dp"
-        app:backgroundTint="@drawable/bg1"
+        app:backgroundTint="#9F33B1"
         app:icon="@drawable/ic_baseline_play_circle_outline_24"
-         />
+        app:iconTint="#fff" />
   </LinearLayout>
 
 
@@ -52,7 +52,7 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:layout_marginTop="164dp"
-      android:background="@drawable/lay1"
+      android:background="@drawable/bgsong"
       android:orientation="vertical">
 
     <ListView
