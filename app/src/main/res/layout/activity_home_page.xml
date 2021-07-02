@@ -1,14 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    android:orientation="vertical"
-    tools:context=".HomePage">
-
-
+    >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="48dp"
@@ -24,13 +25,12 @@
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:background="@drawable/lay"
-            android:editable="true"
             android:gravity="center|left"
             android:hint="Search"
             android:inputType="textAutoCorrect|text"
             android:textColorHint="#fff"
             android:textSize="14sp"
-            app:backgroundTint="@color/purple_200"
+            app:backgroundTint="#DE6FF1"
             app:icon="@drawable/ic_baseline_search_24"
             app:iconTint="#fff" />
     </LinearLayout>
@@ -193,61 +193,22 @@
         </LinearLayout>
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/VideoPlayer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableTop="@drawable/ic_baseline_movie_24"
-            android:gravity="bottom|center"
-            android:text="Video"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            app:backgroundTint="@color/black" />
-
-        <Button
-            android:id="@+id/Music"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableTop="@drawable/audio"
-            android:gravity="bottom|center"
-            android:text="Music"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            app:backgroundTint="@color/black" />
-
-        <Button
-            android:id="@+id/User"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableTop="@drawable/user"
-            android:gravity="bottom|center"
-            android:text="Me"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            app:backgroundTint="@color/black" />
-
-        <Button
-            android:id="@+id/Chromecast"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:drawableTop="@drawable/ic_baseline_cast_connected_24"
-            android:gravity="bottom|center"
-            android:text="Cast"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-            app:backgroundTint="@color/black" />
-
-    </LinearLayout>
-
 </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/bot_navigation"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:itemBackground="@color/black"
+        app:itemIconTint="@drawable/nav_item_color"
+        app:menu="@menu/bottom_navigation"
+        app:itemTextColor="@color/white"
+
+
+
+        />
+</RelativeLayout>
+
+
+

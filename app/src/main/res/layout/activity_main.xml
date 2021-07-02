@@ -22,7 +22,7 @@
         android:fontFamily="@font/basic"
         android:gravity="center"
         android:text="Reverb"
-        android:textColor="@color/white"
+        android:textColor="#fff"
         android:textFontWeight="22"
         android:textSize="50dp"
         android:textStyle="bold" />
@@ -34,7 +34,7 @@
         android:fontFamily="@font/arsenal_bold_italic"
         android:gravity="center"
         android:text="Media Player "
-        android:textColor="@color/white"
+        android:textColor="#fff"
         android:textSize="20sp"
         android:textStyle="normal|bold" />
 

@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bgalanblurred"
-    tools:context=".HomePage"
-    android:orientation="vertical">
+    tools:context=".AudioPlayer"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
     <TextView
         android:id="@+id/lyrics"
@@ -18,30 +22,32 @@
         android:text="Song Lyrics...."
         android:textColor="@color/white"
         android:textSize="30dp" />
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="450dp"
-        android:src="@drawable/alanedited2"/>
 
-    <TextView
-        android:id="@+id/songname"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/basic"
-        android:text="Song name"
-        android:textColor="@color/white"
-        android:textSize="20dp" />
-    <TextView
-        android:id="@+id/author"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Author"
-        android:textColor="@color/grey"
-        android:textSize="15dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginLeft="15dp"/>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="414dp"
+            android:src="@drawable/alanedited2" />
+
+        <TextView
+            android:id="@+id/songname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/basic"
+            android:text="Song name"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/author"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="8dp"
+            android:text="Author"
+            android:textColor="#fff"
+            android:textSize="15sp" />
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="60dp">
@@ -68,7 +74,7 @@
             android:layout_marginLeft="20dp"
             android:layout_toLeftOf="@+id/seekbar"
             android:text="0.00"
-            android:textColor="@color/grey"
+            android:textColor="#fff"
             android:textSize="14sp" />
 
         <TextView
@@ -80,7 +86,7 @@
             android:layout_marginRight="20dp"
             android:layout_toRightOf="@+id/seekbar"
             android:text="4.00"
-            android:textColor="@color/grey"
+            android:textColor="#fff"
             android:textSize="14sp" />
     </RelativeLayout>
 
@@ -137,5 +143,20 @@
     </LinearLayout>
 
 
+    </LinearLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/bot_navigation"
+        android:layout_alignParentBottom="true"
+        android:background="?android:attr/windowBackground"
+        app:itemBackground="@color/black"
+        app:itemIconTint="@drawable/nav_item_color"
+        app:menu="@menu/bottom_navigation"
+        app:itemTextColor="@color/white"
 
-</LinearLayout>
+
+
+        />
+
+</RelativeLayout>
