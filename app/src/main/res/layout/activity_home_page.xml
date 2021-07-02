@@ -31,7 +31,8 @@
             android:textColorHint="#fff"
             android:textSize="14sp"
             app:backgroundTint="@color/purple_200"
-            app:icon="@drawable/ic_baseline_search_24" />
+            app:icon="@drawable/ic_baseline_search_24"
+            app:iconTint="#fff" />
     </LinearLayout>
 
     <LinearLayout
@@ -74,9 +75,11 @@
                 android:background="@drawable/lay1"
                 android:gravity="center|start"
                 android:text="All Songs"
+                android:textColor="#fff"
                 app:backgroundTint="#07A3A2"
                 app:icon="@drawable/ic_baseline_library_music_24"
-                app:iconSize="64dp" />
+                app:iconSize="64dp"
+                app:iconTint="#fff" />
 
             <Button
                 android:id="@+id/Playlists"
@@ -87,9 +90,11 @@
                 android:background="@drawable/lay1"
                 android:gravity="center|start"
                 android:text="Playlists"
+                android:textColor="#fff"
                 app:backgroundTint="#FBC215"
                 app:icon="@drawable/ic_baseline_playlist_play_24"
-                app:iconSize="64dp" />
+                app:iconSize="64dp"
+                app:iconTint="#fff" />
 
 
         </LinearLayout>
@@ -136,9 +141,11 @@
                 android:layout_marginRight="48dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/lay1"
+                android:textColor="#fff"
                 app:backgroundTint="#CDDC39"
                 app:icon="@drawable/ic_baseline_video_library_24"
-                app:iconSize="84dp" />
+                app:iconSize="84dp"
+                app:iconTint="#fff" />
 
             <Button
                 android:id="@+id/VPlaylists"
@@ -147,9 +154,11 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:background="@drawable/lay1"
+                android:textColor="#fff"
                 app:backgroundTint="#FF5722"
                 app:icon="@drawable/ic_baseline_playlist_play_24"
-                app:iconSize="100dp" />
+                app:iconSize="100dp"
+                app:iconTint="#fff" />
 
 
         </LinearLayout>

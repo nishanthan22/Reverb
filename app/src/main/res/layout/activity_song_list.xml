@@ -11,6 +11,7 @@
   <com.google.android.material.tabs.TabLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+
       android:id="@+id/tablayout"
       app:tabIndicatorFullWidth="true"
       app:tabIndicatorGravity="center"
@@ -24,6 +25,51 @@
       android:layout_height="match_parent"
     android:id="@+id/viewpager"/>
 
+
+
+      android:layout_marginTop="16dp"
+      android:background="@drawable/bgsong"
+      android:gravity="center|left"
+      android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="26dp"
+        android:layout_marginLeft="26dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center|left"
+        android:text="Songs"
+        android:textColor="#fff"
+        android:textSize="25dp"
+        android:textStyle="normal" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="32dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/bg1"
+        android:gravity="center|start"
+        android:text="PLAY"
+        android:textColor="#fff"
+        android:textSize="12dp"
+        app:backgroundTint="#9F33B1"
+        app:icon="@drawable/ic_baseline_play_circle_outline_24"
+        app:iconTint="#fff" />
+  </LinearLayout>
+
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+      android:layout_marginTop="164dp"
+      android:background="@drawable/bgsong"
+      android:orientation="vertical">
 
 
 
