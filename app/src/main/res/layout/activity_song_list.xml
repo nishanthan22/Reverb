@@ -1,70 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="@color/black"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-  <LinearLayout
+
+  <com.google.android.material.tabs.TabLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:layout_marginTop="16dp"
-      android:background="@drawable/lay1"
-      android:gravity="center|left"
-      android:orientation="vertical">
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginLeft="26dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="sans-serif"
-        android:gravity="center|left"
-        android:text="Songs"
-        android:textColor="#fff"
-        android:textSize="25dp"
-        android:textStyle="normal" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="32dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:background="@drawable/bg1"
-        android:gravity="center|left"
-        android:text="PLAY"
-        android:textColor="#fff"
-        android:textSize="12dp"
-        app:backgroundTint="@drawable/bg1"
-        app:icon="@drawable/ic_baseline_play_circle_outline_24"
-         />
-  </LinearLayout>
-
-
-  <LinearLayout
+      android:id="@+id/tablayout"
+      app:tabIndicatorFullWidth="true"
+      app:tabIndicatorGravity="center"
+      app:tabTextColor="@color/teal_700"
+      app:tabIndicatorHeight="40dp"
+      app:tabIndicatorColor="@color/grey"
+      app:tabIndicator="@drawable/tabdesign"
+      android:background="@drawable/bg"/>
+  <androidx.viewpager.widget.ViewPager
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-      android:layout_marginTop="164dp"
-      android:background="@drawable/lay1"
-      android:orientation="vertical">
+    android:id="@+id/viewpager"/>
 
-    <ListView
-        android:id="@+id/listViewSong"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10.0sp"
-        android:padding="8dp">
 
-    </ListView>
-  </LinearLayout>
 
-</RelativeLayout>
+
+
+</LinearLayout>
