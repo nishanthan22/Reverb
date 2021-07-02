@@ -4,25 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
 
   <com.google.android.material.tabs.TabLayout
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content"
-
       android:id="@+id/tablayout"
+      android:layout_width="match_parent"
+
+      android:layout_height="80dp"
+      android:layout_marginTop="16dp"
+      android:background="@drawable/s2"
+      app:tabIndicator="@drawable/tabdesign"
+      app:tabIndicatorColor="@color/grey"
       app:tabIndicatorFullWidth="true"
       app:tabIndicatorGravity="center"
-      app:tabTextColor="@color/teal_700"
       app:tabIndicatorHeight="40dp"
-      app:tabIndicatorColor="@color/grey"
-      app:tabIndicator="@drawable/tabdesign"
-      android:background="@drawable/bg"/>
+      app:tabTextColor="#fff" />
+
   <androidx.viewpager.widget.ViewPager
+      android:id="@+id/viewpager"
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-    android:id="@+id/viewpager"/>
+      android:layout_marginTop="32dp"
+      android:background="@drawable/s2" />
 
 </LinearLayout>
