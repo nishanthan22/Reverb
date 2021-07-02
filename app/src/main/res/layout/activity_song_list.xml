@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
-    android:background="@color/black"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-  <LinearLayout
+
+  <com.google.android.material.tabs.TabLayout
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
+
+      android:id="@+id/tablayout"
+      app:tabIndicatorFullWidth="true"
+      app:tabIndicatorGravity="center"
+      app:tabTextColor="@color/teal_700"
+      app:tabIndicatorHeight="40dp"
+      app:tabIndicatorColor="@color/grey"
+      app:tabIndicator="@drawable/tabdesign"
+      android:background="@drawable/bg"/>
+  <androidx.viewpager.widget.ViewPager
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
+    android:id="@+id/viewpager"/>
+
+
+
       android:layout_marginTop="16dp"
       android:background="@drawable/bgsong"
       android:gravity="center|left"
@@ -55,16 +71,7 @@
       android:background="@drawable/bgsong"
       android:orientation="vertical">
 
-    <ListView
-        android:id="@+id/listViewSong"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:divider="@android:color/transparent"
-        android:dividerHeight="10.0sp"
-        android:padding="8dp">
 
-    </ListView>
-  </LinearLayout>
 
-</RelativeLayout>
+
+</LinearLayout>
