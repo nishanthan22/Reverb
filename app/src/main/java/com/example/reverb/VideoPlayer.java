@@ -20,7 +20,7 @@ public class VideoPlayer extends AppCompatActivity {
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
 
                 switch (item.getItemId())
                 {
@@ -30,7 +30,6 @@ public class VideoPlayer extends AppCompatActivity {
                     case R.id.musicitem:
                         startActivity(new Intent(getApplicationContext()
                                 ,AudioPlayer.class));
-                        finish();
                         overridePendingTransition(0,0);
                         return true;
 
@@ -43,9 +42,11 @@ public class VideoPlayer extends AppCompatActivity {
                     case R.id.NameUser:
                         startActivity(new Intent(getApplicationContext()
                                 ,user.class));
-                        finish();
                         overridePendingTransition(0,0);
                         return true;
+
+                    default:
+                        bottomNavigationView.setSelectedItemId(R.id.home);
                 }
 
 
@@ -54,5 +55,24 @@ public class VideoPlayer extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
+        int selectedItemId = bottomNavigationView.getSelectedItemId();
+        if (R.id.home != selectedItemId) {
+            setHomeItem(HomePage.class);
+
+        } else {
+            super.onBackPressed();
+        }
+
+
+    }
+
+    public void setHomeItem(Class<HomePage> activity) {
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
+        bottomNavigationView.setSelectedItemId(R.id.home);
     }
 }

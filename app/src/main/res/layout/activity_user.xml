@@ -39,7 +39,7 @@
     </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:id="@+id/bot_navigation"
         android:layout_alignParentBottom="true"
         android:background="?android:attr/windowBackground"
