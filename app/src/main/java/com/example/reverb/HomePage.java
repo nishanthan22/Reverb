@@ -40,6 +40,7 @@ public class HomePage extends AppCompatActivity {
                      case R.id.Video:
                          startActivity(new Intent(getApplicationContext()
                                  ,VideoPlayer.class));
+                         finish();
                          overridePendingTransition(0,0);
                          return true;
 
@@ -49,12 +50,14 @@ public class HomePage extends AppCompatActivity {
                      case R.id.musicitem:
                          startActivity(new Intent(getApplicationContext()
                                  ,AudioPlayer.class));
+                         finish();
                          overridePendingTransition(0,0);
                          return true;
 
                      case R.id.NameUser:
                          startActivity(new Intent(getApplicationContext()
                                  ,user.class));
+                         finish();
                          overridePendingTransition(0,0);
                          return true;
                  }

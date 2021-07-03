@@ -30,6 +30,7 @@ public class AudioPlayer extends AppCompatActivity {
                     case R.id.Video:
                         startActivity(new Intent(getApplicationContext()
                                 ,VideoPlayer.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
 
@@ -42,6 +43,7 @@ public class AudioPlayer extends AppCompatActivity {
                     case R.id.NameUser:
                         startActivity(new Intent(getApplicationContext()
                                 ,user.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
                 }
