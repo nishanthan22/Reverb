@@ -204,6 +204,7 @@
         app:itemIconTint="@drawable/nav_item_color"
         app:menu="@menu/bottom_navigation"
         app:itemTextColor="@color/white"
+        app:labelVisibilityMode="labeled"
 
         />
 </RelativeLayout>

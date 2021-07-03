@@ -20,7 +20,7 @@ public class VideoPlayer extends AppCompatActivity {
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch (item.getItemId())
                 {
@@ -30,6 +30,7 @@ public class VideoPlayer extends AppCompatActivity {
                     case R.id.musicitem:
                         startActivity(new Intent(getApplicationContext()
                                 ,AudioPlayer.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
 
@@ -42,6 +43,7 @@ public class VideoPlayer extends AppCompatActivity {
                     case R.id.NameUser:
                         startActivity(new Intent(getApplicationContext()
                                 ,user.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
 

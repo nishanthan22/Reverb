@@ -22,57 +22,6 @@ import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.ArrayList;
 
-//public class SongAdapter extends BaseAdapter {
-//    Context context;
-//    ArrayList<MusicFiles> musicFiles;
-//
-//    public SongAdapter(Context context, ArrayList<MusicFiles> musicFiles) {
-//        this.context=context;
-//        this.musicFiles=musicFiles;
-//    }
-//
-//
-//    @Override
-//    public int getCount() {
-//        return musicFiles.size();
-//    }
-//
-//    @Override
-//    public Object getItem(int position) {
-//        return null;
-//    }
-//
-//    @Override
-//    public long getItemId(int position) {
-//        return 0;
-//    }
-//
-//    @Override
-//    public View getView(int position, View convertView, ViewGroup parent) {
-//        LayoutInflater layoutInflater=LayoutInflater.from(context);
-//        View myView = layoutInflater.inflate(R.layout.song_items,parent,false);
-//        TextView textsong = myView.findViewById(R.id.txtsongname);
-//        textsong.setSelected(true);
-//        textsong.setText((CharSequence) musicFiles.get(position));
-//        return  myView;
-//
-//    }
-//
-//    public class MyViewHolder extends ListView {
-//          TextView filename;
-//          ImageView albumart;
-//
-//
-//        public MyViewHolder(Context context) {
-//            super(context);
-//            filename=findViewById(R.id.txtsongname);
-//            albumart=findViewById(R.id.imgsong);
-//        }
-//    }
-//
-//
-//}
-
 
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
      private Context mContext;
@@ -136,13 +85,3 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
      }
 }
 
-//public class SongAdapter extends BaseAdapter{
-//     private Context mContext;
-//     private ArrayList<MusicFiles> mFiles;
-//
-//     public SongAdapter(Context context, ArrayList<MusicFiles> musicFiles) {
-//          this.mFiles=mFiles;
-////          this.mContext=mContext;
-//        }
-//
-//}
