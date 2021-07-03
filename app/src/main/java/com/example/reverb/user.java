@@ -20,7 +20,7 @@ public class user extends AppCompatActivity {
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch (item.getItemId())
                 {
@@ -30,18 +30,21 @@ public class user extends AppCompatActivity {
                     case R.id.musicitem:
                         startActivity(new Intent(getApplicationContext()
                                 ,AudioPlayer.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext()
                                 ,HomePage.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.Video:
                         startActivity(new Intent(getApplicationContext()
                                 ,VideoPlayer.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
 
@@ -65,7 +68,8 @@ public class user extends AppCompatActivity {
             setHomeItem(HomePage.class);
 
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            System.exit(0);
         }
 
 

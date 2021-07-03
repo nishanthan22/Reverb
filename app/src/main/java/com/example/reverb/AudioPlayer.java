@@ -21,7 +21,7 @@ public class AudioPlayer extends AppCompatActivity {
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                 switch (item.getItemId())
                 {
@@ -31,18 +31,21 @@ public class AudioPlayer extends AppCompatActivity {
                     case R.id.Video:
                         startActivity(new Intent(getApplicationContext()
                                 ,VideoPlayer.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext()
                                 ,HomePage.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.NameUser:
                         startActivity(new Intent(getApplicationContext()
                                 ,user.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
                     default:
@@ -67,7 +70,9 @@ public class AudioPlayer extends AppCompatActivity {
             setHomeItem(HomePage.class);
 
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            System.exit(0);
+
         }
 
 

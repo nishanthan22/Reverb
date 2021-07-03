@@ -41,6 +41,7 @@ public class HomePage extends AppCompatActivity {
                     case R.id.Video:
                         startActivity(new Intent(getApplicationContext()
                                 , VideoPlayer.class));
+                        finish();
                         overridePendingTransition(0, 0);
                         return true;
 
@@ -50,12 +51,14 @@ public class HomePage extends AppCompatActivity {
                     case R.id.musicitem:
                         startActivity(new Intent(getApplicationContext()
                                 , AudioPlayer.class));
+                        finish();
                         overridePendingTransition(0, 0);
                         return true;
 
                     case R.id.NameUser:
                         startActivity(new Intent(getApplicationContext()
                                 , user.class));
+                        finish();
                         overridePendingTransition(0, 0);
                         return true;
                     default:
@@ -83,6 +86,8 @@ public class HomePage extends AppCompatActivity {
 
     }
 
+
+
     @Override
     public void onBackPressed() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
@@ -91,7 +96,9 @@ public class HomePage extends AppCompatActivity {
             setHomeItem(HomePage.this);
 
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            System.exit(0);
+
         }
 
 

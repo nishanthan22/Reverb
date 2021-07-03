@@ -44,7 +44,6 @@ dependencies {
     annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
     implementation 'com.nostra13.universalimageloader:universal-image-loader:1.9.5'
 
-
 }
 android {
     defaultConfig {
