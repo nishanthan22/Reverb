@@ -38,6 +38,7 @@ public class AudioPlayer extends AppCompatActivity {
                     case R.id.home:
                         startActivity(new Intent(getApplicationContext()
                                 ,HomePage.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
 
@@ -69,7 +70,9 @@ public class AudioPlayer extends AppCompatActivity {
             setHomeItem(HomePage.class);
 
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            System.exit(0);
+
         }
 
 
