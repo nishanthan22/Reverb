@@ -9,14 +9,14 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class AudioPlayer extends AppCompatActivity {
+public class user extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_audio_player);
+        setContentView(R.layout.activity_user);
         BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.musicitem);
+        bottomNavigationView.setSelectedItemId(R.id.NameUser);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -24,12 +24,12 @@ public class AudioPlayer extends AppCompatActivity {
 
                 switch (item.getItemId())
                 {
-                    case R.id.musicitem:
+                    case R.id.NameUser:
                         return true;
 
-                    case R.id.Video:
+                    case R.id.musicitem:
                         startActivity(new Intent(getApplicationContext()
-                                ,VideoPlayer.class));
+                                ,AudioPlayer.class));
                         overridePendingTransition(0,0);
                         return true;
 
@@ -39,9 +39,9 @@ public class AudioPlayer extends AppCompatActivity {
                         overridePendingTransition(0,0);
                         return true;
 
-                    case R.id.NameUser:
+                    case R.id.Video:
                         startActivity(new Intent(getApplicationContext()
-                                ,user.class));
+                                ,VideoPlayer.class));
                         overridePendingTransition(0,0);
                         return true;
                 }
@@ -52,12 +52,5 @@ public class AudioPlayer extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
     }
-
-
 }

@@ -9,14 +9,14 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class AudioPlayer extends AppCompatActivity {
+public class VideoPlayer extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_audio_player);
+        setContentView(R.layout.activity_video_player);
         BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.musicitem);
+        bottomNavigationView.setSelectedItemId(R.id.Video);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -24,12 +24,12 @@ public class AudioPlayer extends AppCompatActivity {
 
                 switch (item.getItemId())
                 {
-                    case R.id.musicitem:
+                    case R.id.Video:
                         return true;
 
-                    case R.id.Video:
+                    case R.id.musicitem:
                         startActivity(new Intent(getApplicationContext()
-                                ,VideoPlayer.class));
+                                ,AudioPlayer.class));
                         overridePendingTransition(0,0);
                         return true;
 
@@ -52,12 +52,5 @@ public class AudioPlayer extends AppCompatActivity {
 
             }
         });
-
-
-
-
-
     }
-
-
 }
