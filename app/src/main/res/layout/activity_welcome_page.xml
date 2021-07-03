@@ -36,17 +36,6 @@
             android:textColor="#fff"
             android:textSize="22sp" />
 
-<!--        <TextView-->
-<!--            android:id="@+id/textView2"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="42dp"-->
-<!--            android:layout_marginStart="32dp"-->
-<!--            android:layout_marginLeft="32dp"-->
-<!--            android:layout_marginEnd="32dp"-->
-<!--            android:layout_marginRight="32dp"-->
-<!--            android:text="Media Player"-->
-<!--            android:textColor="#fff"-->
-<!--            android:textSize="22sp" />-->
     </LinearLayout>
 
     <RelativeLayout

@@ -12,7 +12,7 @@ import android.widget.Button;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomePage extends AppCompatActivity {
-      Button b1,b2;
+      Button b1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +31,7 @@ public class HomePage extends AppCompatActivity {
 
          bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
              @Override
-             public boolean onNavigationItemSelected(@NonNull @org.jetbrains.annotations.NotNull MenuItem item) {
+             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
                  switch (item.getItemId())
                  {
@@ -65,16 +65,6 @@ public class HomePage extends AppCompatActivity {
 
              }
          });
-       // b2 = findViewById(R.id.Music);
-       // b2.setOnClickListener(new View.OnClickListener() {
-            //@Override
-            //public void onClick(View v) {
-               // Intent audioplayer = new Intent(HomePage.this,AudioPlayer.class);
-                //startActivity(audioplayer);
-                //finish();
-           // }
-        //});
-
 
     }
 }
