@@ -4,19 +4,36 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="#B19ED3"
+    android:backgroundTint="#B19ED3"
     android:gravity="center"
 
     tools:context=".MainActivity">
 
-    <de.hdodenhof.circleimageview.CircleImageView xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/profile_image"
-        android:layout_width="90dp"
-        android:layout_height="90dp"
-        android:src="@drawable/user2"
-        app:tint="@color/white"
-        android:background="@color/teal_700">
 
-    </de.hdodenhof.circleimageview.CircleImageView>
+    <ImageView
+        android:id="@+id/cam"
+        android:layout_width="106dp"
+        android:layout_height="96dp"
+        android:layout_alignParentLeft="true"
+
+        android:layout_marginTop="@dimen/activity_padding"
+
+        android:layout_marginBottom="@dimen/activity_padding"
+        android:contentDescription="@string/user_photo"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/user" />
+
+    <ImageView
+        android:layout_width="@dimen/ic_plus_width"
+        android:layout_height="@dimen/ic_plus_width"
+        android:layout_alignRight="@id/cam"
+        android:layout_alignBottom="@+id/cam"
+        android:layout_marginTop="32dp"
+        android:background="@drawable/bg_new"
+        android:backgroundTint="#B19ED3"
+        android:scaleType="fitCenter"
+        app:srcCompat="@drawable/ic_cam"
+        android:layout_alignEnd="@id/cam" />
 
 </RelativeLayout>
