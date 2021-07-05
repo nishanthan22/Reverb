@@ -99,7 +99,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:background="@drawable/lay3"
-        android:text="Enter"
+        android:text="Reverb"
         android:textAllCaps="false"
         android:textColor="#fff"
         android:textSize="16sp"

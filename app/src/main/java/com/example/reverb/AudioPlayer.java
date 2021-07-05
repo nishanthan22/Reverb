@@ -70,8 +70,8 @@ public class AudioPlayer extends AppCompatActivity {
             setHomeItem(HomePage.class);
 
         } else {
-            //super.onBackPressed();
-            System.exit(0);
+            super.onBackPressed();
+           // System.exit(0);
 
         }
 

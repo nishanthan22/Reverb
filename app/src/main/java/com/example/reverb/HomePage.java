@@ -96,8 +96,8 @@ public class HomePage extends AppCompatActivity {
             setHomeItem(HomePage.this);
 
         } else {
-            //super.onBackPressed();
-            System.exit(0);
+            super.onBackPressed();
+           // System.exit(0);
 
         }
 
