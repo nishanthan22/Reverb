@@ -13,8 +13,10 @@
         android:id="@+id/profile_image"
         android:layout_width="90dp"
         android:layout_height="90dp"
-        android:src="@drawable/user"
-        app:civ_border_color="@color/white">
+        android:src="@drawable/user2"
+        app:tint="@color/white"
+        android:background="@color/teal_700">
 
     </de.hdodenhof.circleimageview.CircleImageView>
+
 </RelativeLayout>
