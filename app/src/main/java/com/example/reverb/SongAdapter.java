@@ -44,41 +44,25 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
      @Override
      public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
           holder.filename.setText(mFiles.get(position).getTitle());
-          Bitmap bitmap = null;
-          MediaMetadataRetriever retriever=new MediaMetadataRetriever();
-          try {
-               retriever.setDataSource(mFiles.get(position).getPath());
-               byte[] embedPic = retriever.getEmbeddedPicture();
-               bitmap=BitmapFactory.decodeByteArray(embedPic,0,embedPic.length);
-
-          }catch (Exception e)
-          {
-               e.printStackTrace();
-          }finally {
-               try {
-                    retriever.release();
-               }catch (Exception e2){
-                    e2.printStackTrace();
-               }
+          byte[] image = getAlbumArt(mFiles.get(position).getPath());
+          if (image!=null){
+               Glide.with(mContext).asBitmap()
+                       .load(image)
+                       .into(holder.album_art);
           }
-          if (bitmap==null)
-          {
-               Glide.with(mContext)
-                       .load(R.drawable.ic_baseline_music_note_24)
-                       .into(holder.albumart);
-
-          }
-          else{
+          else {
                Glide.with(mContext)
                        .asBitmap()
-                      .load(bitmap)
-                      .into(holder.albumart);
-
+                       .load(R.drawable.ic_baseline_music_note_24)
+                       .into(holder.album_art);
           }
+
+
           holder.itemView.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
                     Intent a_Player = new Intent(mContext,AudioPlayer.class);
+                    a_Player.putExtra("position",position);
                     mContext.startActivity(a_Player);
 
                }
@@ -130,22 +114,21 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
 
      public class MyViewHolder extends RecyclerView.ViewHolder{
           TextView filename;
-          ImageView albumart;
+          ImageView album_art;
 
           public MyViewHolder(@NonNull View itemView){
                super(itemView);
                filename=itemView.findViewById(R.id.txtsongname);
-               albumart=itemView.findViewById(R.id.imgsong);
+               album_art=itemView.findViewById(R.id.imgsong);
           }
      }
 
-//     private byte[] getAlbumArt(String uri){
-//          MediaMetadataRetriever retriever=new MediaMetadataRetriever();
-//          retriever.setDataSource(uri);
-//          byte[] art =retriever.getEmbeddedPicture();
-//
-//          retriever.release();
-//          return art;
-//     }
+     private byte[] getAlbumArt(String uri){
+          MediaMetadataRetriever retriever=new MediaMetadataRetriever();
+          retriever.setDataSource(uri);
+          byte[] art =retriever.getEmbeddedPicture();
+          retriever.release();
+          return art;
+     }
 }
 
