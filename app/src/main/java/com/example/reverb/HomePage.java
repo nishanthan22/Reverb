@@ -25,7 +25,7 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent allsongs = new Intent(HomePage.this, SongList.class);
                 startActivity(allsongs);
-                //finish();
+
             }
         });
         BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
@@ -96,7 +96,7 @@ public class HomePage extends AppCompatActivity {
             setHomeItem(HomePage.this);
 
         } else {
-            //super.onBackPressed();
+           // super.onBackPressed();
             System.exit(0);
 
         }

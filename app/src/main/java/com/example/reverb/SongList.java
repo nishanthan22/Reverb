@@ -28,6 +28,7 @@ public class SongList extends AppCompatActivity {
 
     public static final int REQUEST_CODE=1;
     static ArrayList<MusicFiles> musicFiles;
+    public Context c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class SongList extends AppCompatActivity {
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
+
+
 
     public static class ViewPagerAdapter extends FragmentPagerAdapter{
 
@@ -82,7 +85,7 @@ public class SongList extends AppCompatActivity {
         }
         else {
            Toast.makeText(getApplicationContext(),"Music Files",Toast.LENGTH_SHORT).show();
-            musicFiles=getAllAudio(this);
+            musicFiles=getAllAudio(getApplicationContext());
             initViewPager();
 
         }
@@ -110,11 +113,12 @@ public class SongList extends AppCompatActivity {
     public static ArrayList<MusicFiles> getAllAudio(Context context){
         ArrayList<MusicFiles> tempAudioList = new ArrayList<>();
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-        String[] projection = {MediaStore.Audio.Media.ALBUM,
+        String[] projection = {
+                MediaStore.Audio.Media.ALBUM,
                 MediaStore.Audio.Media.TITLE,
                 MediaStore.Audio.Media.DURATION,
                 MediaStore.Audio.Media.DATA,
-                MediaStore.Audio.Media.ARTIST,};
+                MediaStore.Audio.Media.ARTIST };
 
         Cursor cursor = context.getContentResolver().query(uri,projection,null,null,null);
         if (cursor!=null){

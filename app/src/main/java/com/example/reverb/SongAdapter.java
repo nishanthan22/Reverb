@@ -1,6 +1,9 @@
 package com.example.reverb;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaMetadata;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
@@ -40,24 +43,84 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
 
      @Override
      public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-         holder.filename.setText(mFiles.get(position).getTitle());
-         byte[] image=getAlbumArt(mFiles.get(position).getPath());
+          holder.filename.setText(mFiles.get(position).getTitle());
+          Bitmap bitmap = null;
+          MediaMetadataRetriever retriever=new MediaMetadataRetriever();
+          try {
+               retriever.setDataSource(mFiles.get(position).getPath());
+               byte[] embedPic = retriever.getEmbeddedPicture();
+               bitmap=BitmapFactory.decodeByteArray(embedPic,0,embedPic.length);
 
-         if (image!=null){
-              Glide.with(mContext)
-                      .asBitmap()
-                      .load(image)
+          }catch (Exception e)
+          {
+               e.printStackTrace();
+          }finally {
+               try {
+                    retriever.release();
+               }catch (Exception e2){
+                    e2.printStackTrace();
+               }
+          }
+          if (bitmap==null)
+          {
+               Glide.with(mContext)
+                       .load(R.drawable.ic_baseline_music_note_24)
+                       .into(holder.albumart);
+
+          }
+          else{
+               Glide.with(mContext)
+                       .asBitmap()
+                      .load(bitmap)
                       .into(holder.albumart);
 
+          }
+          holder.itemView.setOnClickListener(new View.OnClickListener() {
+               @Override
+               public void onClick(View v) {
+                    Intent a_Player = new Intent(mContext,AudioPlayer.class);
+                    mContext.startActivity(a_Player);
 
-         }
-         else {
-             Glide.with(mContext)
-                     .load(R.drawable.ic_baseline_music_note_24)
-                     .into(holder.albumart);
-         }
+               }
+          });
+
+//         holder.filename.setText(mFiles.get(position).getTitle());
+//         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+//         mmr.setDataSource(mFiles.get(position).getPath());
+//         byte[] artbytes = mmr.getEmbeddedPicture();
+//         if (artbytes!=null){
+//              InputStream is =new ByteArrayInputStream(mmr.getEmbeddedPicture());
+//              Bitmap bm =null;
+//              bm =BitmapFactory.decodeStream(is);
+//              holder.albumart.setImageBitmap(bm);
+//              mmr.release();
+//         }
+//         else {
+//              Glide.with(mContext)
+//                   .load(R.drawable.ic_baseline_music_note_24)
+//                     .into(holder.albumart);
+//         }
+//         mmr.release();
 
 
+          
+         //byte[] image=getAlbumArt(mFiles.get(position).getPath());
+
+
+//         if (image!=null){
+////              Glide.with(mContext)
+////                      .asBitmap()
+////                      .load(image)
+////                      .into(holder.albumart);
+//
+//
+//
+//         }
+//         else {
+//             Glide.with(mContext)
+//                     .load(R.drawable.ic_baseline_music_note_24)
+//                     .into(holder.albumart);
+//         }
      }
 
      @Override
@@ -76,12 +139,13 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
           }
      }
 
-     private byte[] getAlbumArt(Uri uri){
-          MediaMetadataRetriever retriever=new MediaMetadataRetriever();
-          retriever.setDataSource(uri.toString());
-          byte[] art =retriever.getEmbeddedPicture();
-          retriever.release();
-          return art;
-     }
+//     private byte[] getAlbumArt(String uri){
+//          MediaMetadataRetriever retriever=new MediaMetadataRetriever();
+//          retriever.setDataSource(uri);
+//          byte[] art =retriever.getEmbeddedPicture();
+//
+//          retriever.release();
+//          return art;
+//     }
 }
 
