@@ -28,6 +28,7 @@ public class SongList extends AppCompatActivity {
 
     public static final int REQUEST_CODE=1;
     static ArrayList<MusicFiles> musicFiles;
+    public Context c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +45,8 @@ public class SongList extends AppCompatActivity {
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
+
+
 
     public static class ViewPagerAdapter extends FragmentPagerAdapter{
 

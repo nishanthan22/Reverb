@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -66,12 +67,16 @@ public class AudioPlayer extends AppCompatActivity {
     public void onBackPressed() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
         int selectedItemId = bottomNavigationView.getSelectedItemId();
+//        Context cContext = getBaseContext();
+//        if(R.id.musicitem == selectedItemId && cCon){
+//
+//        }
         if (R.id.home != selectedItemId) {
             setHomeItem(HomePage.class);
 
         } else {
-            super.onBackPressed();
-           // System.exit(0);
+            //super.onBackPressed();
+            System.exit(0);
 
         }
 

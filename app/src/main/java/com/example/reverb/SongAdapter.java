@@ -143,11 +143,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
 //          MediaMetadataRetriever retriever=new MediaMetadataRetriever();
 //          retriever.setDataSource(uri);
 //          byte[] art =retriever.getEmbeddedPicture();
-//          if(art != null){
-//               InputStream is =new ByteArrayInputStream(retriever.getEmbeddedPicture());
-//               Bitmap bm = BitmapFactory.decodeStream(is);
-//               return bm;
-//          }
+//
 //          retriever.release();
 //          return art;
 //     }
