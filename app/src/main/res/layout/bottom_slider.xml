@@ -15,11 +15,11 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_margin="32dp"
-        android:src="@drawable/anu2"/>
+        app:srcCompat="@drawable/user"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Anusri"
+        android:text="Name"
         android:textColor="@color/white"
         android:gravity="center"
         android:textStyle="bold"
