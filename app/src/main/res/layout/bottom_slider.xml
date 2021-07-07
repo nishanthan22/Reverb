@@ -15,7 +15,8 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:layout_margin="32dp"
-        app:srcCompat="@drawable/user"/>
+        app:srcCompat="@drawable/user"
+        android:background="@drawable/user"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
