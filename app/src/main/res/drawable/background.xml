@@ -7,13 +7,8 @@
                 android:centerColor="#0F0F10"
                 android:endColor="#121112"
                 android:startColor="#63237E"
-
                 android:type="linear"
-                android:gradientRadius="20dp"
-                />
-
-
+                android:gradientRadius="20dp"/>
         </shape>
-
     </item>
 </selector>
