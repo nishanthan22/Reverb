@@ -28,7 +28,7 @@ public class SongList extends AppCompatActivity {
 
     public static final int REQUEST_CODE=1;
     static ArrayList<MusicFiles> musicFiles;
-    public Context c;
+    static boolean loopBoolean = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

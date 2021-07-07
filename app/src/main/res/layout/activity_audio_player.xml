@@ -4,8 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bgalanblurred"
+    android:background="@color/black"
     tools:context=".AudioPlayer">
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,11 +25,16 @@
             android:textSize="30dp"
             android:textStyle="bold" />
 
+
+
         <ImageView
             android:id="@+id/cover_image"
             android:layout_width="match_parent"
             android:layout_height="414dp"
             android:src="@drawable/alanedited2" />
+
+
+
 
         <TextView
             android:id="@+id/songname"
@@ -49,6 +56,7 @@
             android:text="Author"
             android:textColor="#fff"
             android:textSize="15sp" />
+
 
         <RelativeLayout
             android:layout_width="match_parent"
