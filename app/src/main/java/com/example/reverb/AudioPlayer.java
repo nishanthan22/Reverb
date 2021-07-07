@@ -12,11 +12,14 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.GestureDetector;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -24,6 +27,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+import static com.example.reverb.SongList.loopBoolean;
 import static com.example.reverb.SongList.musicFiles;
 
 public class AudioPlayer extends AppCompatActivity {
@@ -41,6 +45,7 @@ public class AudioPlayer extends AppCompatActivity {
     private Handler handler=new Handler();
     String previousActivity;
     private Thread playPauseThread;
+    SwipeListener swipeListener;
 
 
     @Override
@@ -150,6 +155,22 @@ public class AudioPlayer extends AppCompatActivity {
             }
         });
 
+        loop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (loopBoolean){
+                    loopBoolean = false;
+                    loop.setImageResource(R.drawable.ic_baseline_loop_24);
+
+                }
+                else {
+                    loopBoolean=true;
+                    //on
+                    loop.setImageResource(R.drawable.loop_on);
+                }
+            }
+        });
+
 
 
     }
@@ -239,6 +260,7 @@ public class AudioPlayer extends AppCompatActivity {
         playpausebtn=findViewById(R.id.play);
         seekbar=findViewById(R.id.seekbar);
         cover_image=findViewById(R.id.cover_image);
+        swipeListener = new SwipeListener(cover_image);
 
 
     }
@@ -315,5 +337,277 @@ public class AudioPlayer extends AppCompatActivity {
     public void setHomeItem(Class<HomePage> activity) {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
+    }
+
+    private class SwipeListener implements  View.OnTouchListener{
+        GestureDetector gestureDetector;
+
+        SwipeListener(View view){
+            int threshold = 100;
+            int velocity_threshold=100;
+
+            GestureDetector.SimpleOnGestureListener listener = new GestureDetector.SimpleOnGestureListener(){
+                @Override
+                public boolean onDown(MotionEvent e) {
+
+                    return true;
+                }
+
+                @Override
+                public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
+                    float xDiff = e2.getX() - e1.getX();
+                    float yDiff = e2.getY() - e1.getY();
+                    try {
+                        if(Math.abs(xDiff)>Math.abs(yDiff)){
+                            if(Math.abs(xDiff)>threshold && Math.abs(velocityX)>velocity_threshold){
+                                if (xDiff>0){
+                                    //swiped right
+                                    //switch to previous song
+                                    if(mediaPlayer.isPlaying()){
+                                        mediaPlayer.stop();
+                                        mediaPlayer.release();
+                                        position=((position-1)<0 ? (listFiles.size() - 1): (position-1));
+                                        uri = Uri.parse(listFiles.get(position).getPath());
+                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+                                        metaData(uri);
+                                        song_name.setText(listFiles.get(position).getTitle());
+                                        author.setText(listFiles.get(position).getArtist());
+                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
+                                        AudioPlayer.this.runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                if (mediaPlayer!=null){
+                                                    int sb_currentposition;
+                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                                                    seekbar.setProgress(sb_currentposition);
+                                                }
+                                                handler.postDelayed(this,1000);
+                                            }
+                                        });
+                                        playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
+                                        mediaPlayer.start();
+                                    }
+                                    else {
+                                        mediaPlayer.stop();
+                                        mediaPlayer.release();
+                                        position=((position-1)<0 ? (listFiles.size() - 1): (position-1));
+                                        uri = Uri.parse(listFiles.get(position).getPath());
+                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+                                        metaData(uri);
+                                        song_name.setText(listFiles.get(position).getTitle());
+                                        author.setText(listFiles.get(position).getArtist());
+                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
+                                        AudioPlayer.this.runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                if (mediaPlayer!=null){
+                                                    int sb_currentposition;
+                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                                                    seekbar.setProgress(sb_currentposition);
+                                                }
+                                                handler.postDelayed(this,1000);
+                                            }
+                                        });
+                                        playpausebtn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+
+
+                                    }
+
+
+                                }else {
+                                    //swiped left
+                                    //switch to next song
+                                    if(mediaPlayer.isPlaying()){
+                                        mediaPlayer.stop();
+                                        mediaPlayer.release();
+                                        if (!loopBoolean){
+                                        position=((position+1)% listFiles.size());}
+                                        uri = Uri.parse(listFiles.get(position).getPath());
+                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+                                        metaData(uri);
+                                        song_name.setText(listFiles.get(position).getTitle());
+                                        author.setText(listFiles.get(position).getArtist());
+                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
+                                        AudioPlayer.this.runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                if (mediaPlayer!=null){
+                                                    int sb_currentposition;
+                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                                                    seekbar.setProgress(sb_currentposition);
+                                                }
+                                                handler.postDelayed(this,1000);
+                                            }
+                                        });
+                                        playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
+                                        mediaPlayer.start();
+                                    }
+                                    else {
+                                        mediaPlayer.stop();
+                                        mediaPlayer.release();
+                                        if (!loopBoolean){
+                                            position=((position+1)% listFiles.size());}
+                                        uri = Uri.parse(listFiles.get(position).getPath());
+                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+                                        metaData(uri);
+                                        song_name.setText(listFiles.get(position).getTitle());
+                                        author.setText(listFiles.get(position).getArtist());
+                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
+                                        AudioPlayer.this.runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                if (mediaPlayer!=null){
+                                                    int sb_currentposition;
+                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                                                    seekbar.setProgress(sb_currentposition);
+                                                }
+                                                handler.postDelayed(this,1000);
+                                            }
+                                        });
+                                        playpausebtn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+
+
+                                    }
+
+
+                                }
+                                return true;
+
+                            }
+                        }
+                        else {
+                            if (Math.abs(yDiff)>threshold && Math.abs(velocityY)>velocity_threshold){
+                                if (yDiff>0){
+                                    //Toast.makeText(getApplicationContext(),"Swiped Down",Toast.LENGTH_SHORT).show();
+                                    //previous Song
+
+                                    if(mediaPlayer.isPlaying()){
+                                        mediaPlayer.stop();
+                                        mediaPlayer.release();
+                                        position=((position-1)<0 ? (listFiles.size() - 1): (position-1));
+                                        uri = Uri.parse(listFiles.get(position).getPath());
+                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+                                        metaData(uri);
+                                        song_name.setText(listFiles.get(position).getTitle());
+                                        author.setText(listFiles.get(position).getArtist());
+                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
+                                        AudioPlayer.this.runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                if (mediaPlayer!=null){
+                                                    int sb_currentposition;
+                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                                                    seekbar.setProgress(sb_currentposition);
+                                                }
+                                                handler.postDelayed(this,1000);
+                                            }
+                                        });
+                                        playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
+                                        mediaPlayer.start();
+                                    }
+                                    else {
+                                        mediaPlayer.stop();
+                                        mediaPlayer.release();
+                                        position=((position-1)<0 ? (listFiles.size() - 1): (position-1));
+                                        uri = Uri.parse(listFiles.get(position).getPath());
+                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+                                        metaData(uri);
+                                        song_name.setText(listFiles.get(position).getTitle());
+                                        author.setText(listFiles.get(position).getArtist());
+                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
+                                        AudioPlayer.this.runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                if (mediaPlayer!=null){
+                                                    int sb_currentposition;
+                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                                                    seekbar.setProgress(sb_currentposition);
+                                                }
+                                                handler.postDelayed(this,1000);
+                                            }
+                                        });
+                                        playpausebtn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+
+
+                                    }
+
+                                }
+                                else {
+                                    //Toast.makeText(getApplicationContext(),"Swiped Up",Toast.LENGTH_SHORT).show();
+
+                                    //next song
+
+                                    if(mediaPlayer.isPlaying()){
+                                        mediaPlayer.stop();
+                                        mediaPlayer.release();
+                                        if (!loopBoolean){
+                                            position=((position+1)% listFiles.size());}
+                                        uri = Uri.parse(listFiles.get(position).getPath());
+                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+                                        metaData(uri);
+                                        song_name.setText(listFiles.get(position).getTitle());
+                                        author.setText(listFiles.get(position).getArtist());
+                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
+                                        AudioPlayer.this.runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                if (mediaPlayer!=null){
+                                                    int sb_currentposition;
+                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                                                    seekbar.setProgress(sb_currentposition);
+                                                }
+                                                handler.postDelayed(this,1000);
+                                            }
+                                        });
+                                        playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
+                                        mediaPlayer.start();
+                                    }
+                                    else {
+                                        mediaPlayer.stop();
+                                        mediaPlayer.release();
+                                        if (!loopBoolean){
+                                            position=((position+1)% listFiles.size());}
+                                        uri = Uri.parse(listFiles.get(position).getPath());
+                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+                                        metaData(uri);
+                                        song_name.setText(listFiles.get(position).getTitle());
+                                        author.setText(listFiles.get(position).getArtist());
+                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
+                                        AudioPlayer.this.runOnUiThread(new Runnable() {
+                                            @Override
+                                            public void run() {
+                                                if (mediaPlayer!=null){
+                                                    int sb_currentposition;
+                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                                                    seekbar.setProgress(sb_currentposition);
+                                                }
+                                                handler.postDelayed(this,1000);
+                                            }
+                                        });
+                                        playpausebtn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+
+
+                                    }
+
+                                }
+                                return true;
+                            }
+                        }
+
+
+                    }catch (Exception e){
+                        e.printStackTrace();
+                    }
+                    return false;
+                }
+            };
+            gestureDetector = new GestureDetector(listener);
+            view.setOnTouchListener(this);
+        }
+
+        @Override
+        public boolean onTouch(View v, MotionEvent event) {
+            return gestureDetector.onTouchEvent(event);
+        }
     }
 }
