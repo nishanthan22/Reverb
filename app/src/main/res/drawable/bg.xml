@@ -10,6 +10,8 @@
 
 
                 />
+            <corners android:radius="32dp"></corners>
+
 
 
 
