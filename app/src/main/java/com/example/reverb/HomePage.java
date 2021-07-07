@@ -92,12 +92,13 @@ public class HomePage extends AppCompatActivity {
     public void onBackPressed() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
         int selectedItemId = bottomNavigationView.getSelectedItemId();
+
         if (R.id.home != selectedItemId) {
             setHomeItem(HomePage.this);
 
         } else {
-           // super.onBackPressed();
-            System.exit(0);
+           super.onBackPressed();
+            //System.exit(0);
 
         }
 

@@ -1,5 +1,6 @@
 package com.example.reverb;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -29,6 +30,8 @@ import java.util.ArrayList;
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
      private Context mContext;
      private ArrayList<MusicFiles> mFiles;
+     static Uri uri;
+
      SongAdapter(Context mContext,ArrayList<MusicFiles> mFiles){
           this.mFiles=mFiles;
           this.mContext=mContext;
@@ -43,11 +46,16 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
 
      @Override
      public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
           holder.filename.setText(mFiles.get(position).getTitle());
-          byte[] image = getAlbumArt(mFiles.get(position).getPath());
-          if (image!=null){
-               Glide.with(mContext).asBitmap()
-                       .load(image)
+          uri=Uri.parse(mFiles.get(position).getPath());
+          MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+          mmr.setDataSource(uri.toString());
+          byte[] album = mmr.getEmbeddedPicture();
+          if (album != null){
+               Glide.with(mContext)
+                       .asBitmap()
+                       .load(album)
                        .into(holder.album_art);
           }
           else {
@@ -55,7 +63,20 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
                        .asBitmap()
                        .load(R.drawable.ic_baseline_music_note_24)
                        .into(holder.album_art);
+
           }
+//          byte[] image = getAlbumArt(mFiles.get(position).getPath());
+//          if (image!=null){
+//               Glide.with(mContext).asBitmap()
+//                       .load(image)
+//                       .into(holder.album_art);
+//          }
+//          else {
+//               Glide.with(mContext)
+//                       .asBitmap()
+//                       .load(R.drawable.ic_baseline_music_note_24)
+//                       .into(holder.album_art);
+//          }
 
 
           holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -64,6 +85,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
                     Intent a_Player = new Intent(mContext,AudioPlayer.class);
                     a_Player.putExtra("position",position);
                     mContext.startActivity(a_Player);
+                   ((Activity)mContext).finish();
+
 
                }
           });
@@ -123,12 +146,12 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
           }
      }
 
-     private byte[] getAlbumArt(String uri){
-          MediaMetadataRetriever retriever=new MediaMetadataRetriever();
-          retriever.setDataSource(uri);
-          byte[] art =retriever.getEmbeddedPicture();
-          retriever.release();
-          return art;
-     }
+//     private byte[] getAlbumArt(String uri){
+//          MediaMetadataRetriever retriever=new MediaMetadataRetriever();
+//          retriever.setDataSource(uri);
+//          byte[] art =retriever.getEmbeddedPicture();
+//          retriever.release();
+//          return art;
+//     }
 }
 
