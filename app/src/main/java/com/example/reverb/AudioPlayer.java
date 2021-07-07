@@ -13,6 +13,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -38,6 +39,8 @@ public class AudioPlayer extends AppCompatActivity {
     static Uri uri;
     static MediaPlayer mediaPlayer;
     private Handler handler=new Handler();
+    String previousActivity;
+    private Thread playPauseThread;
 
 
     @Override
@@ -48,6 +51,7 @@ public class AudioPlayer extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.musicitem);
         initviews();
         getIntentMethod();
+        previousActivity=getIntent().getStringExtra("songlist");
         song_name.setText(listFiles.get(position).getTitle());
         author.setText(listFiles.get(position).getArtist());
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
@@ -124,6 +128,86 @@ public class AudioPlayer extends AppCompatActivity {
             }
         });
 
+        //Forward 10s button
+
+        forward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mediaPlayer.isPlaying()){
+                    mediaPlayer.seekTo(mediaPlayer.getCurrentPosition()+10000);
+                }
+            }
+        });
+
+        // Rewind 10s button
+
+        rewind.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(mediaPlayer.isPlaying()){
+                    mediaPlayer.seekTo(mediaPlayer.getCurrentPosition()-10000);
+                }
+            }
+        });
+
+
+
+    }
+
+    @Override
+    protected void onResume() {
+
+        playPauseThread = new Thread() {
+            @Override
+            public void run() {
+                super.run();
+                playpausebtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        playPauseButtonClicked();
+                    }
+                });
+            }
+        };
+        playPauseThread.start();
+        super.onResume();
+
+
+    }
+
+    private void playPauseButtonClicked() {
+        if (mediaPlayer.isPlaying()){
+            playpausebtn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+            mediaPlayer.pause();
+            seekbar.setMax(mediaPlayer.getDuration()/1000);
+            AudioPlayer.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (mediaPlayer!=null){
+                        int sb_currentposition;
+                        sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                        seekbar.setProgress(sb_currentposition);
+                    }
+                    handler.postDelayed(this,1000);
+                }
+            });
+        }
+        else {
+            playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
+            mediaPlayer.start();
+            seekbar.setMax(mediaPlayer.getDuration()/1000);
+            AudioPlayer.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (mediaPlayer!=null){
+                        int sb_currentposition;
+                        sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                        seekbar.setProgress(sb_currentposition);
+                    }
+                    handler.postDelayed(this,1000);
+                }
+            });
+        }
     }
 
     private String formattedTime(int sb_currentposition) {
@@ -211,12 +295,17 @@ public class AudioPlayer extends AppCompatActivity {
 //        if(R.id.musicitem == selectedItemId && cCon){
 //
 //        }
-        if (R.id.home != selectedItemId) {
+        if(R.id.home != selectedItemId && position !=-1){
+            startActivity(new Intent(AudioPlayer.this,SongList.class));
+            finish();
+        }
+
+        else if (R.id.home != selectedItemId && position ==-1) {
             setHomeItem(HomePage.class);
 
         } else {
-            //super.onBackPressed();
-            System.exit(0);
+            super.onBackPressed();
+           // System.exit(0);
 
         }
 
