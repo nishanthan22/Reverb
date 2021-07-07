@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@drawable/background"
     >
 
 <LinearLayout
@@ -30,7 +30,7 @@
             android:inputType="textAutoCorrect|text"
             android:textColorHint="#fff"
             android:textSize="14sp"
-            app:backgroundTint="#DE6FF1"
+            app:backgroundTint="#383239"
             app:icon="@drawable/ic_baseline_search_24"
             app:iconTint="#fff" />
     </LinearLayout>
