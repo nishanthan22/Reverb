@@ -16,11 +16,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="5dp"
         android:layout_marginLeft="5dp"
-        android:layout_marginTop="5dp"
-        android:background="@drawable/bg1"
-        app:srcCompat="@drawable/ic_baseline_music_note_24"
-
-        app:tint="#fff">
+        android:layout_marginTop="5dp">
 
     </ImageView>
 
