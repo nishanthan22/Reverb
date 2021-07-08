@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,6 +47,7 @@ public class AudioPlayer extends AppCompatActivity {
     String previousActivity;
     private Thread playPauseThread;
     SwipeListener swipeListener;
+    RelativeLayout relativeLayout;
 
 
     @Override
@@ -260,7 +262,8 @@ public class AudioPlayer extends AppCompatActivity {
         playpausebtn=findViewById(R.id.play);
         seekbar=findViewById(R.id.seekbar);
         cover_image=findViewById(R.id.cover_image);
-        swipeListener = new SwipeListener(cover_image);
+        relativeLayout = findViewById(R.id.audio_relative);
+        swipeListener = new SwipeListener(relativeLayout);
 
 
     }

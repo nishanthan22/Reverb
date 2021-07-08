@@ -42,6 +42,7 @@ public class SongList extends AppCompatActivity {
         TabLayout tabLayout=findViewById(R.id.tablayout);
         ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
         viewPagerAdapter.addFragments(new SongFragment(),"Songs");
+        viewPagerAdapter.addFragments(new AlbumFragment(),"Album");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
