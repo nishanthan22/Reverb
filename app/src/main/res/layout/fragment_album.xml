@@ -1,13 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AlbumFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AlbumFragment"
+    android:background="@color/black">
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:id="@+id/text9"
+        android:text="Albums"
+        android:textStyle="bold"
+        android:layout_marginLeft="16dp"
+        android:textSize="24sp"
+        android:textColor="#fff"/>
+    <LinearLayout
 
-</FrameLayout>
+        android:layout_marginTop="100dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        >
+
+        <Button
+            android:id="@+id/AllVideos"
+            android:layout_width="108dp"
+            android:layout_height="113dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/lay1"
+            android:textColor="#fff"
+            app:backgroundTint="#3B1745" />
+
+        <Button
+            android:id="@+id/AllVideo"
+            android:layout_width="108dp"
+            android:layout_height="113dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/lay1"
+            android:textColor="#fff"
+            app:backgroundTint="#C0CA33"
+             />
+        <Button
+            android:id="@+id/AllVieo"
+            android:layout_width="108dp"
+            android:layout_height="113dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/lay1"
+            android:textColor="#fff"
+            app:backgroundTint="#00ACC1"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_marginTop="300dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        >
+
+        <Button
+            android:id="@+id/Videos"
+            android:layout_width="108dp"
+            android:layout_height="113dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/lay1"
+            android:textColor="#fff"
+            app:backgroundTint="#3B1745" />
+
+        <Button
+            android:id="@+id/Video"
+            android:layout_width="108dp"
+            android:layout_height="113dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/lay1"
+            android:textColor="#fff"
+            app:backgroundTint="#CDDC39"
+            />
+        <Button
+            android:id="@+id/Vieo"
+            android:layout_width="108dp"
+            android:layout_height="113dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/lay1"
+            android:textColor="#fff"
+            app:backgroundTint="#00ACC1"
+            />
+    </LinearLayout>
+
+</RelativeLayout>
