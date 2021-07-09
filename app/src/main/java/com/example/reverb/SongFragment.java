@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+import static com.example.reverb.SongAdapter.mFiles;
 import static com.example.reverb.SongList.musicFiles;
 
 
@@ -25,7 +26,7 @@ public class SongFragment extends Fragment {
     SearchView searchView;
     ArrayList<String> list;
     RecyclerView recyclerView;
-    SongAdapter songAdapter;
+    static SongAdapter songAdapter;
 
 
 
@@ -39,8 +40,8 @@ public class SongFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
 
-        if(!(musicFiles.size()<1)){
-            songAdapter=new SongAdapter(getContext(),musicFiles);
+        if(!(mFiles.size()<1)){
+            songAdapter=new SongAdapter(getContext(),mFiles);
             recyclerView.setAdapter(songAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
 
@@ -83,3 +84,15 @@ public class SongFragment extends Fragment {
     private void setContentView(int fragment_song) {
     }
 }
+
+//gridView=findViewById(R.id.grid1);
+//Custom Adapter
+//MyAdapter ad=new MyAdapter(this,R.layout.my_adapter_layout,arr);
+//gridView.setAdapter(ad);
+//listView.setAdapter(ad);
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "You Clicked on "+position, Toast.LENGTH_SHORT).show();
+            }
+        });*/

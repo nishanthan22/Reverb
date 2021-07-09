@@ -29,7 +29,7 @@ import java.util.ArrayList;
 
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> {
      private Context mContext;
-     private ArrayList<MusicFiles> mFiles;
+     static ArrayList<MusicFiles> mFiles;
      static Uri uri;
 
      SongAdapter(Context mContext, ArrayList<MusicFiles> mFiles) {
@@ -100,6 +100,12 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> 
                filename = itemView.findViewById(R.id.txtsongname);
                album_art = itemView.findViewById(R.id.imgsong);
           }
+     }
+     void updateList(ArrayList<MusicFiles> musicFilesArrayList)
+     {
+          mFiles= new ArrayList<>();
+          mFiles.addAll(musicFilesArrayList);
+          notifyDataSetChanged();
      }
 }
 

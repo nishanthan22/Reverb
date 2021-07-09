@@ -28,6 +28,7 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+import static com.example.reverb.SongAdapter.mFiles;
 import static com.example.reverb.SongList.loopBoolean;
 import static com.example.reverb.SongList.musicFiles;
 
@@ -270,7 +271,7 @@ public class AudioPlayer extends AppCompatActivity {
 
     private void getIntentMethod() {
         position = getIntent().getIntExtra("position",-1);
-        listFiles=musicFiles;
+        listFiles=mFiles;
         if (listFiles!= null){
             playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
             uri = Uri.parse(listFiles.get(position).getPath());
