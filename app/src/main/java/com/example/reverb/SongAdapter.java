@@ -1,5 +1,6 @@
 package com.example.reverb;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -26,85 +27,60 @@ import java.io.InputStream;
 import java.util.ArrayList;
 
 
-public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
+public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> {
      private Context mContext;
      private ArrayList<MusicFiles> mFiles;
-     SongAdapter(Context mContext,ArrayList<MusicFiles> mFiles){
-          this.mFiles=mFiles;
-          this.mContext=mContext;
+     static Uri uri;
+
+     SongAdapter(Context mContext, ArrayList<MusicFiles> mFiles) {
+          this.mFiles = mFiles;
+          this.mContext = mContext;
+     }
+
+     public SongAdapter(SongFragment songFragment, int simple_list_item_1, ArrayList<String> list) {
      }
 
      @NonNull
      @Override
      public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-          View view =LayoutInflater.from(mContext).inflate(R.layout.song_items ,parent,false);
+          View view = LayoutInflater.from(mContext).inflate(R.layout.song_items, parent, false);
           return new MyViewHolder(view);
      }
 
      @Override
      public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
           holder.filename.setText(mFiles.get(position).getTitle());
-          byte[] image = getAlbumArt(mFiles.get(position).getPath());
-          if (image!=null){
-               Glide.with(mContext).asBitmap()
-                       .load(image)
+          uri = Uri.parse(mFiles.get(position).getPath());
+          MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+          mmr.setDataSource(uri.toString());
+          byte[] album = mmr.getEmbeddedPicture();
+          if (album != null) {
+               Glide.with(mContext)
+                       .asBitmap()
+                       .load(album)
                        .into(holder.album_art);
-          }
-          else {
+          } else {
                Glide.with(mContext)
                        .asBitmap()
                        .load(R.drawable.ic_baseline_music_note_24)
                        .into(holder.album_art);
+
           }
 
 
           holder.itemView.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                    Intent a_Player = new Intent(mContext,AudioPlayer.class);
-                    a_Player.putExtra("position",position);
+                    Intent a_Player = new Intent(mContext, AudioPlayer.class);
+                    a_Player.putExtra("position", position);
                     mContext.startActivity(a_Player);
+                    ((Activity) mContext).finish();
+
 
                }
           });
 
-//         holder.filename.setText(mFiles.get(position).getTitle());
-//         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
-//         mmr.setDataSource(mFiles.get(position).getPath());
-//         byte[] artbytes = mmr.getEmbeddedPicture();
-//         if (artbytes!=null){
-//              InputStream is =new ByteArrayInputStream(mmr.getEmbeddedPicture());
-//              Bitmap bm =null;
-//              bm =BitmapFactory.decodeStream(is);
-//              holder.albumart.setImageBitmap(bm);
-//              mmr.release();
-//         }
-//         else {
-//              Glide.with(mContext)
-//                   .load(R.drawable.ic_baseline_music_note_24)
-//                     .into(holder.albumart);
-//         }
-//         mmr.release();
-
-
-          
-         //byte[] image=getAlbumArt(mFiles.get(position).getPath());
-
-
-//         if (image!=null){
-////              Glide.with(mContext)
-////                      .asBitmap()
-////                      .load(image)
-////                      .into(holder.albumart);
-//
-//
-//
-//         }
-//         else {
-//             Glide.with(mContext)
-//                     .load(R.drawable.ic_baseline_music_note_24)
-//                     .into(holder.albumart);
-//         }
      }
 
      @Override
@@ -112,23 +88,20 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder>{
           return mFiles.size();
      }
 
-     public class MyViewHolder extends RecyclerView.ViewHolder{
+     public void getFilter(String query) {
+     }
+
+     public class MyViewHolder extends RecyclerView.ViewHolder {
           TextView filename;
           ImageView album_art;
 
-          public MyViewHolder(@NonNull View itemView){
+          public MyViewHolder(@NonNull View itemView) {
                super(itemView);
-               filename=itemView.findViewById(R.id.txtsongname);
-               album_art=itemView.findViewById(R.id.imgsong);
+               filename = itemView.findViewById(R.id.txtsongname);
+               album_art = itemView.findViewById(R.id.imgsong);
           }
      }
-
-     private byte[] getAlbumArt(String uri){
-          MediaMetadataRetriever retriever=new MediaMetadataRetriever();
-          retriever.setDataSource(uri);
-          byte[] art =retriever.getEmbeddedPicture();
-          retriever.release();
-          return art;
-     }
 }
+
+
 
