@@ -120,7 +120,7 @@
             android:textAllCaps="false"
             android:textColor="#fff"
             android:textSize="16sp"
-            app:backgroundTint="#77747E"
+            app:backgroundTint="@color/material_on_surface_stroke"
             app:icon="@drawable/ic_baseline_music_note_24"
             app:iconTint="#fff" />
 
@@ -137,7 +137,7 @@
             android:textAllCaps="false"
             android:textColor="#fff"
             android:textSize="16sp"
-            app:backgroundTint="#77747E"
+            app:backgroundTint="@color/material_on_surface_stroke"
             app:icon="@drawable/ic_baseline_music_note_24"
             app:iconTint="#fff" />
 
