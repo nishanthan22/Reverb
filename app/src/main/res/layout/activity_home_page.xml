@@ -6,40 +6,17 @@
     android:layout_height="match_parent"
     android:background="@drawable/background">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_marginTop="32dp"
-        android:orientation="horizontal">
-        <Button
-            android:id="@+id/Searchbtn"
-            android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
-            android:background="@drawable/lay"
-            android:gravity="center|left"
-            android:hint="Search"
-            android:inputType="textAutoCorrect|text"
-            android:textColorHint="#fff"
-            android:textSize="14sp"
-            app:backgroundTint="#383239"
-            app:icon="@drawable/ic_baseline_search_24"
-            app:iconTint="#fff" />
-    </LinearLayout>
+
+
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/l1"
         android:layout_height="254dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_above="@+id/l2"
+        android:layout_marginBottom="32dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/lay"
@@ -102,14 +79,15 @@
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/l2"
         android:layout_height="264dp"
+        android:layout_above="@+id/floatingActionButton"
         android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_marginBottom="32dp"
         android:background="@drawable/lay"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginLeft="16dp">
 
         <TextView
             android:id="@+id/Video"
@@ -193,21 +171,21 @@
 
     </LinearLayout>
 
+
+
+
+
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="32dp"
+        android:layout_marginRight="@dimen/dimen_20dp"
+        android:layout_above="@+id/bot_navigation"
         android:clickable="true"
         app:backgroundTint="@color/white"
         app:srcCompat="@drawable/ic_baseline_cast_connected_24" />
-
-
-</LinearLayout>
-
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bot_navigation"
