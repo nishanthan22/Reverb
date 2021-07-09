@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SearchView;
 
 import static com.example.reverb.SongList.musicFiles;
 
@@ -18,14 +17,9 @@ public class SongFragment extends Fragment {
 
     RecyclerView recyclerView;
     SongAdapter songAdapter;
-
-
-
     public SongFragment(){
 
-
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -41,9 +35,6 @@ public class SongFragment extends Fragment {
         }
         return view;
     }
-
-
-
 
 
 }
