@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/grey_black"
+    android:background="@color/black"
     tools:context=".MainActivity">
 
 
@@ -13,17 +13,18 @@
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
 
+
       android:id="@+id/tablayout"
       app:tabIndicatorFullWidth="true"
       app:tabIndicatorGravity="center"
-      app:tabTextColor="@color/teal_700"
-      app:tabIndicatorHeight="40dp"
-      app:tabIndicatorColor="@color/white"
-      app:tabIndicator="@drawable/tabdesign"
-      android:background="@drawable/bg"/>
+      app:tabTextAppearance="@color/material_on_surface_stroke"
+      app:tabIndicatorHeight="3dp"
+      app:tabIndicatorColor="#240B2B"
+
+      android:background="@color/black"/>
   <androidx.viewpager.widget.ViewPager
       android:layout_width="match_parent"
       android:layout_height="match_parent"
-    android:id="@+id/viewpager"/>
+      android:id="@+id/viewpager"/>
 
 </LinearLayout>

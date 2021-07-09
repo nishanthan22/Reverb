@@ -4,11 +4,42 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SongFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="16dp"
+            android:text="Songs"
+            android:textColor="#fff"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+        <SearchView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="200dp"
+
+
+            />
+
+
+
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerview"/>
+        android:layout_marginTop="64dp"
+        android:id="@+id/recyclerview"
+
+        android:background="#0E0E0E"
+        />
 
 
 
