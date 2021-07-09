@@ -3,30 +3,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".SongFragment">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
+        android:id="@+id/linearlay"
         android:orientation="horizontal"
-
-        >
+        android:background="@drawable/background">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginLeft="16dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="26dp"
+            android:layout_marginBottom="4dp"
+            android:fontFamily="@font/basic"
             android:text="Songs"
             android:textColor="#fff"
             android:textSize="24sp"
-            android:textStyle="bold" />
+             />
         <SearchView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="200dp"
+            android:layout_gravity="center_vertical"
 
-
-            />
+            android:layout_marginLeft="200dp" />
 
 
 
@@ -35,9 +37,8 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="64dp"
         android:id="@+id/recyclerview"
-
+        android:layout_below="@+id/linearlay"
         android:background="#0E0E0E"
         />
 

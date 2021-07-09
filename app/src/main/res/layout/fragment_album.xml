@@ -6,16 +6,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".AlbumFragment"
     android:background="@color/black">
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/text9"
-        android:text="Albums"
-        android:textStyle="bold"
-        android:layout_marginLeft="16dp"
-        android:textSize="24sp"
-        android:textColor="#fff"/>
+        android:layout_height="60dp"
+        android:id="@+id/linearlay"
+        android:orientation="horizontal"
+        android:background="@drawable/background">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="26dp"
+            android:layout_marginBottom="3dp"
+            android:fontFamily="@font/basic"
+            android:text="Albums"
+            android:textColor="#fff"
+            android:textSize="24sp"
+            />
+        <SearchView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+
+            android:layout_marginLeft="200dp" />
+
+
+
+    </LinearLayout>
+
+<!--    <TextView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:id="@+id/text9"-->
+<!--        android:text="Albums"-->
+<!--        android:textStyle="bold"-->
+<!--        android:layout_marginLeft="16dp"-->
+<!--        android:textSize="24sp"-->
+<!--        android:textColor="#fff"/>-->
     <LinearLayout
 
         android:layout_marginTop="100dp"

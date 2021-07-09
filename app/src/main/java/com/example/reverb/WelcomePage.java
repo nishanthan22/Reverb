@@ -9,18 +9,25 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+
+
+
 public class WelcomePage extends AppCompatActivity {
     Button Homebtn,Prevbtn;
+    EditText username;
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_page);
+        username =findViewById(R.id.NameUser);
         Homebtn = findViewById(R.id.homepage);
         Prevbtn = findViewById(R.id.preview);
         Prevbtn.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +46,7 @@ public class WelcomePage extends AppCompatActivity {
         Homebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent homeintent = new Intent(WelcomePage.this,HomePage.class);
                 startActivity(homeintent);
                 finish();
