@@ -3,18 +3,14 @@ package com.example.reverb;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.media.MediaMetadata;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageButton;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,19 +18,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 
 
-public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> {
+public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> implements Filterable {
      private Context mContext;
      private ArrayList<MusicFiles> mFiles;
+     private List<MusicFiles> myfiles;
      static Uri uri;
 
      SongAdapter(Context mContext, ArrayList<MusicFiles> mFiles) {
           this.mFiles = mFiles;
           this.mContext = mContext;
+          this.myfiles = new ArrayList<>(mFiles);
      }
 
      @NonNull
@@ -80,10 +78,54 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> 
 
      }
 
+
      @Override
      public int getItemCount() {
           return mFiles.size();
      }
+
+     @Override
+     public Filter getFilter() {
+          return filter;
+     }
+     Filter filter = new Filter() {
+          @Override
+          protected FilterResults performFiltering(CharSequence constraint) {
+
+               List<MusicFiles> filteredList = new ArrayList<>();
+               if(constraint.toString().isEmpty())
+               {
+                    filteredList.addAll(myfiles);
+
+               }else
+               {
+                    for(MusicFiles m: myfiles)
+                    {
+                         if(m.getTitle().toLowerCase().contains(constraint.toString().toLowerCase()))
+                         {
+                            filteredList.add(m);
+                         }
+
+
+                    }
+               }
+               FilterResults filterResults = new FilterResults();
+               filterResults.values=filteredList;
+
+
+
+               return filterResults;
+          }
+
+          @Override
+          protected void publishResults(CharSequence constraint, FilterResults results) {
+               mFiles.clear();
+               mFiles.addAll((Collection<? extends MusicFiles>) results.values);
+               notifyDataSetChanged();
+
+          }
+     };
+
 
      public class MyViewHolder extends RecyclerView.ViewHolder {
           TextView filename;
