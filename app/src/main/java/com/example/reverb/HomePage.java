@@ -13,7 +13,7 @@ import android.widget.Button;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomePage extends AppCompatActivity {
-    Button b1, b2;
+    Button b1, b2,b3,b4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,15 +73,35 @@ public class HomePage extends AppCompatActivity {
 
             }
         });
-        // b2 = findViewById(R.id.Music);
-        // b2.setOnClickListener(new View.OnClickListener() {
-        //@Override
-        //public void onClick(View v) {
-        // Intent audioplayer = new Intent(HomePage.this,AudioPlayer.class);
-        //startActivity(audioplayer);
-        //finish();
-        // }
-        //});
+         b2 = findViewById(R.id.Playlists);
+         b2.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+        Intent playlist = new Intent(HomePage.this,Playslists.class);
+        startActivity(playlist);
+
+         }
+        });
+
+        b3 = findViewById(R.id.AllVideos);
+        b3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent vid = new Intent(HomePage.this,allvideos.class);
+                startActivity(vid);
+
+            }
+        });
+
+        b4 = findViewById(R.id.VPlaylists);
+        b4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent vplay = new Intent(HomePage.this,Vplaylist.class);
+                startActivity(vplay);
+
+            }
+        });
 
 
     }

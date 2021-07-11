@@ -3,7 +3,7 @@
     package="com.example.reverb">
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Reverb">
-        <activity android:name=".user"></activity>
+        <activity android:name=".allvideos"></activity>
+        <activity android:name=".Vplaylist" />
+        <activity android:name=".Playslists" />
+        <activity android:name=".user" />
         <activity android:name=".VideoPlayer" />
         <activity android:name=".WelcomePage" />
         <activity android:name=".HomePage" />
