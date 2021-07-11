@@ -18,7 +18,7 @@ public class video_user extends Fragment {
     }
 
 
-    // TODO: Rename and change types and number of parameters
+
 
 
     @Override
