@@ -1,7 +1,12 @@
 package com.example.reverb;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,10 +14,14 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.tabs.TabLayout;
+
+import java.util.ArrayList;
 
 public class user extends AppCompatActivity{
 
     TextView uiname ;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +30,31 @@ public class user extends AppCompatActivity{
         uiname=findViewById(R.id.uiname);
         BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
         bottomNavigationView.setSelectedItemId(R.id.NameUser);
+        final ViewPager viewPager=findViewById(R.id.viewpager2);
+        TabLayout tabLayout=findViewById(R.id.tablayout2);
+        tabLayout.addTab(tabLayout.newTab().setText("Music"));
+        tabLayout.addTab(tabLayout.newTab().setText("Media"));
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        final adapter adapter= new adapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        viewPager.setAdapter(adapter);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+
+        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                viewPager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        });
 
 
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -84,4 +118,7 @@ public class user extends AppCompatActivity{
         BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
         bottomNavigationView.setSelectedItemId(R.id.home);
     }
+
+
+
 }
