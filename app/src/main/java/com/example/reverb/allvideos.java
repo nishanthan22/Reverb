@@ -35,7 +35,7 @@ public class allvideos extends AppCompatActivity {
 
     private void initializeViews() {
         RecyclerView recyclerView = findViewById(R.id.recyclerView_videos);
-        recyclerView.setLayoutManager(new GridLayoutManager(this, 3)); //3 = column count
+       // recyclerView.setLayoutManager(new GridLayoutManager(this, 3)); //3 = column count
         adapterVideoList = new AdapterVideoList(this, videosList);
         recyclerView.setAdapter(adapterVideoList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
@@ -61,7 +61,7 @@ public class allvideos extends AppCompatActivity {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 loadVideos();
             } else {
-                Toast.makeText(this, "Permission was not granted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Please accept the permission", Toast.LENGTH_SHORT).show();
             }
         }
     }
