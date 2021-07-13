@@ -1,44 +1,38 @@
 package com.example.reverb;
 
-import android.os.Build;
 import android.os.Bundle;
 
-import androidx.annotation.Nullable;
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.MenuItemCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.appcompat.widget.Toolbar;
 
 import android.view.LayoutInflater;
-import android.view.MenuInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
+import android.widget.ListView;
 import android.widget.SearchView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 
+import static com.example.reverb.SongAdapter.mFiles;
 import static com.example.reverb.SongList.musicFiles;
 
 
 public class SongFragment extends Fragment {
-
+    ListView listView;
+    GridView gridView;
+    SearchView searchView;
+    ArrayList<String> list;
     RecyclerView recyclerView;
-    SongAdapter songAdapter;
-    Toolbar toolbar;
+    static SongAdapter songAdapter;
 
 
 
     public SongFragment(){
 
-
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,11 +40,8 @@ public class SongFragment extends Fragment {
         recyclerView = view.findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
 
-
-
-
-        if(!(musicFiles.size()<1)){
-            songAdapter=new SongAdapter(getContext(),musicFiles);
+        if(!(mFiles.size()<1)){
+            songAdapter=new SongAdapter(getContext(),mFiles);
             recyclerView.setAdapter(songAdapter);
             recyclerView.setLayoutManager(new LinearLayoutManager(getContext(),RecyclerView.VERTICAL,false));
 
@@ -58,54 +49,50 @@ public class SongFragment extends Fragment {
         return view;
     }
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setHasOptionsMenu(true);
-        //toolbar = (Toolbar)getActivity().findViewById(R.id.acbar);
-        //((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+        setContentView(R.layout.fragment_song);
+        recyclerView= recyclerView.findViewById(R.id.recyclerview);
+        searchView= searchView.findViewById(R.id.search);
 
-
-
-
-    }
-
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-
-        inflater.inflate(R.menu.menu1, menu);
-        MenuItem searchViewItem = menu.findItem(R.id.search);
-        SearchView searchView = (SearchView) searchViewItem.getActionView();
-
-
+        //Built-in Adapter
+        SongAdapter ad=new SongAdapter(this, android.R.layout.simple_list_item_1,list);
+        recyclerView.setAdapter(ad);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-
-
-              // if(musicFiles.contains(query)){
-                   // songAdapter.filter(query);
-               // }else{
-                    //Toast.makeText(getContext(), "No Match found",Toast.LENGTH_LONG).show();
-                //}
+                if(list.contains(query))
+                {
+                    ad.getFilter(query);
+                }
+                else{
+                    Toast.makeText(getContext(), "could not find the contact", Toast.LENGTH_SHORT).show();
+                }
                 return false;
-
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                songAdapter.getFilter().filter(newText);
-
-
                 return false;
             }
         });
 
     }
+
+    private void setContentView(int fragment_song) {
+    }
 }
 
-
-
-
-
+//gridView=findViewById(R.id.grid1);
+//Custom Adapter
+//MyAdapter ad=new MyAdapter(this,R.layout.my_adapter_layout,arr);
+//gridView.setAdapter(ad);
+//listView.setAdapter(ad);
+        /*listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Toast.makeText(MainActivity.this, "You Clicked on "+position, Toast.LENGTH_SHORT).show();
+            }
+        });*/
