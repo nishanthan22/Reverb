@@ -12,7 +12,7 @@
         android:layout_above="@id/bot_navigation"
 
         android:orientation="vertical">
-        <com.google.android.exoplayer2.ui.PlayerView
+        <!--<com.google.android.exoplayer2.ui.PlayerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/exoplayer_movie"
@@ -26,7 +26,7 @@
             app:show_timeout="5000"
             app:shutter_background_color="@color/white"
             app:controller_layout_id="@layout/custom_controller_view"
-            app:player_layout_id="simple_player_view"/>
+            app:player_layout_id="simple_player_view"/>-->
 
 
 

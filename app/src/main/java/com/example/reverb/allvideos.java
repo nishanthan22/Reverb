@@ -94,18 +94,18 @@ public class allvideos extends AppCompatActivity {
                     int idColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media._ID);
                     int titleColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DISPLAY_NAME);
                     int durationColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION);
-                    int pathColumn= cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA);
+                    //int pathColumn= cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA);
 
                     while (cursor.moveToNext()) {
                         long id = cursor.getLong(idColumn);
                         String title = cursor.getString(titleColumn);
                         int duration = cursor.getInt(durationColumn);
-                        String path = cursor.getString(pathColumn);
+                       // String path = cursor.getString(pathColumn);
 
                         Uri data = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id);
 
                         String duration_formatted;
-                        int sec = (duration / 1000) % 60;
+                        int sec = ((duration / 1000) % 60);
                         int min = (duration / (1000 * 60)) % 60;
                         int hrs = duration / (1000 * 60 * 60);
 
@@ -115,7 +115,7 @@ public class allvideos extends AppCompatActivity {
                             duration_formatted = String.valueOf(hrs).concat(":".concat(String.format(Locale.UK, "%02d", min).concat(":".concat(String.format(Locale.UK, "%02d", sec)))));
                         }
 
-                        videosList.add(new ModelVideo(id, data, title, duration_formatted,path));
+                        videosList.add(new ModelVideo(id, data, title, duration_formatted));
                        // setsize(videosList.size());
 
 
