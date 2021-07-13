@@ -15,12 +15,14 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
 public class allvideos extends AppCompatActivity {
+    TextView noofvid;
 
     private ArrayList<ModelVideo> videosList = new ArrayList<ModelVideo>();
     private AdapterVideoList adapterVideoList;
@@ -28,17 +30,30 @@ public class allvideos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allvideos);
+        noofvid = findViewById(R.id.vidsize);
+
         checkPermissions();
 
         initializeViews();
+
+
+
+
     }
 
+
+
     private void initializeViews() {
+
+
+
         RecyclerView recyclerView = findViewById(R.id.recyclerView_videos);
        // recyclerView.setLayoutManager(new GridLayoutManager(this, 3)); //3 = column count
         adapterVideoList = new AdapterVideoList(this, videosList);
+
         recyclerView.setAdapter(adapterVideoList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
+
 
     }
 
@@ -79,11 +94,13 @@ public class allvideos extends AppCompatActivity {
                     int idColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media._ID);
                     int titleColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DISPLAY_NAME);
                     int durationColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION);
+                    int pathColumn= cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA);
 
                     while (cursor.moveToNext()) {
                         long id = cursor.getLong(idColumn);
                         String title = cursor.getString(titleColumn);
                         int duration = cursor.getInt(durationColumn);
+                        String path = cursor.getString(pathColumn);
 
                         Uri data = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id);
 
@@ -98,7 +115,13 @@ public class allvideos extends AppCompatActivity {
                             duration_formatted = String.valueOf(hrs).concat(":".concat(String.format(Locale.UK, "%02d", min).concat(":".concat(String.format(Locale.UK, "%02d", sec)))));
                         }
 
-                        videosList.add(new ModelVideo(id, data, title, duration_formatted));
+                        videosList.add(new ModelVideo(id, data, title, duration_formatted,path));
+                       // setsize(videosList.size());
+
+
+
+
+
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
@@ -110,5 +133,12 @@ public class allvideos extends AppCompatActivity {
 
             }
         }.start();
+
+
     }
+   // private void setsize(int s)
+    //{
+        //noofvid.setText(Integer.toString(s));
+    //}
+
 }

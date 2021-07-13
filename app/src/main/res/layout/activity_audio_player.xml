@@ -4,22 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="@drawable/r_bgimage"
     android:id="@+id/audio_relative"
-    tools:context=".AudioPlayer">
+    tools:context=".AudioPlayer"
+    >
+    <!--<ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/blurcover"
+
+        />-->
 
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_above="@id/bot_navigation"
+        >
 
         <TextView
             android:id="@+id/lyrics"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="30dp"
+            android:layout_margin="20dp"
             android:fontFamily="@font/belleza"
             android:text="Song Lyrics...."
             android:textColor="@color/white"
@@ -166,8 +175,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="?android:attr/windowBackground"
-        app:itemBackground="@color/black"
+        android:background="@android:color/transparent"
+        app:itemBackground="@android:color/transparent"
+
         app:itemIconTint="@drawable/nav_item_color"
         app:itemTextColor="@color/white"
         app:menu="@menu/bottom_navigation"
