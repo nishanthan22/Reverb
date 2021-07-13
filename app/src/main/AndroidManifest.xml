@@ -13,14 +13,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Reverb">
-        <activity android:name=".allvideos"></activity>
+        <activity android:name=".AlbumDetails"></activity>
+        <activity android:name=".allvideos" />
         <activity android:name=".Vplaylist" />
         <activity android:name=".Playslists" />
         <activity android:name=".user" />
         <activity android:name=".VideoPlayer" />
         <activity android:name=".WelcomePage" />
         <activity android:name=".HomePage" />
-        <activity android:name=".SongList" />
+        <activity android:name=".SongList"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
         <activity android:name=".AudioPlayer" />
         <activity android:name=".MainActivity">
             <intent-filter>

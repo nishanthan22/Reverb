@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/background"
-    android:id="@+id/albumbrelative"
-    tools:context=".AlbumFragment">
-
-
-
+    tools:context=".AlbumDetails">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/albumPic"
+        android:layout_marginTop="25dp"
+        android:src="@drawable/r_logo"
+        android:scaleType="fitCenter"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/recyclerviewalbum"
-        />
-
-
+        android:layout_below="@+id/albumPic"
+        android:id="@+id/drecyView"/>
 
 
 </RelativeLayout>

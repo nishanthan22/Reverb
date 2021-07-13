@@ -3,11 +3,8 @@ package com.example.reverb;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.media.MediaMetadataRetriever;
-import android.media.MediaParser;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -20,7 +17,6 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -28,10 +24,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 
+import static com.example.reverb.AlbumDetailsAdapter.albumFiles;
+import static com.example.reverb.SongAdapter.mFiles;
 import static com.example.reverb.SongList.loopBoolean;
 import static com.example.reverb.SongList.musicFiles;
 
-public class AudioPlayer extends AppCompatActivity {
+public class AudioPlayer extends AppCompatActivity implements MediaPlayer.OnCompletionListener {
 
     //Initializing the views
 
@@ -57,10 +55,12 @@ public class AudioPlayer extends AppCompatActivity {
         BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
         bottomNavigationView.setSelectedItemId(R.id.musicitem);
         initviews();
+        song_name.setSelected(true);
         getIntentMethod();
         previousActivity=getIntent().getStringExtra("songlist");
         song_name.setText(listFiles.get(position).getTitle());
         author.setText(listFiles.get(position).getArtist());
+        mediaPlayer.setOnCompletionListener(this);
         seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -270,7 +270,13 @@ public class AudioPlayer extends AppCompatActivity {
 
     private void getIntentMethod() {
         position = getIntent().getIntExtra("position",-1);
-        listFiles=musicFiles;
+        String sender = getIntent().getStringExtra("sender");
+        if(sender != null && sender.equals("albumDetails")){
+            listFiles=albumFiles;
+        }
+        else {
+            listFiles = mFiles;
+        }
         if (listFiles!= null){
             playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
             uri = Uri.parse(listFiles.get(position).getPath());
@@ -342,6 +348,129 @@ public class AudioPlayer extends AppCompatActivity {
         bottomNavigationView.setSelectedItemId(R.id.home);
     }
 
+    @Override
+    public void onCompletion(MediaPlayer mp) {
+        nextSong();
+        if (mediaPlayer!= null){
+            mediaPlayer= MediaPlayer.create(getApplicationContext(),uri);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(this);
+        }
+
+    }
+    public void nextSong(){
+        if(mediaPlayer.isPlaying()){
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            if (!loopBoolean){
+                position=((position+1)% listFiles.size());}
+            uri = Uri.parse(listFiles.get(position).getPath());
+            mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+            metaData(uri);
+            song_name.setText(listFiles.get(position).getTitle());
+            author.setText(listFiles.get(position).getArtist());
+            seekbar.setMax(mediaPlayer.getDuration()/1000);
+            AudioPlayer.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (mediaPlayer!=null){
+                        int sb_currentposition;
+                        sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                        seekbar.setProgress(sb_currentposition);
+                    }
+                    handler.postDelayed(this,1000);
+                }
+            });
+            mediaPlayer.setOnCompletionListener(this);
+            playpausebtn.setBackgroundResource(R.drawable.ic_baseline_pause_24);
+            mediaPlayer.start();
+        }
+        else {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            if (!loopBoolean){
+                position=((position+1)% listFiles.size());}
+            uri = Uri.parse(listFiles.get(position).getPath());
+            mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+            metaData(uri);
+            song_name.setText(listFiles.get(position).getTitle());
+            author.setText(listFiles.get(position).getArtist());
+            seekbar.setMax(mediaPlayer.getDuration()/1000);
+            AudioPlayer.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (mediaPlayer!=null){
+                        int sb_currentposition;
+                        sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                        seekbar.setProgress(sb_currentposition);
+                    }
+                    handler.postDelayed(this,1000);
+                }
+            });
+            mediaPlayer.setOnCompletionListener(this);
+            playpausebtn.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
+
+
+        }
+
+
+    }
+    public void previousSong(){
+        if(mediaPlayer.isPlaying()){
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            position=((position-1)<0 ? (listFiles.size() - 1): (position-1));
+            uri = Uri.parse(listFiles.get(position).getPath());
+            mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+            metaData(uri);
+            song_name.setText(listFiles.get(position).getTitle());
+            author.setText(listFiles.get(position).getArtist());
+            seekbar.setMax(mediaPlayer.getDuration()/1000);
+            AudioPlayer.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (mediaPlayer!=null){
+                        int sb_currentposition;
+                        sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                        seekbar.setProgress(sb_currentposition);
+                    }
+                    handler.postDelayed(this,1000);
+                }
+            });
+            mediaPlayer.setOnCompletionListener(this);
+            playpausebtn.setBackgroundResource(R.drawable.ic_baseline_pause_24);
+            mediaPlayer.start();
+        }
+        else {
+            mediaPlayer.stop();
+            mediaPlayer.release();
+            position=((position-1)<0 ? (listFiles.size() - 1): (position-1));
+            uri = Uri.parse(listFiles.get(position).getPath());
+            mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
+            metaData(uri);
+            song_name.setText(listFiles.get(position).getTitle());
+            author.setText(listFiles.get(position).getArtist());
+            seekbar.setMax(mediaPlayer.getDuration()/1000);
+            AudioPlayer.this.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    if (mediaPlayer!=null){
+                        int sb_currentposition;
+                        sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
+                        seekbar.setProgress(sb_currentposition);
+                    }
+                    handler.postDelayed(this,1000);
+                }
+            });
+            mediaPlayer.setOnCompletionListener(this);
+            playpausebtn.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
+
+
+        }
+
+
+    }
+
     private class SwipeListener implements  View.OnTouchListener{
         GestureDetector gestureDetector;
 
@@ -366,112 +495,12 @@ public class AudioPlayer extends AppCompatActivity {
                                 if (xDiff>0){
                                     //swiped right
                                     //switch to previous song
-                                    if(mediaPlayer.isPlaying()){
-                                        mediaPlayer.stop();
-                                        mediaPlayer.release();
-                                        position=((position-1)<0 ? (listFiles.size() - 1): (position-1));
-                                        uri = Uri.parse(listFiles.get(position).getPath());
-                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
-                                        metaData(uri);
-                                        song_name.setText(listFiles.get(position).getTitle());
-                                        author.setText(listFiles.get(position).getArtist());
-                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
-                                        AudioPlayer.this.runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                if (mediaPlayer!=null){
-                                                    int sb_currentposition;
-                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
-                                                    seekbar.setProgress(sb_currentposition);
-                                                }
-                                                handler.postDelayed(this,1000);
-                                            }
-                                        });
-                                        playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
-                                        mediaPlayer.start();
-                                    }
-                                    else {
-                                        mediaPlayer.stop();
-                                        mediaPlayer.release();
-                                        position=((position-1)<0 ? (listFiles.size() - 1): (position-1));
-                                        uri = Uri.parse(listFiles.get(position).getPath());
-                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
-                                        metaData(uri);
-                                        song_name.setText(listFiles.get(position).getTitle());
-                                        author.setText(listFiles.get(position).getArtist());
-                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
-                                        AudioPlayer.this.runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                if (mediaPlayer!=null){
-                                                    int sb_currentposition;
-                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
-                                                    seekbar.setProgress(sb_currentposition);
-                                                }
-                                                handler.postDelayed(this,1000);
-                                            }
-                                        });
-                                        playpausebtn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
-
-
-                                    }
-
+                                    previousSong();
 
                                 }else {
                                     //swiped left
                                     //switch to next song
-                                    if(mediaPlayer.isPlaying()){
-                                        mediaPlayer.stop();
-                                        mediaPlayer.release();
-                                        if (!loopBoolean){
-                                        position=((position+1)% listFiles.size());}
-                                        uri = Uri.parse(listFiles.get(position).getPath());
-                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
-                                        metaData(uri);
-                                        song_name.setText(listFiles.get(position).getTitle());
-                                        author.setText(listFiles.get(position).getArtist());
-                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
-                                        AudioPlayer.this.runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                if (mediaPlayer!=null){
-                                                    int sb_currentposition;
-                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
-                                                    seekbar.setProgress(sb_currentposition);
-                                                }
-                                                handler.postDelayed(this,1000);
-                                            }
-                                        });
-                                        playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
-                                        mediaPlayer.start();
-                                    }
-                                    else {
-                                        mediaPlayer.stop();
-                                        mediaPlayer.release();
-                                        if (!loopBoolean){
-                                            position=((position+1)% listFiles.size());}
-                                        uri = Uri.parse(listFiles.get(position).getPath());
-                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
-                                        metaData(uri);
-                                        song_name.setText(listFiles.get(position).getTitle());
-                                        author.setText(listFiles.get(position).getArtist());
-                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
-                                        AudioPlayer.this.runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                if (mediaPlayer!=null){
-                                                    int sb_currentposition;
-                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
-                                                    seekbar.setProgress(sb_currentposition);
-                                                }
-                                                handler.postDelayed(this,1000);
-                                            }
-                                        });
-                                        playpausebtn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
-
-
-                                    }
-
+                                    nextSong();
 
                                 }
                                 return true;
@@ -483,114 +512,14 @@ public class AudioPlayer extends AppCompatActivity {
                                 if (yDiff>0){
                                     //Toast.makeText(getApplicationContext(),"Swiped Down",Toast.LENGTH_SHORT).show();
                                     //previous Song
-
-                                    if(mediaPlayer.isPlaying()){
-                                        mediaPlayer.stop();
-                                        mediaPlayer.release();
-                                        position=((position-1)<0 ? (listFiles.size() - 1): (position-1));
-                                        uri = Uri.parse(listFiles.get(position).getPath());
-                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
-                                        metaData(uri);
-                                        song_name.setText(listFiles.get(position).getTitle());
-                                        author.setText(listFiles.get(position).getArtist());
-                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
-                                        AudioPlayer.this.runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                if (mediaPlayer!=null){
-                                                    int sb_currentposition;
-                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
-                                                    seekbar.setProgress(sb_currentposition);
-                                                }
-                                                handler.postDelayed(this,1000);
-                                            }
-                                        });
-                                        playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
-                                        mediaPlayer.start();
-                                    }
-                                    else {
-                                        mediaPlayer.stop();
-                                        mediaPlayer.release();
-                                        position=((position-1)<0 ? (listFiles.size() - 1): (position-1));
-                                        uri = Uri.parse(listFiles.get(position).getPath());
-                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
-                                        metaData(uri);
-                                        song_name.setText(listFiles.get(position).getTitle());
-                                        author.setText(listFiles.get(position).getArtist());
-                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
-                                        AudioPlayer.this.runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                if (mediaPlayer!=null){
-                                                    int sb_currentposition;
-                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
-                                                    seekbar.setProgress(sb_currentposition);
-                                                }
-                                                handler.postDelayed(this,1000);
-                                            }
-                                        });
-                                        playpausebtn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
-
-
-                                    }
+                                    previousSong();
 
                                 }
                                 else {
                                     //Toast.makeText(getApplicationContext(),"Swiped Up",Toast.LENGTH_SHORT).show();
 
                                     //next song
-
-                                    if(mediaPlayer.isPlaying()){
-                                        mediaPlayer.stop();
-                                        mediaPlayer.release();
-                                        if (!loopBoolean){
-                                            position=((position+1)% listFiles.size());}
-                                        uri = Uri.parse(listFiles.get(position).getPath());
-                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
-                                        metaData(uri);
-                                        song_name.setText(listFiles.get(position).getTitle());
-                                        author.setText(listFiles.get(position).getArtist());
-                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
-                                        AudioPlayer.this.runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                if (mediaPlayer!=null){
-                                                    int sb_currentposition;
-                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
-                                                    seekbar.setProgress(sb_currentposition);
-                                                }
-                                                handler.postDelayed(this,1000);
-                                            }
-                                        });
-                                        playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
-                                        mediaPlayer.start();
-                                    }
-                                    else {
-                                        mediaPlayer.stop();
-                                        mediaPlayer.release();
-                                        if (!loopBoolean){
-                                            position=((position+1)% listFiles.size());}
-                                        uri = Uri.parse(listFiles.get(position).getPath());
-                                        mediaPlayer=MediaPlayer.create(getApplicationContext(),uri);
-                                        metaData(uri);
-                                        song_name.setText(listFiles.get(position).getTitle());
-                                        author.setText(listFiles.get(position).getArtist());
-                                        seekbar.setMax(mediaPlayer.getDuration()/1000);
-                                        AudioPlayer.this.runOnUiThread(new Runnable() {
-                                            @Override
-                                            public void run() {
-                                                if (mediaPlayer!=null){
-                                                    int sb_currentposition;
-                                                    sb_currentposition=mediaPlayer.getCurrentPosition()/1000;
-                                                    seekbar.setProgress(sb_currentposition);
-                                                }
-                                                handler.postDelayed(this,1000);
-                                            }
-                                        });
-                                        playpausebtn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
-
-
-                                    }
+                                    nextSong();
 
                                 }
                                 return true;

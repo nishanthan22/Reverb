@@ -88,55 +88,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> 
           return mFiles.size();
      }
 
-     public void setFilter(ArrayList<MusicFiles> msfiles){
-         mFiles = new ArrayList<>();
-         mFiles.addAll(msfiles);
-         notifyDataSetChanged();
-
-     }
-
-//     @Override
-//     public Fi
-//     }lter getFilter() {
-//        return filter;
-//     Filter filter = new Filter() {
-//          @Override
-//          protected FilterResults performFiltering(CharSequence constraint) {
-//
-//               List<MusicFiles> filteredList = new ArrayList<>();
-//               if(constraint.toString().isEmpty())
-//               {
-//                    filteredList.addAll(myfiles);
-//
-//               }else
-//               {
-//                    for(MusicFiles m: myfiles)
-//                    {
-//                         if(m.getTitle().toLowerCase().contains(constraint.toString().toLowerCase()))
-//                         {
-//                            filteredList.add(m);
-//                         }
-//
-//
-//                    }
-//               }
-//               FilterResults filterResults = new FilterResults();
-//               filterResults.values=filteredList;
-//
-//
-//
-//               return filterResults;
-//          }
-//
-//          @Override
-//          protected void publishResults(CharSequence constraint, FilterResults results) {
-//               mFiles.clear();
-//               mFiles.addAll((Collection<? extends MusicFiles>) results.values);
-//               notifyDataSetChanged();
-//
-//          }
-//     };
-
 
      public class MyViewHolder extends RecyclerView.ViewHolder {
           TextView filename;
@@ -147,6 +98,12 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> 
                filename = itemView.findViewById(R.id.txtsongname);
                album_art = itemView.findViewById(R.id.imgsong);
           }
+     }
+
+     void updateList(ArrayList<MusicFiles> musicFilesArrayList){
+         mFiles = new ArrayList<>();
+         mFiles.addAll(musicFilesArrayList);
+         notifyDataSetChanged();
      }
 }
 
