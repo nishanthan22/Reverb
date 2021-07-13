@@ -18,17 +18,27 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.google.android.material.tabs.TabLayout;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 
+import static com.example.reverb.SongFragment.songAdapter;
 
-public class SongList extends AppCompatActivity {
+
+public class SongList extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     public static final int REQUEST_CODE=1;
     static ArrayList<MusicFiles> musicFiles;
     static boolean loopBoolean = false;
+    static ArrayList<MusicFiles> albums = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +51,8 @@ public class SongList extends AppCompatActivity {
         ViewPager viewPager=findViewById(R.id.viewpager);
         TabLayout tabLayout=findViewById(R.id.tablayout);
         ViewPagerAdapter viewPagerAdapter=new ViewPagerAdapter(getSupportFragmentManager());
-        viewPagerAdapter.addFragments(new SongFragment(),"Song");
-        viewPagerAdapter.addFragments(new AlbumFragment(),"Album");
+        viewPagerAdapter.addFragments(new SongFragment(),"Songs");
+        viewPagerAdapter.addFragments(new AlbumFragment(),"Albums");
         viewPager.setAdapter(viewPagerAdapter);
         tabLayout.setupWithViewPager(viewPager);
     }
@@ -112,6 +122,8 @@ public class SongList extends AppCompatActivity {
     }
 
     public static ArrayList<MusicFiles> getAllAudio(Context context){
+
+        ArrayList<String> duplicate = new ArrayList<>();
         ArrayList<MusicFiles> tempAudioList = new ArrayList<>();
         Uri uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
 
@@ -134,9 +146,43 @@ public class SongList extends AppCompatActivity {
                 MusicFiles musicFiles=new MusicFiles(path,title,artist,album,duration);
                 Log.e("Path :"+path,"Album :"+album);
                 tempAudioList.add(musicFiles);
+                if (!duplicate.contains(album)){
+                    albums.add(musicFiles);
+                    duplicate.add(album);
+
+                }
+
             }
             cursor.close();
         }
         return tempAudioList;
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu1,menu);
+        MenuItem menuItem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setOnQueryTextListener(this);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        String userInput = newText.toLowerCase();
+        ArrayList<MusicFiles> myFiles = new ArrayList<>();
+        for (MusicFiles song : musicFiles){
+            if (song.getTitle().toLowerCase().contains(userInput)){
+                myFiles.add(song);
+            }
+        }
+        SongFragment.songAdapter.updateList(myFiles);
+        return true;
     }
 }
