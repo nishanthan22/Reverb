@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
@@ -27,9 +28,9 @@ public class allvideos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allvideos);
+        checkPermissions();
 
         initializeViews();
-        checkPermissions();
     }
 
     private void initializeViews() {
@@ -37,6 +38,8 @@ public class allvideos extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 3)); //3 = column count
         adapterVideoList = new AdapterVideoList(this, videosList);
         recyclerView.setAdapter(adapterVideoList);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
+
     }
 
     private void checkPermissions() {

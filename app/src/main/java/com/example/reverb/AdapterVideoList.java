@@ -35,8 +35,8 @@ public class AdapterVideoList extends RecyclerView.Adapter<AdapterVideoList.MyVi
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final ModelVideo item = videosList.get(position);
-        holder.tv_title.setText(item.getTitle());
-        holder.tv_duration.setText(item.getDuration());
+       holder.tv_title.setText(item.getTitle());
+//        holder.tv_duration.setText(item.getDuration());
         Glide.with(context).load(item.getData()).into(holder.imgView_thumbnail);
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -57,13 +57,13 @@ public class AdapterVideoList extends RecyclerView.Adapter<AdapterVideoList.MyVi
     static class MyViewHolder extends RecyclerView.ViewHolder {
 
         ImageView imgView_thumbnail;
-        TextView tv_title, tv_duration;
+        TextView tv_title;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            tv_title = itemView.findViewById(R.id.tv_title);
-            tv_duration = itemView.findViewById(R.id.tv_duration);
-            imgView_thumbnail = itemView.findViewById(R.id.imageView_thumbnail);
+            tv_title = itemView.findViewById(R.id.txtvidname);
+//            tv_duration = itemView.findViewById(R.id.tv_duration);
+        imgView_thumbnail = itemView.findViewById(R.id.vidimg);
         }
     }
 }
