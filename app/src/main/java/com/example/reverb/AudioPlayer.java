@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.BlurMaskFilter;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -34,7 +35,7 @@ public class AudioPlayer extends AppCompatActivity implements MediaPlayer.OnComp
     //Initializing the views
 
     TextView song_name,author,seekstart,seekstop;
-    ImageView loop,rewind,forward,like,cover_image;
+    ImageView loop,rewind,forward,like,cover_image,blurcover;
     FloatingActionButton playpausebtn;
     SeekBar seekbar;
     int position = -1;
@@ -264,6 +265,7 @@ public class AudioPlayer extends AppCompatActivity implements MediaPlayer.OnComp
         cover_image=findViewById(R.id.cover_image);
         relativeLayout = findViewById(R.id.audio_relative);
         swipeListener = new SwipeListener(relativeLayout);
+        //blurcover = findViewById(R.id.blurcover);
 
 
     }
@@ -307,11 +309,15 @@ public class AudioPlayer extends AppCompatActivity implements MediaPlayer.OnComp
                     .asBitmap()
                     .load(art)
                     .into(cover_image);
+           // Glide.with(this)
+                   // .asBitmap()
+                   // .load(art)
+                   // .transform(new BlurTransformation(this)).into(blurcover);
         }
         else {
             Glide.with(this)
                     .asBitmap()
-                    .load(R.drawable.logocircled)
+                    .load("#00000000")
                     .into(cover_image);
 
         }

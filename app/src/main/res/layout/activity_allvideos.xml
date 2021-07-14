@@ -18,6 +18,16 @@
         android:layout_marginTop="32dp"
         android:layout_marginLeft="16dp"
         />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/vidsize"
+        android:text="0"
+        android:textSize="16dp"
+        android:layout_marginLeft="32dp"
+        android:textColor="@color/grey">
+
+    </TextView>
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_videos"
         android:layout_width="match_parent"

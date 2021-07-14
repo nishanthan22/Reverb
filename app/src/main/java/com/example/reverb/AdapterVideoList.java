@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class AdapterVideoList extends RecyclerView.Adapter<AdapterVideoList.MyViewHolder> {
 
-    ArrayList<ModelVideo> videosList = new ArrayList<ModelVideo>();
+    static ArrayList<ModelVideo> videosList = new ArrayList<ModelVideo>();
     Context context;
 
     AdapterVideoList(Context context, ArrayList<ModelVideo> videosList){
@@ -43,7 +43,7 @@ public class AdapterVideoList extends RecyclerView.Adapter<AdapterVideoList.MyVi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), VideoPlayer.class);
-                intent.putExtra("videoId", item.getId());
+               // intent.putExtra("position", position);
                 v.getContext().startActivity(intent);
             }
         });
