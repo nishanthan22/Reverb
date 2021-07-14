@@ -50,7 +50,8 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     //Initializing the views
 
     TextView song_name,author,seekstart,seekstop;
-    ImageView loop,rewind,forward,like,cover_image,blurcover;
+    ImageView loop,rewind,forward,like,cover_image,bgim;
+
     FloatingActionButton playpausebtn;
     SeekBar seekbar;
     int position = -1;
@@ -293,7 +294,8 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
         cover_image=findViewById(R.id.cover_image);
         relativeLayout = findViewById(R.id.audio_relative);
         swipeListener = new SwipeListener(relativeLayout);
-        //blurcover = findViewById(R.id.blurcover);
+        bgim= findViewById(R.id.bgim);
+
 
 
     }
@@ -330,10 +332,17 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
                     .asBitmap()
                     .load(art)
                     .into(cover_image);
+            //Glide.with(this)
+                   // .asBitmap()
+                    //.load("#FF000000")
+                    //.into(bgim);
+
+
         }
         else {
             Glide.with(getApplicationContext())
                     .asBitmap()
+
                     .load(R.drawable.ic_baseline_music_note_24)
                     .into(cover_image);
 

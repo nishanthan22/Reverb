@@ -17,23 +17,12 @@
         android:layout_height="96dp"
         android:layout_alignParentLeft="true"
 
-        android:layout_marginTop="@dimen/activity_padding"
 
+
+        android:layout_marginTop="@dimen/activity_padding"
         android:layout_marginBottom="@dimen/activity_padding"
         android:contentDescription="@string/user_photo"
         android:scaleType="fitXY"
-        app:srcCompat="@drawable/user" />
-
-    <ImageView
-        android:layout_width="@dimen/ic_plus_width"
-        android:layout_height="@dimen/ic_plus_width"
-        android:layout_alignRight="@id/cam"
-        android:layout_alignBottom="@+id/cam"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/bg_new"
-        android:backgroundTint="#B19ED3"
-        android:scaleType="fitCenter"
-        app:srcCompat="@drawable/ic_cam"
-        android:layout_alignEnd="@id/cam" />
+        app:srcCompat="@drawable/user2" />
 
 </RelativeLayout>

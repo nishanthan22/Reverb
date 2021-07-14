@@ -6,14 +6,13 @@
     android:layout_height="match_parent"
     android:background="@drawable/r_bgimage"
     android:id="@+id/audio_relative"
-    tools:context=".AudioPlayer"
-    >
-    <!--<ImageView
+    tools:context=".AudioPlayer">
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/blurcover"
+        android:id="@+id/bgim"
+        android:src="@drawable/r_bgimage"/>
 
-        />-->
 
 
 
@@ -170,8 +169,10 @@
         android:id="@+id/bot_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:labelVisibilityMode="labeled"
         android:layout_alignParentBottom="true"
         android:background="@android:color/transparent"
+
         app:itemBackground="@android:color/transparent"
 
         app:itemIconTint="@drawable/nav_item_color"

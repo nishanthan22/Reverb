@@ -21,4 +21,7 @@
         <item name="android:background">@android:color/transparent</item>
 
     </style>
+    <style name="Song" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="titleTextStyle">@drawable/background</item>
+    </style>
 </resources>
