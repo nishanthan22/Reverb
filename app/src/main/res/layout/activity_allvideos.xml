@@ -28,10 +28,11 @@
         android:textColor="@color/grey">
 
     </TextView>
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_videos"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="547dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
