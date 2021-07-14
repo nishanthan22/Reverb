@@ -2,10 +2,16 @@ package com.example.reverb;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.BlurMaskFilter;
 import android.media.MediaMetadataRetriever;
 import android.media.MediaPlayer;
@@ -13,6 +19,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.support.v4.media.session.MediaSessionCompat;
 import android.view.GestureDetector;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -30,6 +37,10 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.ArrayList;
 
 import static com.example.reverb.AlbumDetailsAdapter.albumFiles;
+import static com.example.reverb.ApplicationClass.ACTION_NEXT;
+import static com.example.reverb.ApplicationClass.ACTION_PLAY;
+import static com.example.reverb.ApplicationClass.ACTION_PREVIOUS;
+import static com.example.reverb.ApplicationClass.CHANNEL_ID_2;
 import static com.example.reverb.SongAdapter.mFiles;
 import static com.example.reverb.SongList.loopBoolean;
 import static com.example.reverb.SongList.musicFiles;
@@ -52,6 +63,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     SwipeListener swipeListener;
     RelativeLayout relativeLayout;
     MusicService musicService;
+    MediaSessionCompat mediaSessionCompat;
 
 
     @Override
@@ -60,6 +72,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
         setContentView(R.layout.activity_audio_player);
         BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
         bottomNavigationView.setSelectedItemId(R.id.musicitem);
+        mediaSessionCompat = new MediaSessionCompat(getBaseContext(),"My Audio");
         initviews();
         song_name.setSelected(true);
         getIntentMethod();
@@ -215,6 +228,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     public void playPauseButtonClicked() {
         if (musicService.isPlaying()){
             playpausebtn.setImageResource(R.drawable.ic_baseline_play_arrow_24);
+            showNotification(R.drawable.ic_baseline_play_arrow_24);
             musicService.pause();
             seekbar.setMax(musicService.getDuration()/1000);
             AudioPlayer.this.runOnUiThread(new Runnable() {
@@ -230,6 +244,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
             });
         }
         else {
+            showNotification(R.drawable.ic_baseline_pause_24);
             playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
             musicService.start();
             seekbar.setMax(musicService.getDuration()/1000);
@@ -296,6 +311,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
             playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
             uri = Uri.parse(listFiles.get(position).getPath());
         }
+        showNotification(R.drawable.ic_baseline_pause_24);
         Intent i3 = new Intent(this,MusicService.class);
         i3.putExtra("servicePosition",position);
         startService(i3);
@@ -310,19 +326,15 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
         seekstop.setText(formattedTime(totalDuration));
         byte[] art = retriever.getEmbeddedPicture();
         if (art != null){
-            Glide.with(this)
+            Glide.with(getApplicationContext())
                     .asBitmap()
                     .load(art)
                     .into(cover_image);
-           // Glide.with(this)
-                   // .asBitmap()
-                   // .load(art)
-                   // .transform(new BlurTransformation(this)).into(blurcover);
         }
         else {
-            Glide.with(this)
+            Glide.with(getApplicationContext())
                     .asBitmap()
-                    .load("#00000000")
+                    .load(R.drawable.ic_baseline_music_note_24)
                     .into(cover_image);
 
         }
@@ -384,6 +396,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
                 }
             });
             musicService.OnCompleted();
+            showNotification(R.drawable.ic_baseline_pause_24);
             playpausebtn.setBackgroundResource(R.drawable.ic_baseline_pause_24);
             musicService.start();
         }
@@ -410,6 +423,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
                 }
             });
             musicService.OnCompleted();
+            showNotification(R.drawable.ic_baseline_play_arrow_24);
             playpausebtn.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
 
 
@@ -440,6 +454,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
                 }
             });
             musicService.OnCompleted();
+            showNotification(R.drawable.ic_baseline_pause_24);
             playpausebtn.setBackgroundResource(R.drawable.ic_baseline_pause_24);
             musicService.start();
         }
@@ -465,6 +480,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
                 }
             });
             musicService.OnCompleted();
+            showNotification(R.drawable.ic_baseline_play_arrow_24);
             playpausebtn.setBackgroundResource(R.drawable.ic_baseline_play_arrow_24);
 
 
@@ -477,6 +493,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     public void onServiceConnected(ComponentName name, IBinder service) {
         MusicService.MyBinder myBinder = (MusicService.MyBinder)service;
         musicService=myBinder.getService();
+        musicService.setCallBack(this);
         Toast.makeText(this,"Connected"+musicService,Toast.LENGTH_SHORT).show();
         seekbar.setMax(musicService.getDuration()/1000);
         metaData(uri);
@@ -490,6 +507,57 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     public void onServiceDisconnected(ComponentName name) {
         musicService=null;
 
+    }
+
+    void  showNotification(int playPauseBtn){
+        Intent not_intent = new Intent(this,AudioPlayer.class);
+        PendingIntent contentIntent = PendingIntent.getBroadcast(this,0,not_intent,0);
+
+        Intent prev_intent = new Intent(this,NotificationReceiver.class).setAction(ACTION_PREVIOUS);
+        PendingIntent prevPending = PendingIntent.getBroadcast(this,0,prev_intent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        Intent pause_intent = new Intent(this,NotificationReceiver.class).setAction(ACTION_PLAY);
+        PendingIntent pausePending = PendingIntent.getBroadcast(this,0,pause_intent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+
+        Intent next_intent = new Intent(this,NotificationReceiver.class).setAction(ACTION_NEXT);
+        PendingIntent nextPending = PendingIntent.getBroadcast(this,0,next_intent,PendingIntent.FLAG_UPDATE_CURRENT);
+
+        byte[] pict = getAlbumArt(musicFiles.get(position).getPath());
+
+        Bitmap thumb = null;
+        if (pict!=null){
+            thumb= BitmapFactory.decodeByteArray(pict,0,pict.length);
+
+        }
+        else {
+            thumb= BitmapFactory.decodeResource(getResources(),R.drawable.r_logo);
+        }
+        Notification notification = new NotificationCompat.Builder(this,CHANNEL_ID_2)
+                .setSmallIcon(playPauseBtn).setLargeIcon(thumb)
+                .setContentTitle(musicFiles.get(position).getTitle())
+                .setContentText(musicFiles.get(position).getArtist())
+                .addAction(R.drawable.ic_skip_previous_24,"Previous",prevPending)
+                .addAction(playPauseBtn,"Pause",pausePending)
+                .addAction(R.drawable.ic_skip_next_24,"Next",nextPending)
+                .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
+                .setMediaSession(mediaSessionCompat.getSessionToken()))
+                .setPriority(NotificationCompat.PRIORITY_HIGH)
+                .setOnlyAlertOnce(true)
+                .build();
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.notify(0,notification);
+
+
+
+    }
+
+    private byte[] getAlbumArt(String uri) {
+        MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        retriever.setDataSource(uri);
+        byte[] art = retriever.getEmbeddedPicture();
+        return art;
     }
 
     private class SwipeListener implements  View.OnTouchListener{
