@@ -32,6 +32,7 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
     @Override
     public void onCreate() {
           super.onCreate();
+          musicFiles=listFiles;
 
     }
 
@@ -142,18 +143,14 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
 
     @Override
     public void onCompletion(MediaPlayer mp) {
-        if (actionPlaying !=null){
+        if (actionPlaying !=null) {
             actionPlaying.nextSong();
-            if(mediaPlayer!=null){
+            if (mediaPlayer != null) {
                 createMediaPlayer(position);
                 mediaPlayer.start();
                 OnCompleted();
             }
-
         }
-
-
-
 
     }
 
