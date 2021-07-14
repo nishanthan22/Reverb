@@ -8,11 +8,18 @@ public class ModelVideo {
     Uri data;
     String title, duration;
 
+
     public ModelVideo(long id, Uri data, String title, String duration) {
         this.id = id;
         this.data = data;
         this.title = title;
         this.duration = duration;
+        //this.path= path;
+    }
+
+    public static void get(int position)
+    {
+
     }
 
     public long getId() {
@@ -23,7 +30,7 @@ public class ModelVideo {
         this.id = id;
     }
 
-    public Uri getData() {
+    public  Uri getData() {
         return data;
     }
 
@@ -38,6 +45,15 @@ public class ModelVideo {
     public void setTitle(String title) {
         this.title = title;
     }
+
+    //public static String getPath()
+    //{
+        //return path;
+    //}
+    //public void setPath(String path)
+    //{
+        //this.path=path;
+    //}
 
     public String getDuration() {
         return duration;
