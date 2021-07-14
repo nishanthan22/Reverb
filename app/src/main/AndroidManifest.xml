@@ -12,6 +12,7 @@
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
+        android:name=".ApplicationClass"
         android:theme="@style/Theme.Reverb">
         <activity android:name=".AlbumDetails"></activity>
         <activity android:name=".allvideos" />
@@ -35,6 +36,7 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+        <service android:name=".MusicService" android:enabled="true" />
     </application>
 
 </manifest>
