@@ -54,7 +54,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.MyHolder> {
         } else {
             Glide.with(mContext)
                     .asBitmap()
-                    .load(R.drawable.ic_baseline_music_note_24)
+                    .load("#00000000")
                     .into(holder.album_image);
 
         }
