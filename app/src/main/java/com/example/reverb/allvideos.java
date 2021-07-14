@@ -24,8 +24,9 @@ import java.util.Locale;
 public class allvideos extends AppCompatActivity {
     TextView noofvid;
 
-    private ArrayList<ModelVideo> videosList = new ArrayList<ModelVideo>();
+    private ArrayList<ModelVideo> videosList = new ArrayList<>();
     private AdapterVideoList adapterVideoList;
+    Uri uri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,7 +101,8 @@ public class allvideos extends AppCompatActivity {
                         long id = cursor.getLong(idColumn);
                         String title = cursor.getString(titleColumn);
                         int duration = cursor.getInt(durationColumn);
-                       // String path = cursor.getString(pathColumn);
+
+                        //String  path = cursor.getString(pathColumn);
 
                         Uri data = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id);
 
@@ -116,7 +118,7 @@ public class allvideos extends AppCompatActivity {
                         }
 
                         videosList.add(new ModelVideo(id, data, title, duration_formatted));
-                       // setsize(videosList.size());
+//                        setsize(videosList.size());
 
 
 
@@ -136,9 +138,9 @@ public class allvideos extends AppCompatActivity {
 
 
     }
-   // private void setsize(int s)
-    //{
-        //noofvid.setText(Integer.toString(s));
-    //}
+//    private void setsize(int s)
+//    {
+//        noofvid.setText(Integer.toString(s));
+//    }
 
 }

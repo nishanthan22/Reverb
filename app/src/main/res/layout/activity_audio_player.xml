@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/r_bgimage"
+    android:background="@color/black"
     android:id="@+id/audio_relative"
     tools:context=".AudioPlayer">
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/bgim"
-        android:src="@drawable/r_bgimage"/>
+<!--    <ImageView-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:id="@+id/bgim"-->
+<!--        android:src="@drawable/r_bgimage"/>-->
 
 
 

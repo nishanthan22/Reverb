@@ -172,6 +172,15 @@ public class OnPlayBottomFrag extends Fragment implements ServiceConnection {
         }
     }
 
+
+//    @Override
+//    public void onDestroy() {
+//        super.onDestroy();
+//        if (getContext()!=null){
+//            getContext().unbindService(this);
+//        }
+//    }
+
     private byte[] getAlbumArt(String uri) {
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
         retriever.setDataSource(uri);
