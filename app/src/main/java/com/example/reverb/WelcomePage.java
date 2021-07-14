@@ -46,8 +46,10 @@ public class WelcomePage extends AppCompatActivity {
         Homebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                String name = username.getText().toString();
 
                 Intent homeintent = new Intent(WelcomePage.this,HomePage.class);
+                homeintent.putExtra("Username",name);
                 startActivity(homeintent);
                 finish();
             }

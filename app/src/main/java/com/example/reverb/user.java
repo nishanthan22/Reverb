@@ -9,32 +9,74 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.github.drjacky.imagepicker.ImagePicker;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class user extends AppCompatActivity{
 
     TextView uiname ;
+    CircleImageView c_image,b_cimage;
+
+    FloatingActionButton fab;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
+        Intent intent = getIntent();
+        String ni = intent.getStringExtra("u_name");
         uiname=findViewById(R.id.uiname);
+        uiname.setText(ni);
+        c_image=findViewById(R.id.circleImageView);
+        b_cimage=findViewById(R.id.b_r);
+        fab=findViewById(R.id.imgup);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ImagePicker.Companion.with(user.this).crop().maxResultSize(1080,1080).galleryOnly().start();
+
+            }
+        });
+
+        c_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(user.this, R.style.BottomSheetDialogTheme);
+                View bottomSheetView = LayoutInflater.from(getApplicationContext()).inflate(
+                        R.layout.bottom_slider,
+                        (LinearLayout)findViewById(R.id.bottom_sheet_container)
+                );
+                bottomSheetDialog.setContentView(bottomSheetView);
+                bottomSheetDialog.show();
+            }
+        });
+
+
         BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
         bottomNavigationView.setSelectedItemId(R.id.NameUser);
+
         final ViewPager viewPager=findViewById(R.id.viewpager2);
         TabLayout tabLayout=findViewById(R.id.tablayout2);
         tabLayout.addTab(tabLayout.newTab().setText("Music"));
         tabLayout.addTab(tabLayout.newTab().setText("Media"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+
         final adapter adapter= new adapter(getSupportFragmentManager(),tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -119,6 +161,12 @@ public class user extends AppCompatActivity{
         bottomNavigationView.setSelectedItemId(R.id.home);
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Uri uri = data.getData();
+        c_image.setImageURI(uri);
 
+    }
 
 }

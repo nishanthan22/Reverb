@@ -20,6 +20,8 @@ public class HomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         b1 = findViewById(R.id.AllSongs);
+        Intent intent = getIntent();
+        String n = intent.getStringExtra("Username");
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -56,9 +58,12 @@ public class HomePage extends AppCompatActivity {
                         return true;
 
                     case R.id.NameUser:
-                        startActivity(new Intent(getApplicationContext()
-                                , user.class));
-                        finish();
+                        Intent i = new Intent(getApplicationContext()
+                                , user.class);
+                        i.putExtra("u_name",n);
+
+                        startActivity(i);
+
                         overridePendingTransition(0, 0);
                         return true;
                     default:
