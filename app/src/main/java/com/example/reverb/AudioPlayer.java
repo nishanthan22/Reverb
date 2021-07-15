@@ -71,8 +71,8 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_player);
-        BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.musicitem);
+//        BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
+//        bottomNavigationView.setSelectedItemId(R.id.musicitem);
         mediaSessionCompat = new MediaSessionCompat(getBaseContext(),"My Audio");
         initviews();
         song_name.setSelected(true);
@@ -112,46 +112,46 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
             }
         });
 
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId())
-                {
-                    case R.id.musicitem:
-                        return true;
-
-                    case R.id.Video:
-                        startActivity(new Intent(getApplicationContext()
-                                ,VideoPlayer.class));
-                        finish();
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext()
-                                ,HomePage.class));
-                        finish();
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.NameUser:
-                        startActivity(new Intent(getApplicationContext()
-                                ,user.class));
-                        finish();
-                        overridePendingTransition(0,0);
-                        return true;
-                    default:
-                    bottomNavigationView.setSelectedItemId(R.id.home);
-
-                }
-
-
-                return false;
-
-
-            }
-        });
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//                switch (item.getItemId())
+//                {
+//                    case R.id.musicitem:
+//                        return true;
+//
+//                    case R.id.Video:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,VideoPlayer.class));
+//                        finish();
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    case R.id.home:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,HomePage.class));
+//                        finish();
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    case R.id.NameUser:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,user.class));
+//                        finish();
+//                        overridePendingTransition(0,0);
+//                        return true;
+//                    default:
+//                    bottomNavigationView.setSelectedItemId(R.id.home);
+//
+//                }
+//
+//
+//                return false;
+//
+//
+//            }
+//        });
 
         //Forward 10s button
 
@@ -348,35 +348,35 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
 
     }
 
-    @Override
-    public void onBackPressed() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
-        int selectedItemId = bottomNavigationView.getSelectedItemId();
-//        Context cContext = getBaseContext();
-//        if(R.id.musicitem == selectedItemId && cCon){
+//    @Override
+//    public void onBackPressed() {
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
+//        int selectedItemId = bottomNavigationView.getSelectedItemId();
+////        Context cContext = getBaseContext();
+////        if(R.id.musicitem == selectedItemId && cCon){
+////
+////        }
+//        if(R.id.home != selectedItemId && position !=-1){
+//            startActivity(new Intent(AudioPlayer.this,SongList.class));
+//            finish();
+//        }
+//
+//        else if (R.id.home != selectedItemId && position ==-1) {
+//            setHomeItem(HomePage.class);
+//
+//        } else {
+//            super.onBackPressed();
+//           // System.exit(0);
 //
 //        }
-        if(R.id.home != selectedItemId && position !=-1){
-            startActivity(new Intent(AudioPlayer.this,SongList.class));
-            finish();
-        }
+//
+//
+//    }
 
-        else if (R.id.home != selectedItemId && position ==-1) {
-            setHomeItem(HomePage.class);
-
-        } else {
-            super.onBackPressed();
-           // System.exit(0);
-
-        }
-
-
-    }
-
-    public void setHomeItem(Class<HomePage> activity) {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.home);
-    }
+//    public void setHomeItem(Class<HomePage> activity) {
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
+//        bottomNavigationView.setSelectedItemId(R.id.home);
+//    }
 
 
     public void nextSong(){
@@ -635,5 +635,12 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
         public boolean onTouch(View v, MotionEvent event) {
             return gestureDetector.onTouchEvent(event);
         }
+    }
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        Intent i = new Intent(this,SongList.class);
+        startActivity(i);
     }
 }

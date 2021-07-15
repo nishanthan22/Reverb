@@ -5,7 +5,7 @@
     <string name="enter">Enter</string>
     <string name="user_photo">User Photo</string>
     <string name="your_name">Your Name</string>
-    <string name="welcome_page">Enter your name and upload your picture to start using your Media Player</string>
+    <string name="welcome_page">Enter your name to start using your Media Player</string>
     <string name="hello">Hello !</string>
     <string name="anusri">Anusri</string>
 </resources>

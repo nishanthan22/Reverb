@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".allvideos"
-    android:background="@drawable/background"
+    android:background="@drawable/bgtr"
     android:orientation="vertical">
 
-    <TextView
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Videos"
@@ -17,7 +17,11 @@
         android:textColor="#fff"
         android:layout_marginTop="32dp"
         android:layout_marginLeft="16dp"
-        />
+        />-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,14 +29,24 @@
         android:text="0"
         android:textSize="16dp"
         android:layout_marginLeft="32dp"
-        android:textColor="@color/grey">
+        android:textColor="@color/white">
 
     </TextView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" Videos"
+            android:textSize="16dp"
+
+
+            android:textColor="@color/white"/>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView_videos"
         android:layout_width="match_parent"
-        android:layout_height="547dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"

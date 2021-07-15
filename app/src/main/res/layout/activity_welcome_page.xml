@@ -47,7 +47,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="313dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:gravity="center"
         >
@@ -58,7 +58,7 @@
             android:layout_height="200dp"
             android:layout_marginStart="32dp"
             android:layout_marginLeft="32dp"
-            android:layout_marginTop="50dp"
+
             android:layout_marginEnd="32dp"
             android:layout_marginRight="32dp"
             android:background="@drawable/lay"
@@ -84,7 +84,7 @@
 
         </LinearLayout>
 
-        <RelativeLayout
+        <!--<RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -96,14 +96,14 @@
                 android:src="@drawable/profile1"
                 />
 
-        </RelativeLayout>
+        </RelativeLayout>-->
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="74dp"
         android:layout_gravity="center_horizontal"
         >
 
@@ -113,8 +113,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|left"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="32dp"
+            android:layout_centerInParent="true"
             android:background="@drawable/lay3"
             android:text="Reverb "
             android:textAllCaps="false"
@@ -125,7 +124,7 @@
             app:iconTint="#fff" />
 
 
-        <Button
+        <!--<Button
             android:id="@+id/preview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,7 +138,7 @@
             android:textSize="16sp"
             app:backgroundTint="@color/material_on_surface_stroke"
             app:icon="@drawable/ic_baseline_music_note_24"
-            app:iconTint="#fff" />
+            app:iconTint="#fff" />-->
 
     </RelativeLayout>
 

@@ -44,6 +44,7 @@ public class AdapterVideoList extends RecyclerView.Adapter<AdapterVideoList.MyVi
             public void onClick(View v) {
                 Intent intent = new Intent(v.getContext(), VideoPlayer.class);
                 intent.putExtra("position", position);
+
                 v.getContext().startActivity(intent);
             }
         });
@@ -52,6 +53,11 @@ public class AdapterVideoList extends RecyclerView.Adapter<AdapterVideoList.MyVi
     @Override
     public int getItemCount() {
         return videosList.size();
+    }
+
+    public void filterList(ArrayList<ModelVideo> filterelist) {
+        videosList = filterelist;
+        notifyDataSetChanged();
     }
 
     static class MyViewHolder extends RecyclerView.ViewHolder {

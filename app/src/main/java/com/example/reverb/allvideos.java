@@ -1,6 +1,7 @@
 package com.example.reverb;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -9,12 +10,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.Manifest;
 import android.content.ContentUris;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -32,6 +39,11 @@ public class allvideos extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allvideos);
         noofvid = findViewById(R.id.vidsize);
+        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.custom_action_bar);
+       // getActionBar().setElevation(0);
+        View view = getSupportActionBar().getCustomView();
+
 
         checkPermissions();
 
@@ -40,6 +52,47 @@ public class allvideos extends AppCompatActivity {
 
 
 
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu1,menu);
+        MenuItem searchitem = menu.findItem(R.id.search);
+        SearchView searchView = (SearchView) searchitem.getActionView();
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+               filter(newText);
+                return false;
+
+            }
+        });
+
+        return true;
+
+    }
+    private void filter(String text)
+    {
+        ArrayList<ModelVideo> filteredlist = new ArrayList<>();
+        for(ModelVideo m:videosList)
+        {
+            if(m.getTitle().toLowerCase().contains(text.toLowerCase()))
+            {
+                filteredlist.add(m);
+            }
+        }
+        if(filteredlist.isEmpty())
+        {
+            Toast.makeText(this,"No Results",Toast.LENGTH_SHORT).show();
+        }
+        else {
+            adapterVideoList.filterList(filteredlist);
+        }
     }
 
 
@@ -80,6 +133,7 @@ public class allvideos extends AppCompatActivity {
                 Toast.makeText(this, "Please accept the permission", Toast.LENGTH_SHORT).show();
             }
         }
+
     }
 
     private void loadVideos() {
@@ -120,17 +174,15 @@ public class allvideos extends AppCompatActivity {
                         videosList.add(new ModelVideo(id, data, title, duration_formatted));
 //                        setsize(videosList.size());
 
-
-
-
-
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
                                 adapterVideoList.notifyItemInserted(videosList.size() - 1);
                             }
                         });
+                        setsize(videosList.size());
                     }
+
                 }
 
             }
@@ -138,9 +190,16 @@ public class allvideos extends AppCompatActivity {
 
 
     }
-//    private void setsize(int s)
-//    {
-//        noofvid.setText(Integer.toString(s));
-//    }
+    private void setsize(int s)
+    {
+        noofvid.setText(Integer.toString(s));
+    }
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        Intent intent = new Intent(this,HomePage.class);
+        startActivity(intent);
+    }
 
 }
