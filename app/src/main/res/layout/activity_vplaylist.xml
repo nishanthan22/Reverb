@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Playslists"
-    android:background="@drawable/bgtr">
+    android:background="@color/black">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Playlists"
+        android:text="Folders"
         android:textStyle="bold"
-        android:textSize="40dp"
+        android:textSize="32dp"
         android:textColor="#fff"
         android:layout_marginTop="32dp"
         android:layout_marginLeft="16dp"

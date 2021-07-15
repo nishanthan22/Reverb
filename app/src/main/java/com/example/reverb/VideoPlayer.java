@@ -9,6 +9,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.view.MenuItem;
+import android.view.WindowManager;
 
 //import com.google.android.exoplayer2.SimpleExoPlayer;
 //import com.google.android.exoplayer2.extractor.DefaultExtractorsFactory;
@@ -27,11 +28,18 @@ import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+
+import static com.example.reverb.AdapterVideoList.videosList;
+
 public class VideoPlayer extends AppCompatActivity {
 
     long videoId;
+    //Uri uri;
     private PlayerView playerView;
     private SimpleExoPlayer player;
+    private MediaSource mediaSource;
+    static ArrayList<ModelVideo> videosFiles =new ArrayList();
     //PlayerView playerView;
    // SimpleExoPlayer simpleExoPlayer;
     //int position = -1;
@@ -40,71 +48,83 @@ public class VideoPlayer extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_player);
+        //videoId = getIntent().getExtras().getLong("videoId");
+        videosFiles= videosList;
+
+        int pos=getIntent().getIntExtra("position",-1);
+         //uri = videosFiles.get(pos).getData();
+         videoId = videosFiles.get(pos).getId();
+         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
+
 
         initializeViews();
-        videoId = getIntent().getExtras().getLong("videoId");
+
+
+        //Uri uri = ModelVideo.getData();
        // position=getIntent().getIntExtra("position",-1);
 
-        //String path = ModelVideo.getPath();
-        //if(path!=null)
-        //{
-           // Uri uri = Uri.parse(path);
-            //simpleExoPlayer=new SimpleExoPlayer.Builder(this).build();
-           // DataSource.Factory factory = new DefaultDataSourceFactory(this, Util.getUserAgent(this,
-                   // "My App Name"));
-           // ExtractorsFactory extractorsFactory= new DefaultExtractorsFactory();
-           // MediaSource mediaSource = new ProgressiveMediaSource().Factory(factory,extractorsFactory).createMediaSource(uri);
-           // playerView.setPlayer(simpleExoPlayer);
-            //playerView.setKeepScreenOn(true);
-            //simpleExoPlayer.prepare(mediaSource);
-            //simpleExoPlayer.setPlayWhenReady(true);
-
-        //}
-
-
-        BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.Video);
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId())
-                {
-                    case R.id.Video:
-                        return true;
-
-                    case R.id.musicitem:
-                        startActivity(new Intent(getApplicationContext()
-                                ,AudioPlayer.class));
-                        finish();
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext()
-                                ,HomePage.class));
-                        finish();
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.NameUser:
-                        startActivity(new Intent(getApplicationContext()
-                                ,user.class));
-                        finish();
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    default:
-                        bottomNavigationView.setSelectedItemId(R.id.home);
-                }
+//        String path = ModelVideo.getPath();
+//        if(path!=null)
+//        {
+//            Uri uri = Uri.parse(path);
+//            simpleExoPlayer=new SimpleExoPlayer.Builder(this).build();
+//            DataSource.Factory factory = new DefaultDataSourceFactory(this, Util.getUserAgent(this,
+//                    "Reverb"));
+//            ExtractorsFactory extractorsFactory= new DefaultExtractorsFactory();
+//            ProgressiveMediaSource mediaSource = new ProgressiveMediaSource().Factory(factory, extractorsFactory).createMediaSource(uri);
+//            playerView.setPlayer(simpleExoPlayer);
+//            playerView.setKeepScreenOn(true);
+//            simpleExoPlayer.prepare(mediaSource);
+//            simpleExoPlayer.setPlayWhenReady(true);
+//
+//        }
 
 
-                return false;
 
-
-            }
-        });
+//        BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
+//        bottomNavigationView.setSelectedItemId(R.id.Video);
+//
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//                switch (item.getItemId())
+//                {
+//                    case R.id.Video:
+//                        return true;
+//
+//                    case R.id.musicitem:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,AudioPlayer.class));
+//                        finish();
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    case R.id.home:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,HomePage.class));
+//                        finish();
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    case R.id.NameUser:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,user.class));
+//                        finish();
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    default:
+//                        bottomNavigationView.setSelectedItemId(R.id.home);
+//                }
+//
+//
+//                return false;
+//
+//
+//            }
+//        });
     }
 
     private void initializeViews() {
@@ -115,7 +135,7 @@ public class VideoPlayer extends AppCompatActivity {
         player = new SimpleExoPlayer.Builder(this).build();
         playerView.setPlayer(player);
 
-        Uri videoUri = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, videoId);
+        Uri videoUri = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,videoId);
         MediaSource mediaSource = buildMediaSource(videoUri);
         player.prepare(mediaSource);
         player.setPlayWhenReady(true);
@@ -155,6 +175,7 @@ public class VideoPlayer extends AppCompatActivity {
             releasePlayer();
         }
         super.onPause();
+
     }
 
     @Override
@@ -165,24 +186,26 @@ public class VideoPlayer extends AppCompatActivity {
         super.onStop();
     }
 
-    @Override
-    public void onBackPressed() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
-        int selectedItemId = bottomNavigationView.getSelectedItemId();
-        if (R.id.home != selectedItemId) {
-            setHomeItem(HomePage.class);
-
-        } else {
-            //super.onBackPressed();
-            System.exit(0);
-
-        }
 
 
-    }
+//    @Override
+//    public void onBackPressed() {
+////        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
+////        int selectedItemId = bottomNavigationView.getSelectedItemId();
+////        if (R.id.home != selectedItemId) {
+////            setHomeItem(HomePage.class);
+////
+////        } else {
+////            //super.onBackPressed();
+////            System.exit(0);
+//
+//        }
 
-    public void setHomeItem(Class<HomePage> activity) {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.home);
-    }
+
+
+
+//    public void setHomeItem(Class<HomePage> activity) {
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
+//        bottomNavigationView.setSelectedItemId(R.id.home);
+//    }
 }

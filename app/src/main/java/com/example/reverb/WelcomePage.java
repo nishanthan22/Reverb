@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 //import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 
 public class WelcomePage extends AppCompatActivity {
-    Button Homebtn,Prevbtn;
+    Button Homebtn;
     EditText username;
 
 
@@ -29,30 +30,56 @@ public class WelcomePage extends AppCompatActivity {
         setContentView(R.layout.activity_welcome_page);
         username =findViewById(R.id.NameUser);
         Homebtn = findViewById(R.id.homepage);
-        Prevbtn = findViewById(R.id.preview);
-        Prevbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(WelcomePage.this, R.style.BottomSheetDialogTheme);
-                View bottomSheetView = LayoutInflater.from(getApplicationContext()).inflate(
-                        R.layout.bottom_slider,
-                        (LinearLayout)findViewById(R.id.bottom_sheet_container)
-                );
-                bottomSheetDialog.setContentView(bottomSheetView);
-                bottomSheetDialog.show();
-            }
 
-        });
         Homebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String name = username.getText().toString();
+                checkdata();
 
-                Intent homeintent = new Intent(WelcomePage.this,HomePage.class);
-                homeintent.putExtra("Username",name);
-                startActivity(homeintent);
-                finish();
             }
         });
+//        Prevbtn = findViewById(R.id.preview);
+//        Prevbtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(WelcomePage.this, R.style.BottomSheetDialogTheme);
+//                View bottomSheetView = LayoutInflater.from(getApplicationContext()).inflate(
+//                        R.layout.bottom_slider,
+//                        (LinearLayout)findViewById(R.id.bottom_sheet_container)
+//                );
+//                bottomSheetDialog.setContentView(bottomSheetView);
+//                bottomSheetDialog.show();
+//            }
+//
+//        });
+
+    }
+
+    boolean isEmpty(EditText text) {
+        CharSequence str = text.getText().toString();
+        return TextUtils.isEmpty(str);
+    }
+
+    private void checkdata() {
+        boolean isValid = true;
+        String user_nm = username.getText().toString();
+        if (isEmpty(username)) {
+            username.setError("Name is required");
+            isValid = false;
+        }
+        else
+        {
+            isValid = true;
+            String name = username.getText().toString();
+
+            Intent homeintent = new Intent(WelcomePage.this,HomePage.class);
+            homeintent.putExtra("Username",name);
+            startActivity(homeintent);
+            finish();
+        }
+
+
+
+
     }
 }

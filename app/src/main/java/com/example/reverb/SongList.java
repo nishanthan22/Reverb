@@ -2,6 +2,7 @@ package com.example.reverb;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -12,6 +13,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import android.Manifest;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -22,6 +24,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
@@ -54,6 +57,10 @@ public class SongList extends AppCompatActivity implements SearchView.OnQueryTex
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_song_list);
+        this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.action);
+        // getActionBar().setElevation(0);
+        View view = getSupportActionBar().getCustomView();
 
         permission();
     }
@@ -175,6 +182,7 @@ public class SongList extends AppCompatActivity implements SearchView.OnQueryTex
         getMenuInflater().inflate(R.menu.menu1,menu);
         MenuItem menuItem = menu.findItem(R.id.search);
         SearchView searchView = (SearchView) menuItem.getActionView();
+        searchView.setQueryHint("Search your song here");
         searchView.setOnQueryTextListener(this);
         return super.onCreateOptionsMenu(menu);
     }
@@ -216,5 +224,12 @@ public class SongList extends AppCompatActivity implements SearchView.OnQueryTex
             ARTIST_TO_FRAG=null;
             SONGNAME_TO_FRAG=null;
         }
+    }
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        Intent i = new Intent(this,HomePage.class);
+        startActivity(i);
     }
 }

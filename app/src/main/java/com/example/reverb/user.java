@@ -110,7 +110,7 @@ public class user extends AppCompatActivity{
 
                     case R.id.musicitem:
                         startActivity(new Intent(getApplicationContext()
-                                ,AudioPlayer.class));
+                                ,SongList.class));
                         finish();
                         overridePendingTransition(0,0);
                         return true;
@@ -124,7 +124,7 @@ public class user extends AppCompatActivity{
 
                     case R.id.Video:
                         startActivity(new Intent(getApplicationContext()
-                                ,VideoPlayer.class));
+                                ,allvideos.class));
                         finish();
                         overridePendingTransition(0,0);
                         return true;
