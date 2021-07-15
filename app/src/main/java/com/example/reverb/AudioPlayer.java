@@ -311,7 +311,6 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
             playpausebtn.setImageResource(R.drawable.ic_baseline_pause_24);
             uri = Uri.parse(listFiles.get(position).getPath());
         }
-        showNotification(R.drawable.ic_baseline_pause_24);
         Intent i3 = new Intent(this,MusicService.class);
         i3.putExtra("servicePosition",position);
         startService(i3);
@@ -506,6 +505,8 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
         song_name.setText(listFiles.get(position).getTitle());
         author.setText(listFiles.get(position).getArtist());
         musicService.OnCompleted();
+        showNotification(R.drawable.ic_baseline_pause_24);
+
 
     }
 

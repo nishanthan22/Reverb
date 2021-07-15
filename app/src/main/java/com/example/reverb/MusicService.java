@@ -66,10 +66,10 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
                     playPause();
                     break;
                 case "next":
-                    nextsongcard();
+                    nextSong();
                     break;
                 case "previous":
-                   previoussongcard();
+                   previousSong();
                     break;
             }
         }
@@ -119,7 +119,7 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
         uri = Uri.parse(musicFiles.get(position).getPath());
         SharedPreferences.Editor editor = getSharedPreferences(MUSIC_LAST_PLAYED,MODE_PRIVATE)
                 .edit();
-        editor.putString(MUSIC_FILE,uri.toString());
+        editor.putString(MUSIC_FILE, uri.toString());
         editor.putString(ARTIST_NAME,musicFiles.get(position).getArtist());
         editor.putString(SONG_NAME,musicFiles.get(position).getTitle());
         editor.apply();
@@ -158,14 +158,14 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
         this.actionPlaying = actionPlaying;
     }
 
-    void nextsongcard(){
+    void nextSong(){
         if (actionPlaying!=null){
             actionPlaying.nextSong();
         }
 
     }
 
-    void previoussongcard(){
+    void previousSong(){
         if (actionPlaying!=null){
             actionPlaying.previousSong();
         }
