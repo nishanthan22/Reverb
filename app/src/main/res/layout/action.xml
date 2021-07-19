@@ -4,16 +4,17 @@
     android:layout_height="?actionBarSize"
     android:gravity="center_vertical"
     android:padding="10dp">
-    <TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/name"
-    android:layout_weight="1"
 
-    android:textSize="32sp"
-    android:textColor="#fff"
-    android:textStyle="bold"
-    android:text="Music"/>
+    <TextView
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_weight="1"
+
+        android:text="Music"
+        android:textColor="#fff"
+        android:textSize="32sp"
+        android:textStyle="bold" />
 
 
 
