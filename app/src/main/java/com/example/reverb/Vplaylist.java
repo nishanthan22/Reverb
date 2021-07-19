@@ -1,7 +1,6 @@
 package com.example.reverb;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,7 +18,6 @@ public class Vplaylist extends AppCompatActivity {
     static ArrayList<String> f_files =new ArrayList();
     static ArrayList<ModelVideo> v = new ArrayList<>();
     int position = -1;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
