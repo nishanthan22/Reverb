@@ -121,6 +121,7 @@
                 android:textColor="#fff"
                 app:backgroundTint="#CDDC39"
                 app:icon="@drawable/ic_baseline_video_library_24"
+                app:iconPadding="20dp"
                 app:iconSize="84dp"
                 app:iconTint="#fff" />
 
@@ -133,8 +134,11 @@
                 android:background="@drawable/lay1"
                 android:textColor="#fff"
                 app:backgroundTint="#FF5722"
-                app:icon="@drawable/ic_baseline_playlist_play_24"
-                app:iconSize="100dp"
+                app:icon="@drawable/ic_folder"
+                app:iconPadding="20dp"
+
+
+                app:iconSize="85dp"
                 app:iconTint="#fff" />
 
 
@@ -164,7 +168,7 @@
                 android:layout_marginStart="48dp"
                 android:layout_marginLeft="48dp"
                 android:gravity="top"
-                android:text="Playlists"
+                android:text="Folders"
                 android:textColor="#fff"
                 android:textSize="18dp" />
         </LinearLayout>

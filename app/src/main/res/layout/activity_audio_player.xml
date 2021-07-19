@@ -20,8 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:layout_above="@id/bot_navigation"
-        >
+        android:layout_marginTop="32dp">
 
         <TextView
             android:id="@+id/songname"
@@ -45,7 +44,8 @@
             android:id="@+id/cover_image"
             android:layout_width="match_parent"
             android:layout_height="414dp"
-            android:src="@drawable/alanedited2" />
+            android:src="@drawable/alanedited2"
+            android:scaleType="centerCrop"/>
 
 
 
@@ -65,7 +65,8 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="60dp">
+            android:layout_height="60dp"
+            android:layout_marginTop="48dp">
 
             <SeekBar
                 android:id="@+id/seekbar"
@@ -108,12 +109,13 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center">
+            android:gravity="center"
+            >
 
             <ImageView
                 android:id="@+id/loop"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_gravity="left"
                 android:paddingTop="2dp"
                 android:background="@drawable/ic_baseline_loop_24"
@@ -121,8 +123,8 @@
 
             <ImageButton
                 android:id="@+id/rewind"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
 
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
@@ -144,28 +146,29 @@
 
             <ImageButton
                 android:id="@+id/forward"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
                 android:background="@drawable/ic_baseline_forward_10_24"
                 app:srcCompat="@drawable/ic_baseline_forward_10_24" />
 
-            <ImageView
+            <ToggleButton
                 android:id="@+id/like"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
-                android:background="@drawable/ic_baseline_favorite_border_24"
-                app:srcCompat="@drawable/ic_baseline_favorite_border_24" />
+                android:textOff=""
+                android:textOn=""
+                />
 
         </LinearLayout>
 
 
     </LinearLayout>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
+    <!--<com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bot_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -180,6 +183,6 @@
         app:menu="@menu/bottom_navigation"
 
 
-        />
+        />-->
 
 </RelativeLayout>

@@ -11,6 +11,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -23,9 +24,13 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
+import java.io.File;
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+
+import static com.example.reverb.WelcomePage.name;
+
 
 public class user extends AppCompatActivity{
 
@@ -39,17 +44,22 @@ public class user extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user);
-        Intent intent = getIntent();
-        String ni = intent.getStringExtra("u_name");
+        //Intent intent = getIntent();
+        //String ni = intent.getStringExtra("u_name");
         uiname=findViewById(R.id.uiname);
-        uiname.setText(ni);
+        b_cimage=findViewById(R.id.b_r);
+        //uiname.setText(ni);
+        //String u_name= s;
+        uiname.setText(name);
+
         c_image=findViewById(R.id.circleImageView);
         b_cimage=findViewById(R.id.b_r);
         fab=findViewById(R.id.imgup);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImagePicker.Companion.with(user.this).crop().maxResultSize(1080,1080).galleryOnly().start();
+                ImagePicker.Companion.with(user.this).crop().maxResultSize(1080,1080).galleryOnly().saveDir(getExternalFilesDir(Environment.DIRECTORY_DCIM)).start();
+
 
             }
         });
@@ -166,6 +176,12 @@ public class user extends AppCompatActivity{
         super.onActivityResult(requestCode, resultCode, data);
         Uri uri = data.getData();
         c_image.setImageURI(uri);
+        //ImagePicker.Companion.with(user.this).
+
+        //b_cimage.setImage(c_image);
+
+        //b_cimage.setImageMatrix(c_image.getImageMatrix());
+
 
     }
 

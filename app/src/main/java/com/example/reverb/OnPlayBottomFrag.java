@@ -60,8 +60,9 @@ public class OnPlayBottomFrag extends Fragment implements ServiceConnection {
             @Override
             public void onClick(View v) {
                 if (musicService!=null){
+                    musicService.nextSong();
                     if (getActivity()!=null) {
-                        musicService.nextsongcard();
+
                         SharedPreferences.Editor editor = getActivity().getSharedPreferences(MUSIC_LAST_PLAYED,MODE_PRIVATE)
                                 .edit();
                         editor.putString(MUSIC_FILE, musicService.musicFiles.get(musicService.position).getPath());
@@ -164,13 +165,13 @@ public class OnPlayBottomFrag extends Fragment implements ServiceConnection {
         }
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-        if (getContext()!=null){
-            getContext().unbindService(this);
-        }
-    }
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        if (getContext()!=null){
+//            getContext().unbindService(this);
+//        }
+//    }
 
 
 //    @Override

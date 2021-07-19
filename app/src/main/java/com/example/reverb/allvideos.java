@@ -32,6 +32,7 @@ public class allvideos extends AppCompatActivity {
     TextView noofvid;
 
     private ArrayList<ModelVideo> videosList = new ArrayList<>();
+    //static ArrayList<String> folder_names= new ArrayList<>();
     private AdapterVideoList adapterVideoList;
     Uri uri;
     @Override
@@ -170,6 +171,11 @@ public class allvideos extends AppCompatActivity {
                         } else {
                             duration_formatted = String.valueOf(hrs).concat(":".concat(String.format(Locale.UK, "%02d", min).concat(":".concat(String.format(Locale.UK, "%02d", sec)))));
                         }
+//                        int slashFirstIndex = data.getPath().lastIndexOf("/");
+//                        String subString = data.getPath().substring(0,slashFirstIndex);
+//
+//                        int index= subString.lastIndexOf("/");
+//                        String folderName = subString.substring(index+1,slashFirstIndex);
 
                         videosList.add(new ModelVideo(id, data, title, duration_formatted));
 //                        setsize(videosList.size());
