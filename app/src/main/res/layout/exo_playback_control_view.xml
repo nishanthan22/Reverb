@@ -3,13 +3,69 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/rootLayout">
+    >
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/volume_container"
+        android:gravity="center"
+        android:layout_marginTop="100dp"
+        android:layout_marginBottom="100dp"
+
+        >
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/volume"
+            android:src="@drawable/volume"
+            />
+        <ProgressBar
+            android:layout_width="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_height="150dp"
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:max="100"
+            android:progress="50"
+            android:id="@+id/volume_slider"
+            android:visibility="visible"/>
+            <!--android:progressDrawable="@drawable/medium_vertical_bar"-->
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/vol_center_text"
+        android:gravity="center"
+        android:visibility="visible"
+        android:layout_centerHorizontal="true"
+        android:layout_height="match_parent">
+        <ImageView
+            android:layout_width="@dimen/dimen_40dp"
+            android:layout_height="@dimen/dimen_40dp"
+            android:src="@drawable/volume"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="50"
+            android:textSize="48dp"
+            android:textColor="@color/white"/>
+
+    </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_centerInParent="true">
+        <!--<ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/exo_prev"
+            android:src="@drawable/prev"
+            android:layout_margin="16dp"/>-->
         <ImageView
             android:layout_width="50dp"
             android:layout_height="50dp"
@@ -38,6 +94,13 @@
             android:id="@+id/exo_ffwd"
             android:src="@drawable/ic_baseline_forward_10_24"
             android:layout_margin="16dp"/>
+        <!--<ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/exo_next"
+            android:src="@drawable/next"
+
+            android:layout_margin="16dp"/>-->
 
     </LinearLayout>
     <LinearLayout

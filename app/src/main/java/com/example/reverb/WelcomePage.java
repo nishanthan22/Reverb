@@ -20,7 +20,8 @@ import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class WelcomePage extends AppCompatActivity {
     Button Homebtn;
-    EditText username;
+   static EditText username;
+   static String name;
 
 
 
@@ -29,6 +30,7 @@ public class WelcomePage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_page);
         username =findViewById(R.id.NameUser);
+        //s = username.getText().toString();
         Homebtn = findViewById(R.id.homepage);
 
         Homebtn.setOnClickListener(new View.OnClickListener() {
@@ -70,10 +72,10 @@ public class WelcomePage extends AppCompatActivity {
         else
         {
             isValid = true;
-            String name = username.getText().toString();
+             name = username.getText().toString();
 
             Intent homeintent = new Intent(WelcomePage.this,HomePage.class);
-            homeintent.putExtra("Username",name);
+            //homeintent.putExtra("Username",name);
             startActivity(homeintent);
             finish();
         }

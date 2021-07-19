@@ -3,6 +3,7 @@ package com.example.reverb;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -24,11 +25,13 @@ import android.view.GestureDetector;
 import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -50,7 +53,8 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     //Initializing the views
 
     TextView song_name,author,seekstart,seekstop;
-    ImageView loop,rewind,forward,like,cover_image,bgim;
+    ImageView loop,rewind,forward,cover_image,bgim;
+    ToggleButton like;
 
     FloatingActionButton playpausebtn;
     SeekBar seekbar;
@@ -71,10 +75,23 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_player);
+
 //        BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
 //        bottomNavigationView.setSelectedItemId(R.id.musicitem);
         mediaSessionCompat = new MediaSessionCompat(getBaseContext(),"My Audio");
         initviews();
+        like.setChecked(false);
+        like.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_baseline_favorite_border_24));
+        like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(isChecked)
+                    like.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_baseline_favorite_24));
+                else
+                    like.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_baseline_favorite_border_24));
+
+            }
+        });
         song_name.setSelected(true);
         getIntentMethod();
         previousActivity=getIntent().getStringExtra("songlist");
@@ -340,7 +357,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
             Glide.with(getApplicationContext())
                     .asBitmap()
 
-                    .load(R.drawable.logocircled)
+                    .load(R.drawable.reverb_logo)
                     .into(cover_image);
 
         }
