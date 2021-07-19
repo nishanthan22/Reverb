@@ -17,6 +17,10 @@ public class ModelVideo {
         //this.path= path;
     }
 
+    public ModelVideo(String id, String path, String title, String size, String resolution, String duration, String disName, String width_height) {
+
+    }
+
     public static void get(int position)
     {
 
@@ -61,5 +65,9 @@ public class ModelVideo {
 
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+    public String getPath() {
+        return null;
     }
 }
