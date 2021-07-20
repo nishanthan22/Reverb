@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
+    android:background="@drawable/home_bg"
 
     tools:context=".user">
 
@@ -96,24 +96,9 @@
         android:id="@+id/viewpager2"
         android:layout_width="match_parent"
         android:isScrollContainer="true"
-        android:layout_above="@id/bot_navigation"
+
 
         android:layout_height="wrap_content" />
 
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bot_navigation"
-        android:layout_alignParentBottom="true"
-        android:background="?android:attr/windowBackground"
-        app:itemBackground="@color/black"
-        app:itemIconTint="@drawable/nav_item_color"
-        app:menu="@menu/bottom_navigation"
-        app:itemTextColor="@color/white"
-
-
-
-        />
 
 </RelativeLayout>

@@ -4,7 +4,6 @@
     android:id="@+id/musicitem"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/background"
     android:padding="8dp">
 
     <ImageView
@@ -40,16 +39,14 @@
         android:textSize="15sp">
 
     </TextView>
-<!--    <ImageView-->
-<!--        android:id="@+id/addPlaylistButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:src="@drawable/ic_baseline_playlist_play_24"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_centerVertical="true"-->
-<!--        />-->
-
-
+    <!--    <ImageView-->
+    <!--        android:id="@+id/addPlaylistButton"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:src="@drawable/ic_baseline_playlist_play_24"-->
+    <!--        android:layout_alignParentEnd="true"-->
+    <!--        android:layout_centerVertical="true"-->
+    <!--        />-->
 
 
 </RelativeLayout>

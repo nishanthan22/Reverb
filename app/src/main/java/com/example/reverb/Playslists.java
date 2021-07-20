@@ -22,7 +22,9 @@ public class Playslists extends AppCompatActivity {
         if (playList!=null){
             pladapter = new PlayListAdapter(getApplicationContext(),playList);
             recyclerViewPl.setAdapter(pladapter);
-            recyclerViewPl.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.VERTICAL, false));
+            recyclerViewPl.setLayoutManager(new LinearLayoutManager(getApplicationContext(), RecyclerView.HORIZONTAL, false));
+            SpacingItemDecorator itemDecorator= new SpacingItemDecorator(32);
+            recyclerViewPl.addItemDecoration(itemDecorator);
         }
     }
 }

@@ -51,7 +51,7 @@ public class AlbumDetails extends AppCompatActivity {
         } else {
             Glide.with(this)
                     .asBitmap()
-                    .load(R.drawable.r_logo)
+                    .load(R.drawable.album)
                     .into(albumPicture);
 
         }

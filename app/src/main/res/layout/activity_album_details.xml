@@ -7,16 +7,18 @@
     android:background="@drawable/background"
     tools:context=".AlbumDetails">
     <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
         android:id="@+id/albumPic"
         android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
         android:src="@drawable/r_logo"
-        android:scaleType="fitCenter"/>
+        android:scaleType="centerCrop"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/albumPic"
+        android:layout_marginTop="16dp"
         android:id="@+id/drecyView"/>
 
 

@@ -31,7 +31,8 @@ public class Folder_Details extends AppCompatActivity {
 
         int j = 0;
         for (int i = 0;i<videosList.size();i++){
-            if (videosList.get(i).getAlbum().equals(albumName))
+            //if (videosList.get(i).getAlbum().equals(albumName))
+            if(albumName.equals(videosList.get(i).getAlbum()))
             {
                 folder_videos.add(j,videosList.get(i));
                 j++;

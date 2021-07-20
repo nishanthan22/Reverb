@@ -58,7 +58,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
         } else {
             Glide.with(pContext)
                     .asBitmap()
-                    .load(R.drawable.ic_baseline_music_note_24)
+                    .load(R.drawable.reverb_logo)
                     .into(holder.plSongimg);
 
         }
