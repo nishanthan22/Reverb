@@ -29,25 +29,30 @@ public class AdapterVideoList extends RecyclerView.Adapter<AdapterVideoList.MyVi
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.row_video, parent, false);
+
         return new MyViewHolder(itemView);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
         final ModelVideo item = videosList.get(position);
-       holder.tv_title.setText(item.getTitle());
-       holder.tv_duration.setText(item.getDuration());
-        Glide.with(context).load(item.getData()).into(holder.imgView_thumbnail);
+        int s=getItemCount();
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), VideoPlayer.class);
-                intent.putExtra("position", position);
+            holder.tv_title.setText(item.getTitle());
+            holder.tv_duration.setText(item.getDuration());
+            Glide.with(context).load(item.getData()).into(holder.imgView_thumbnail);
+            //holder.setIsRecyclable(false);
 
-                v.getContext().startActivity(intent);
-            }
-        });
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(v.getContext(), VideoPlayer.class);
+                    intent.putExtra("position", position);
+
+                    v.getContext().startActivity(intent);
+                }
+            });
+
     }
 
     @Override

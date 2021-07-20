@@ -31,7 +31,7 @@ import java.util.Locale;
 public class allvideos extends AppCompatActivity {
     TextView noofvid;
 
-    static ArrayList<ModelVideo> videosList = new ArrayList<>();
+    final static ArrayList<ModelVideo> videosList = new ArrayList<>();
     static ArrayList<ModelVideo> folder= new ArrayList<>();
     ArrayList<String> duplicate1 = new ArrayList<>();
     private AdapterVideoList adapterVideoList;
@@ -121,10 +121,16 @@ public class allvideos extends AppCompatActivity {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 123);
             } else {
-                loadVideos();
+                if(videosList.size()==0)
+                    loadVideos();
+                if(videosList.size()!=0){
+                 setsize(videosList.size());}
             }
         } else {
-            loadVideos();
+            if(videosList.size()==0)
+            {
+                loadVideos();
+            }
         }
     }
 
@@ -142,12 +148,14 @@ public class allvideos extends AppCompatActivity {
     }
 
     private void loadVideos() {
+
         new Thread() {
             @Override
             public void run() {
                 super.run();
                 String[] projection = {MediaStore.Video.Media._ID, MediaStore.Video.Media.DISPLAY_NAME, MediaStore.Video.Media.DURATION,MediaStore.Video.Media.ALBUM};
                 String sortOrder = MediaStore.Video.Media.DATE_ADDED + " DESC";
+
 
                 Cursor cursor = getApplication().getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, projection, null, null, sortOrder);
                 if (cursor != null) {
@@ -185,7 +193,8 @@ public class allvideos extends AppCompatActivity {
 //                        String folderName = subString.substring(index+1,slashFirstIndex);
 
                         ModelVideo m=new ModelVideo(id, data, title, duration_formatted,album);
-                        videosList.add(m);
+
+                         videosList.add(m);
                         if (!duplicate1.contains(album)){
                             folder.add(m);
                             duplicate1.add(album);
@@ -201,6 +210,7 @@ public class allvideos extends AppCompatActivity {
                         });
                         setsize(videosList.size());
                     }
+
 
                 }
 
