@@ -12,6 +12,7 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +27,8 @@ import java.util.List;
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> {
      private Context mContext;
      static ArrayList<MusicFiles> mFiles;
+//     static ArrayList<String> playListFiles;
+//     static String plNames;
     // private List<MusicFiles> myfiles;
      static Uri uri;
 
@@ -79,6 +82,18 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> 
 
                }
           });
+//          holder.plbutton.setOnClickListener(new View.OnClickListener() {
+//              @Override
+//              public void onClick(View v) {
+//                  plNames=mFiles.get(position).getPath();
+//
+//                  playListFiles.add(plNames);
+//                  Toast.makeText(mContext.getApplicationContext(), "S"+playListFiles,Toast.LENGTH_SHORT)
+//                          .show();
+//
+//
+//              }
+//          });
 
      }
 
@@ -97,6 +112,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> 
                super(itemView);
                filename = itemView.findViewById(R.id.txtsongname);
                album_art = itemView.findViewById(R.id.imgsong);
+               //plbutton=itemView.findViewById(R.id.addPlaylistButton);
           }
      }
 

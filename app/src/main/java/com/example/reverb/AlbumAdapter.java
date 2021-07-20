@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,6 +44,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.MyHolder> {
     public void onBindViewHolder(@NonNull @NotNull AlbumAdapter.MyHolder holder, int position) {
         holder.album_name.setText(albumFiles.get(position).getAlbum());
         uri = Uri.parse(albumFiles.get(position).getPath());
+        Log.d("BBBB"+uri.getPath(),"RAVICHANDRAN");
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         mmr.setDataSource(uri.toString());
         byte[] album = mmr.getEmbeddedPicture();
