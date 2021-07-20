@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/musicitem"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     android:background="@drawable/background"
+    android:layout_height="wrap_content"
     android:padding="8dp">
 
     <ImageView
-        android:id="@+id/imgsong"
+        android:id="@+id/plistsongimg"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentStart="true"
@@ -21,15 +19,16 @@
     </ImageView>
 
     <TextView
-        android:id="@+id/txtsongname"
+        android:id="@+id/plistsongname"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="5dp"
-        android:layout_toEndOf="@+id/imgsong"
-        android:layout_toRightOf="@+id/imgsong"
+        android:layout_toEndOf="@+id/plistsongimg"
+        android:layout_toRightOf="@+id/plistsongimg"
         android:ellipsize="marquee"
         android:marqueeRepeatLimit="marquee_forever"
         android:padding="6dp"
@@ -40,17 +39,6 @@
         android:textSize="15sp">
 
     </TextView>
-<!--    <ImageView-->
-<!--        android:id="@+id/addPlaylistButton"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:src="@drawable/ic_baseline_playlist_play_24"-->
-<!--        android:layout_alignParentEnd="true"-->
-<!--        android:layout_centerVertical="true"-->
-<!--        />-->
-
-
 
 
 </RelativeLayout>
-

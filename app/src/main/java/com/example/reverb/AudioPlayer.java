@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.app.Notification;
 import android.app.PendingIntent;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.MediaMetadataRetriever;
@@ -17,7 +19,9 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.provider.MediaStore;
 import android.support.v4.media.session.MediaSessionCompat;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
@@ -26,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
@@ -37,10 +42,10 @@ import static com.example.reverb.AlbumDetailsAdapter.albumFiles;
 import static com.example.reverb.ApplicationClass.ACTION_NEXT;
 import static com.example.reverb.ApplicationClass.ACTION_PLAY;
 import static com.example.reverb.ApplicationClass.ACTION_PREVIOUS;
-import static com.example.reverb.ApplicationClass.CHANNEL_ID_1;
 import static com.example.reverb.ApplicationClass.CHANNEL_ID_2;
 import static com.example.reverb.SongAdapter.mFiles;
 import static com.example.reverb.SongList.loopBoolean;
+import static com.example.reverb.SongList.musicFiles;
 
 public class AudioPlayer extends AppCompatActivity implements ActionPlaying, ServiceConnection {
 
@@ -63,6 +68,9 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     RelativeLayout relativeLayout;
     MusicService musicService;
     MediaSessionCompat mediaSessionCompat;
+    static PlayListAdapter pladapter;
+
+    static ArrayList<MusicFiles> playList = new ArrayList<>();
 
 
     @Override
@@ -79,11 +87,52 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
         like.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(isChecked)
-                    like.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(),R.drawable.ic_baseline_favorite_24));
+                Context context = getApplicationContext();
+                if (isChecked) {
+                    like.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_baseline_favorite_24));
+
+
+                    ArrayList<String> duplicatep = new ArrayList<>();
+                    ArrayList<MusicFiles> tempPlayList = new ArrayList<>();
+                    Uri p_uri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                    String[] projectionp = {
+                            MediaStore.Audio.Media.ALBUM,
+                            MediaStore.Audio.Media.TITLE,
+                            MediaStore.Audio.Media.DURATION,
+                            MediaStore.Audio.Media.DATA,
+                            MediaStore.Audio.Media.ARTIST
+                    };
+
+                    Cursor cursor1 = context.getContentResolver().query(p_uri, projectionp, null, null, null);
+                    if (cursor1!= null) {
+                        while (cursor1.moveToNext()) {
+                            String pAlbum = cursor1.getString(0);
+                            String pTitle = cursor1.getString(1);
+                            String pDuration = cursor1.getString(2);
+                            String pPath = cursor1.getString(3);
+                            String pArtist = cursor1.getString(4);
+                            MusicFiles playListFiles = new MusicFiles(pPath,pTitle,pArtist,pAlbum,pDuration);
+                            Log.e("P_Path :"+pPath,"P_Album :"+pAlbum);
+                            tempPlayList.add(playListFiles);
+
+                            if (listFiles.get(position).getPath().equals(pPath)){
+                                playList.add(playListFiles);
+                                duplicatep.add(pTitle);
+                            }
+                        }
+
+                        Toast.makeText(getApplicationContext(), "Song added to PlayList", Toast.LENGTH_SHORT)
+                                .show();
+                        cursor1.close();
+
+
+                    }
+
+
+                }
+
                 else
                     like.setBackgroundDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.ic_baseline_favorite_border_24));
-
             }
         });
         song_name.setSelected(true);
@@ -591,6 +640,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
 
                     return true;
                 }
+
 
                 @Override
                 public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
