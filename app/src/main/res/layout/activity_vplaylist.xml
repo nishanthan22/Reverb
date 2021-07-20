@@ -9,60 +9,50 @@
     android:background="@color/black">
 
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="388dp"
         android:layout_height="wrap_content"
-        android:text="Folders"
-        android:textStyle="bold"
-        android:textSize="32dp"
-        android:textColor="#fff"
-        android:layout_marginTop="32dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginTop="32dp"
         android:layout_marginBottom="16dp"
-        />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="match_parent"
-        android:layout_marginTop="16dp"
-        android:layout_height="match_parent"
-        android:id="@+id/rFolder"
-        />
+        android:text="Folders"
+        android:textColor="#fff"
+        android:textSize="32dp"
+        android:textStyle="bold" />
 
     <ImageView
-        android:layout_width="58dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_folder"
-        android:layout_marginLeft="16dp"
-        android:layout_marginBottom="16dp"/>
+        android:layout_width="160dp"
+        android:layout_height="51dp"
+        android:layout_marginBottom="16dp"
+        android:layout_x="40dp"
+        android:layout_y="22dp"
+        android:src="@drawable/ic_folder" />
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_gravity="center_vertical">
-
-        <TextView
+    <TextView
             android:id="@+id/folderName"
-            android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_x="101dp"
+            android:layout_y="21dp"
+            android:gravity="center"
             android:text="FolderName"
             android:textColor="@color/white"
             android:textSize="18dp" />
 
         <TextView
             android:id="@+id/videosCount"
-            android:gravity="center"
-            android:layout_width="match_parent"
+            android:layout_width="161dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+            android:layout_x="101dp"
+            android:layout_y="53dp"
+            android:gravity="center"
             android:text="10"
             android:textColor="@color/white"
             android:textSize="18dp" />
 
-
-    </LinearLayout>
-
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rFolder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
 
 
 
