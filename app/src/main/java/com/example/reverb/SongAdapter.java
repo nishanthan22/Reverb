@@ -27,20 +27,13 @@ import java.util.List;
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> {
      private Context mContext;
      static ArrayList<MusicFiles> mFiles;
-//     static ArrayList<String> playListFiles;
-//     static String plNames;
-    // private List<MusicFiles> myfiles;
      static Uri uri;
 
      SongAdapter(Context mContext, ArrayList<MusicFiles> mFiles) {
           this.mFiles = mFiles;
           this.mContext = mContext;
-         // this.myfiles = new ArrayList<>(mFiles);
      }
-//      public void filterList(ArrayList<MusicFiles> filterlist){
-//          mFiles = filterlist;
-//          notifyDataSetChanged();
-//      }
+
 
      @NonNull
      @Override

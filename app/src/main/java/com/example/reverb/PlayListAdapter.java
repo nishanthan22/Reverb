@@ -46,7 +46,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
         holder.plSongname.setText(pFiles.get(position).getTitle());
         pl_uri=Uri.parse(pFiles.get(position).getPath());
         //String pPath = pFiles.get(position).getPath();
-        Log.d("AAMMAA"+pl_uri.getPath(),"NISHANTHAN");
+
         MediaMetadataRetriever mmr1 = new MediaMetadataRetriever();
         mmr1.setDataSource(pl_uri.toString());
         byte[] album = mmr1.getEmbeddedPicture();

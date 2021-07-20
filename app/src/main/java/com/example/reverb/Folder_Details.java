@@ -24,7 +24,7 @@ public class Folder_Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_folder_details);
         recyclerView= findViewById(R.id.r_folderinfo);
-        f_name=findViewById(R.id.folder_name);
+        f_name=findViewById(R.id.folder_namevv);
 
         albumName = getIntent().getStringExtra("albumName");
         f_name.setText(albumName);
@@ -36,20 +36,15 @@ public class Folder_Details extends AppCompatActivity {
                 j++;
             }
         }
-
-
-
-
-
-
     }
     @Override
     protected void onResume() {
         super.onResume();
         if (!(folder_videos.size()<1)){
             folderDetailsAdapter = new FolderDetailsAdapter(this,folder_videos);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
             recyclerView.setAdapter(folderDetailsAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
+
 
         }
     }
