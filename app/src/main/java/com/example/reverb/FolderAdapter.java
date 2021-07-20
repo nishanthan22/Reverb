@@ -1,6 +1,7 @@
 package com.example.reverb;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,10 +17,10 @@ import java.util.ArrayList;
 
 public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.MyViewHolder> {
 
-    static ArrayList<String> videosList1 = new ArrayList<>();
+    private ArrayList<ModelVideo> videosList1 = new ArrayList<>();
     Context context;
 
-    FolderAdapter(Context context, ArrayList<String> videosList){
+    FolderAdapter(Context context, ArrayList<ModelVideo> videosList){
         this.context = context;
         this.videosList1 = videosList;
     }
@@ -31,13 +32,23 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
         View itemView1 = LayoutInflater.from(parent.getContext()).inflate(R.layout.vfolder, parent, false);
-        return new FolderAdapter.MyViewHolder(itemView1);
+        return new MyViewHolder(itemView1);
     }
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull FolderAdapter.MyViewHolder holder, int position) {
-        final String item1 = videosList1.get(position);
-        holder.f_title.setText(item1);
+//        final ModelVideo item1 = videosList1.get(position);
+        //holder.v.setText(albumFiles.get(position).getAlbum());
+        holder.f_title.setText(videosList1.get(position).getAlbum());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(context,Folder_Details.class);
+                i.putExtra("albumName",videosList1.get(position).getAlbum());
+                context.startActivity(i);
+            }
+        });
+
     }
 
     @Override

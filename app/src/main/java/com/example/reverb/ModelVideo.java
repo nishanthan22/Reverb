@@ -6,14 +6,15 @@ public class ModelVideo {
 
     long id;
     Uri data;
-    String title, duration;
+    String title, duration,album;
 
 
-    public ModelVideo(long id, Uri data, String title, String duration) {
+    public ModelVideo(long id, Uri data, String title, String duration,String album) {
         this.id = id;
         this.data = data;
         this.title = title;
         this.duration = duration;
+        this.album=album;
         //this.path= path;
     }
 
@@ -44,6 +45,14 @@ public class ModelVideo {
 
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public String getAlbum() {
+        return album;
+    }
+
+    public void setAlbum(String album) {
+        this.album = album;
     }
 
     //public static String getPath()

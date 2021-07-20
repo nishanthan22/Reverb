@@ -31,9 +31,11 @@ import java.util.Locale;
 public class allvideos extends AppCompatActivity {
     TextView noofvid;
 
-    private ArrayList<ModelVideo> videosList = new ArrayList<>();
-    //static ArrayList<String> folder_names= new ArrayList<>();
+    static ArrayList<ModelVideo> videosList = new ArrayList<>();
+    static ArrayList<ModelVideo> folder= new ArrayList<>();
+    ArrayList<String> duplicate1 = new ArrayList<>();
     private AdapterVideoList adapterVideoList;
+    //private FolderAdapter folderAdapter;
     Uri uri;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,6 +110,8 @@ public class allvideos extends AppCompatActivity {
 
         recyclerView.setAdapter(adapterVideoList);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
+        //folderAdapter = new FolderAdapter(this,videosList);
+
 
 
     }
@@ -142,7 +146,7 @@ public class allvideos extends AppCompatActivity {
             @Override
             public void run() {
                 super.run();
-                String[] projection = {MediaStore.Video.Media._ID, MediaStore.Video.Media.DISPLAY_NAME, MediaStore.Video.Media.DURATION};
+                String[] projection = {MediaStore.Video.Media._ID, MediaStore.Video.Media.DISPLAY_NAME, MediaStore.Video.Media.DURATION,MediaStore.Video.Media.ALBUM};
                 String sortOrder = MediaStore.Video.Media.DATE_ADDED + " DESC";
 
                 Cursor cursor = getApplication().getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, projection, null, null, sortOrder);
@@ -150,12 +154,15 @@ public class allvideos extends AppCompatActivity {
                     int idColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media._ID);
                     int titleColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DISPLAY_NAME);
                     int durationColumn = cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DURATION);
+                    int albumColumn =cursor.getColumnIndexOrThrow(MediaStore.Video.Media.ALBUM);
                     //int pathColumn= cursor.getColumnIndexOrThrow(MediaStore.Video.Media.DATA);
 
                     while (cursor.moveToNext()) {
                         long id = cursor.getLong(idColumn);
                         String title = cursor.getString(titleColumn);
                         int duration = cursor.getInt(durationColumn);
+                        String album = cursor.getString(albumColumn);
+
 
                         //String  path = cursor.getString(pathColumn);
 
@@ -177,7 +184,13 @@ public class allvideos extends AppCompatActivity {
 //                        int index= subString.lastIndexOf("/");
 //                        String folderName = subString.substring(index+1,slashFirstIndex);
 
-                        videosList.add(new ModelVideo(id, data, title, duration_formatted));
+                        ModelVideo m=new ModelVideo(id, data, title, duration_formatted,album);
+                        videosList.add(m);
+                        if (!duplicate1.contains(album)){
+                            folder.add(m);
+                            duplicate1.add(album);
+
+                        }
 //                        setsize(videosList.size());
 
                         runOnUiThread(new Runnable() {

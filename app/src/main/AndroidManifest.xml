@@ -4,30 +4,33 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 
     <application
+        android:name=".ApplicationClass"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:name=".ApplicationClass"
         android:theme="@style/Theme.Reverb">
-        <activity android:name=".AlbumDetails"></activity>
-        <activity android:name=".allvideos"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
+        <activity android:name=".Folder_Details"></activity>
+        <activity android:name=".AlbumDetails" />
+        <activity
+            android:name=".allvideos"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity android:name=".Vplaylist" />
         <activity android:name=".Playslists" />
         <activity android:name=".user" />
-        <activity android:name=".VideoPlayer"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
-            />
+        <activity
+            android:name=".VideoPlayer"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode" />
         <activity android:name=".WelcomePage" />
         <activity android:name=".HomePage" />
-        <activity android:name=".SongList"
-            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar"/>
+        <activity
+            android:name=".SongList"
+            android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
         <activity android:name=".AudioPlayer" />
         <activity android:name=".MainActivity">
             <intent-filter>
@@ -40,12 +43,19 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-        <service android:name=".MusicService" android:enabled="true" android:exported="true" />
-        <receiver android:name=".NotificationReceiver" android:enabled="true">
+
+        <service
+            android:name=".MusicService"
+            android:enabled="true" />
+
+        <receiver
+            android:name=".NotificationReceiver"
+            android:enabled="true">
+
             <intent-filter>
-                <action android:name="actionprevious"/>
-                <action android:name="actionnext"/>
-                <action android:name="actionplay"/>
+                <action android:name="actionprevious" />
+                <action android:name="actionnext" />
+                <action android:name="actionplay" />
             </intent-filter>
         </receiver>
     </application>
