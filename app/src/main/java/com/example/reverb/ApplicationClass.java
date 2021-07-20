@@ -20,13 +20,13 @@ public class ApplicationClass extends Application {
 
     private void createNotificationChannel() {
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O){
-            NotificationChannel channel1 = new NotificationChannel(CHANNEL_ID_1,"Channel1", NotificationManager.IMPORTANCE_HIGH);
+            NotificationChannel channel1 = new NotificationChannel(CHANNEL_ID_1,"Channel1", NotificationManager.IMPORTANCE_DEFAULT);
             channel1.setDescription("Channel 1 Desc..");
 
-            NotificationChannel channel2 = new NotificationChannel(CHANNEL_ID_2,"Channel2",NotificationManager.IMPORTANCE_HIGH);
+            NotificationChannel channel2 = new NotificationChannel(CHANNEL_ID_2,"Channel2",NotificationManager.IMPORTANCE_DEFAULT);
             channel2.setDescription("Channel 2 Desc...");
             NotificationManager notificationManager = getSystemService(NotificationManager.class);
-            notificationManager.createNotificationChannel(channel1);
+           notificationManager.createNotificationChannel(channel1);
             notificationManager.createNotificationChannel(channel2);
         }
     }

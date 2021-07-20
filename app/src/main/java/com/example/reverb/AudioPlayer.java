@@ -1,28 +1,24 @@
 package com.example.reverb;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.core.content.ContextCompat;
 
 import android.app.Notification;
-import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.BlurMaskFilter;
 import android.media.MediaMetadataRetriever;
-import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.view.GestureDetector;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.CompoundButton;
@@ -30,11 +26,9 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.bumptech.glide.Glide;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
@@ -43,10 +37,10 @@ import static com.example.reverb.AlbumDetailsAdapter.albumFiles;
 import static com.example.reverb.ApplicationClass.ACTION_NEXT;
 import static com.example.reverb.ApplicationClass.ACTION_PLAY;
 import static com.example.reverb.ApplicationClass.ACTION_PREVIOUS;
+import static com.example.reverb.ApplicationClass.CHANNEL_ID_1;
 import static com.example.reverb.ApplicationClass.CHANNEL_ID_2;
 import static com.example.reverb.SongAdapter.mFiles;
 import static com.example.reverb.SongList.loopBoolean;
-import static com.example.reverb.SongList.musicFiles;
 
 public class AudioPlayer extends AppCompatActivity implements ActionPlaying, ServiceConnection {
 
@@ -535,6 +529,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
 
     void  showNotification(int playPauseBtn){
         Intent not_intent = new Intent(this,AudioPlayer.class);
+        not_intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         PendingIntent contentIntent = PendingIntent.getActivity(this,0,not_intent,0);
 
         Intent prev_intent = new Intent(this,NotificationReceiver.class).setAction(ACTION_PREVIOUS);
@@ -558,7 +553,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
                 } else {
                     thumb = BitmapFactory.decodeResource(getResources(), R.drawable.r_logo);
                 }
-                Notification notification = new NotificationCompat.Builder(this, CHANNEL_ID_2)
+                NotificationCompat.Builder notification = new NotificationCompat.Builder(this, CHANNEL_ID_2)
                         .setSmallIcon(playPauseBtn).setLargeIcon(thumb)
                         .setContentTitle(listFiles.get(position).getTitle())
                         .setContentText(listFiles.get(position).getArtist())
@@ -567,12 +562,12 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
                         .addAction(R.drawable.ic_skip_next_24, "Next", nextPending)
                         .setStyle(new androidx.media.app.NotificationCompat.MediaStyle()
                                 .setMediaSession(mediaSessionCompat.getSessionToken()))
-                        .setPriority(NotificationCompat.PRIORITY_HIGH)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                         .setOnlyAlertOnce(true)
-                        .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                        .build();
-                NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-                notificationManager.notify(0, notification);
+                        .setVisibility(NotificationCompat.VISIBILITY_PUBLIC);
+
+                NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+                notificationManager.notify(0,notification.build());
             }
     }
 
