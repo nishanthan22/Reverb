@@ -31,26 +31,24 @@ public class Folder_Details extends AppCompatActivity {
 
         int j = 0;
         for (int i = 0;i<videosList.size();i++){
-            if (albumName.equals(videosList.get(i).getAlbum())){
+            if (videosList.get(i).getAlbum().equals(albumName))
+            {
                 folder_videos.add(j,videosList.get(i));
                 j++;
             }
         }
-
-
-
-
-
-
-    }
-    @Override
-    protected void onResume() {
-        super.onResume();
         if (!(folder_videos.size()<1)){
             folderDetailsAdapter = new FolderDetailsAdapter(this,folder_videos);
             recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
             recyclerView.setAdapter(folderDetailsAdapter);
 
         }
+
+
+
+
+
+
     }
+
 }
