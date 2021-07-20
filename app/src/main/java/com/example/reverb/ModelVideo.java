@@ -2,7 +2,7 @@ package com.example.reverb;
 
 import android.net.Uri;
 
-public class ModelVideo {
+public class ModelVideo<size> {
 
     long id;
     Uri data;
@@ -61,5 +61,9 @@ public class ModelVideo {
 
     public void setDuration(String duration) {
         this.duration = duration;
+    }
+
+    public String getPath() {
+        return null;
     }
 }
