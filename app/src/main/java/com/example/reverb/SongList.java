@@ -41,7 +41,7 @@ import static com.example.reverb.SongFragment.songAdapter;
 public class SongList extends AppCompatActivity implements SearchView.OnQueryTextListener {
 
     public static final int REQUEST_CODE=1;
-    static ArrayList<MusicFiles> musicFiles;
+    static ArrayList<MusicFiles> musicFiles = new ArrayList<>();
     static boolean loopBoolean = false;
     static ArrayList<MusicFiles> albums = new ArrayList<>();
     public static final String MUSIC_LAST_PLAYED = "LAST_PLAYED";
@@ -114,7 +114,9 @@ public class SongList extends AppCompatActivity implements SearchView.OnQueryTex
         }
         else {
            Toast.makeText(getApplicationContext(),"Music Files",Toast.LENGTH_SHORT).show();
-            musicFiles=getAllAudio(getApplicationContext());
+           if (musicFiles.size()==0) {
+               musicFiles = getAllAudio(getApplicationContext());
+           }
             initViewPager();
 
         }
@@ -126,12 +128,15 @@ public class SongList extends AppCompatActivity implements SearchView.OnQueryTex
         if(requestCode==REQUEST_CODE){
             if(grantResults[0]==PackageManager.PERMISSION_GRANTED){
                 Toast.makeText(getApplicationContext(),"Music Files",Toast.LENGTH_SHORT).show();
-                musicFiles=getAllAudio(this);
+                if (musicFiles.size()==0) {
+                    musicFiles = getAllAudio(this);
+                }
                 initViewPager();
 
             }
             else{
                 ActivityCompat.requestPermissions(SongList.this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE} ,SongList.REQUEST_CODE);
+
             }
         }
     }
@@ -162,13 +167,15 @@ public class SongList extends AppCompatActivity implements SearchView.OnQueryTex
                 String artist =cursor.getString(4);
 
                 MusicFiles musicFiles=new MusicFiles(path,title,artist,album,duration);
-                Log.e("Path :"+path,"Album :"+album);
+                Log.e("PATH : "+path," ALBUM : "+album);
                 tempAudioList.add(musicFiles);
-                if (!duplicate.contains(album)){
-                    albums.add(musicFiles);
-                    duplicate.add(album);
 
-                }
+                    if (!duplicate.contains(album)) {
+                        albums.add(musicFiles);
+                        duplicate.add(album);
+
+                    }
+
 
             }
             cursor.close();

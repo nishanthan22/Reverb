@@ -703,6 +703,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     public void onBackPressed()
     {
         super.onBackPressed();
+
         Intent i = new Intent(this,SongList.class);
         startActivity(i);
     }

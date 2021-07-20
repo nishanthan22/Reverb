@@ -31,7 +31,7 @@ public class ModelVideo {
         this.id = id;
     }
 
-    public  Uri getData() {
+    public Uri getData() {
         return data;
     }
 

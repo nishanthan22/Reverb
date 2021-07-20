@@ -40,9 +40,11 @@ public class AlbumFragment extends Fragment {
 
 
         if (!(albums.size() < 1)) {
-            albumAdapter = new AlbumAdapter(getContext(), albums);
-            recyclerView.setAdapter(albumAdapter);
-            recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+
+                albumAdapter = new AlbumAdapter(getContext(), albums);
+                recyclerView.setAdapter(albumAdapter);
+                recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
+
 
         }
         return view;
