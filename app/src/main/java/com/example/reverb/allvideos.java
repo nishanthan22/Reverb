@@ -17,6 +17,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -176,6 +177,7 @@ public class allvideos extends AppCompatActivity {
                         //String  path = cursor.getString(pathColumn);
 
                         Uri data = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id);
+                       // Log.e("DATA"+data.getPath(),"Path");
 
                         String duration_formatted;
                         int sec = ((duration / 1000) % 60);

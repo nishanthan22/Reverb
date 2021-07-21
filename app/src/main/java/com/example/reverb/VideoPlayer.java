@@ -52,6 +52,10 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import static com.example.reverb.AdapterVideoList.videosList;
+import static com.example.reverb.AlbumDetailsAdapter.albumFiles;
+import static com.example.reverb.FolderDetailsAdapter.folder_details;
+import static com.example.reverb.SongAdapter.mFiles;
+import static com.example.reverb.allvideos.folder;
 
 public class VideoPlayer extends AppCompatActivity {
 
@@ -96,9 +100,16 @@ public class VideoPlayer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_video_player);
         //videoId = getIntent().getExtras().getLong("videoId");
-        videosFiles= videosList;
-
         int pos=getIntent().getIntExtra("position",-1);
+        String sender = getIntent().getStringExtra("sender");
+        if(sender != null && sender.equals("folder_files"))
+        {
+            videosFiles=folder_details;
+        }
+        else {
+            videosFiles= videosList;}
+
+
          //uri = videosFiles.get(pos).getData();
          videoId = videosFiles.get(pos).getId();
          getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);

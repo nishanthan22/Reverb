@@ -21,7 +21,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 public class FolderDetailsAdapter extends RecyclerView.Adapter<FolderDetailsAdapter.MyViewHolder1> {
-    private ArrayList<ModelVideo> folder_details = new ArrayList<>();
+     static ArrayList<ModelVideo> folder_details = new ArrayList<>();
     Context context;
     static Uri uri;
     FolderDetailsAdapter(Context context, ArrayList<ModelVideo> folder_details){
@@ -42,17 +42,26 @@ public class FolderDetailsAdapter extends RecyclerView.Adapter<FolderDetailsAdap
        // final ModelVideo itemf= folder_details.get(position);
         holder.tv_title1.setText(folder_details.get(position).getTitle());
         holder.tv_duration1.setText(folder_details.get(position).getDuration());
-        //Glide.with(context).load(folder_details.get(position).getData()).into(holder.imgView_thumbnail1);
+        Glide.with(context).load(folder_details.get(position).getData()).into(holder.imgView_thumbnail1);
 
-        Log.e("FOLDER"+uri,"PATH");
-//        uri = folder_details.get(position).getData();
+//        Log.e("FOLDER"+uri,"PATH");
+//        String paath = folder_details.get(position).getData().toString();
 //        MediaMetadataRetriever mmr = new MediaMetadataRetriever();
-//        mmr.setDataSource(uri.toString());
-        //byte[] album;
-            Glide.with(context)
-                    .asBitmap()
-                    .load(R.drawable.ic_baseline_music_note_24)
-                    .into(holder.imgView_thumbnail1);
+//        mmr.setDataSource(paath);
+//        byte[] album= mmr.getEmbeddedPicture();
+//        if(album!=null)
+//        {
+//            Glide.with(context)
+//                    .asBitmap()
+//                    .load(album)
+//                    .into(holder.imgView_thumbnail1);
+//
+//        }
+//        else
+//        {Glide.with(context)
+//                    .asBitmap()
+//                    .load(R.drawable.ic_baseline_music_note_24)
+//                    .into(holder.imgView_thumbnail1);}
 
 
 
@@ -60,6 +69,7 @@ public class FolderDetailsAdapter extends RecyclerView.Adapter<FolderDetailsAdap
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent(v.getContext(), VideoPlayer.class);
+                intent1.putExtra("sender","folder_files");
                 intent1.putExtra("position", position);
                 v.getContext().startActivity(intent1);
             }

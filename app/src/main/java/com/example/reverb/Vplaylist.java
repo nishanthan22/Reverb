@@ -24,6 +24,13 @@ public class Vplaylist extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vplaylist);
         v=folder;
+        for(int i=0;i<v.size();i++)
+        {
+            if(v.get(i).getTitle()=="")
+            {
+                v.remove(i);
+            }
+        }
 
 //        int slashFirstIndex = v.get(position).getData().getPath().lastIndexOf("/");
 //        String subString = v.get(position).getData().getPath().substring(0,slashFirstIndex);
