@@ -44,7 +44,7 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.MyHolder> {
     public void onBindViewHolder(@NonNull @NotNull AlbumAdapter.MyHolder holder, int position) {
         holder.album_name.setText(albumFiles.get(position).getAlbum());
         uri = Uri.parse(albumFiles.get(position).getPath());
-        Log.d("BBBB"+uri.getPath(),"RAVICHANDRAN");
+        Log.d("ALBUM PATH"+uri.getPath(),"PATH OF ALBUM");
         MediaMetadataRetriever mmr = new MediaMetadataRetriever();
         mmr.setDataSource(uri.toString());
         byte[] album = mmr.getEmbeddedPicture();

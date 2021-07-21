@@ -361,8 +361,12 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     private void getIntentMethod() {
         position = getIntent().getIntExtra("position",-1);
         String sender = getIntent().getStringExtra("sender");
+
         if(sender != null && sender.equals("albumDetails")){
             listFiles=albumFiles;
+        }
+        else if(sender !=null && sender.equals("PlaylistFiles")){
+            listFiles=mFiles;
         }
         else {
             listFiles = mFiles;

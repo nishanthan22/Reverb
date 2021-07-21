@@ -179,6 +179,7 @@ public class allvideos extends AppCompatActivity {
                         Uri data = ContentUris.withAppendedId(MediaStore.Video.Media.EXTERNAL_CONTENT_URI, id);
                        // Log.e("DATA"+data.getPath(),"Path");
 
+
                         String duration_formatted;
                         int sec = ((duration / 1000) % 60);
                         int min = (duration / (1000 * 60)) % 60;

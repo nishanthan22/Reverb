@@ -1,6 +1,8 @@
 package com.example.reverb;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.util.Log;
@@ -62,6 +64,20 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
                     .into(holder.plSongimg);
 
         }
+
+        //Play the song on clicking it
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent pPlay = new Intent(pContext,AudioPlayer.class);
+                pPlay.putExtra("position",position);
+                pPlay.putExtra("sender","PlaylistFiles");
+                pContext.startActivity(pPlay);
+                ((Activity)pContext).finish();
+
+            }
+        });
 
 
     }
