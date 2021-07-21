@@ -46,19 +46,19 @@ public class user extends AppCompatActivity{
         setContentView(R.layout.activity_user);
         //Intent intent = getIntent();
         //String ni = intent.getStringExtra("u_name");
-        uiname=findViewById(R.id.uiname);
-        b_cimage=findViewById(R.id.b_r);
+        uiname = findViewById(R.id.uiname);
+        b_cimage = findViewById(R.id.b_r);
         //uiname.setText(ni);
         //String u_name= s;
         uiname.setText(name);
 
-        c_image=findViewById(R.id.circleImageView);
-        b_cimage=findViewById(R.id.b_r);
-        fab=findViewById(R.id.imgup);
+        c_image = findViewById(R.id.circleImageView);
+        b_cimage = findViewById(R.id.b_r);
+        fab = findViewById(R.id.imgup);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ImagePicker.Companion.with(user.this).crop().maxResultSize(1080,1080).galleryOnly().saveDir(getExternalFilesDir(Environment.DIRECTORY_DCIM)).start();
+                ImagePicker.Companion.with(user.this).crop().maxResultSize(1080, 1080).galleryOnly().saveDir(getExternalFilesDir(Environment.DIRECTORY_DCIM)).start();
 
 
             }
@@ -70,7 +70,7 @@ public class user extends AppCompatActivity{
                 final BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(user.this, R.style.BottomSheetDialogTheme);
                 View bottomSheetView = LayoutInflater.from(getApplicationContext()).inflate(
                         R.layout.bottom_slider,
-                        (LinearLayout)findViewById(R.id.bottom_sheet_container)
+                        (LinearLayout) findViewById(R.id.bottom_sheet_container)
                 );
                 bottomSheetDialog.setContentView(bottomSheetView);
                 bottomSheetDialog.show();
@@ -78,16 +78,16 @@ public class user extends AppCompatActivity{
         });
 
 
-        BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.NameUser);
+//        BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
+//        bottomNavigationView.setSelectedItemId(R.id.NameUser);
 
-        final ViewPager viewPager=findViewById(R.id.viewpager2);
-        TabLayout tabLayout=findViewById(R.id.tablayout2);
+        final ViewPager viewPager = findViewById(R.id.viewpager2);
+        TabLayout tabLayout = findViewById(R.id.tablayout2);
         tabLayout.addTab(tabLayout.newTab().setText("Music"));
         tabLayout.addTab(tabLayout.newTab().setText("Media"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final adapter adapter= new adapter(getSupportFragmentManager(),tabLayout.getTabCount());
+        final adapter adapter = new adapter(getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -107,82 +107,84 @@ public class user extends AppCompatActivity{
 
             }
         });
-
-
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-
-                switch (item.getItemId())
-                {
-                    case R.id.NameUser:
-                        return true;
-
-                    case R.id.musicitem:
-                        startActivity(new Intent(getApplicationContext()
-                                ,SongList.class));
-                        finish();
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.home:
-                        startActivity(new Intent(getApplicationContext()
-                                ,HomePage.class));
-                        finish();
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    case R.id.Video:
-                        startActivity(new Intent(getApplicationContext()
-                                ,allvideos.class));
-                        finish();
-                        overridePendingTransition(0,0);
-                        return true;
-
-                    default:
-                        bottomNavigationView.setSelectedItemId(R.id.home);
-                }
-
-
-                return false;
-
-
-            }
-        });
     }
 
-    @Override
-    public void onBackPressed() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
-        int selectedItemId = bottomNavigationView.getSelectedItemId();
-        if (R.id.home != selectedItemId) {
-            setHomeItem(HomePage.class);
 
-        } else {
-            //super.onBackPressed();
-            System.exit(0);
+//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+//            @Override
+//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+//
+//                switch (item.getItemId())
+//                {
+//                    case R.id.NameUser:
+//                        return true;
+//
+//                    case R.id.musicitem:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,SongList.class));
+//                        finish();
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    case R.id.home:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,HomePage.class));
+//                        finish();
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    case R.id.Video:
+//                        startActivity(new Intent(getApplicationContext()
+//                                ,allvideos.class));
+//                        finish();
+//                        overridePendingTransition(0,0);
+//                        return true;
+//
+//                    default:
+//                        bottomNavigationView.setSelectedItemId(R.id.home);
+//                }
+//
+//
+//                return false;
+//
+//
+//            }
+//        });
+//    }
+//
+//    @Override
+//    public void onBackPressed() {
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
+//        int selectedItemId = bottomNavigationView.getSelectedItemId();
+//        if (R.id.home != selectedItemId) {
+//            setHomeItem(HomePage.class);
+//
+//        } else {
+//            //super.onBackPressed();
+//            System.exit(0);
+//        }
+//
+//
+//    }
+//
+//    public void setHomeItem(Class<HomePage> activity) {
+//        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
+//        bottomNavigationView.setSelectedItemId(R.id.home);
+//    }
+
+        @Override
+        protected void onActivityResult ( int requestCode, int resultCode,
+        @Nullable @org.jetbrains.annotations.Nullable Intent data){
+            super.onActivityResult(requestCode, resultCode, data);
+            Uri uri = data.getData();
+            c_image.setImageURI(uri);
+            //ImagePicker.Companion.with(user.this).
+
+            //b_cimage.setImage(c_image);
+
+            //b_cimage.setImageMatrix(c_image.getImageMatrix());
+
+
         }
 
-
     }
-
-    public void setHomeItem(Class<HomePage> activity) {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
-        bottomNavigationView.setSelectedItemId(R.id.home);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        Uri uri = data.getData();
-        c_image.setImageURI(uri);
-        //ImagePicker.Companion.with(user.this).
-
-        //b_cimage.setImage(c_image);
-
-        //b_cimage.setImageMatrix(c_image.getImageMatrix());
-
-
-    }
-
-}

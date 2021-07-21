@@ -44,7 +44,7 @@
             android:id="@+id/cover_image"
             android:layout_width="match_parent"
             android:layout_height="414dp"
-            android:src="@drawable/alanedited2"
+
             android:scaleType="centerCrop"/>
 
 
