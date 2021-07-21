@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:textColor="@color/white"
-        android:id="@+id/folder_name"
+        android:id="@+id/folder_namevv"
         android:layout_marginLeft="16dp"
         android:textSize="22dp"
         android:text="Folder"/>

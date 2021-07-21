@@ -2,6 +2,9 @@ package com.example.reverb;
 
 import android.content.Context;
 import android.content.Intent;
+import android.media.MediaMetadataRetriever;
+import android.net.Uri;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ import java.util.ArrayList;
 public class FolderDetailsAdapter extends RecyclerView.Adapter<FolderDetailsAdapter.MyViewHolder1> {
     private ArrayList<ModelVideo> folder_details = new ArrayList<>();
     Context context;
+    static Uri uri;
     FolderDetailsAdapter(Context context, ArrayList<ModelVideo> folder_details){
         this.context = context;
         this.folder_details = folder_details;
@@ -35,10 +39,22 @@ public class FolderDetailsAdapter extends RecyclerView.Adapter<FolderDetailsAdap
 
     @Override
     public void onBindViewHolder(@NonNull @NotNull FolderDetailsAdapter.MyViewHolder1 holder, int position) {
-        final ModelVideo itemf= folder_details.get(position);
-        holder.tv_title1.setText(itemf.getTitle());
-        holder.tv_duration1.setText(itemf.getDuration());
-        Glide.with(context).load(itemf.getData()).into(holder.imgView_thumbnail1);
+       // final ModelVideo itemf= folder_details.get(position);
+        holder.tv_title1.setText(folder_details.get(position).getTitle());
+        holder.tv_duration1.setText(folder_details.get(position).getDuration());
+        //Glide.with(context).load(folder_details.get(position).getData()).into(holder.imgView_thumbnail1);
+
+        Log.e("FOLDER"+uri,"PATH");
+//        uri = folder_details.get(position).getData();
+//        MediaMetadataRetriever mmr = new MediaMetadataRetriever();
+//        mmr.setDataSource(uri.toString());
+        //byte[] album;
+            Glide.with(context)
+                    .asBitmap()
+                    .load(R.drawable.ic_baseline_music_note_24)
+                    .into(holder.imgView_thumbnail1);
+
+
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -54,7 +70,7 @@ public class FolderDetailsAdapter extends RecyclerView.Adapter<FolderDetailsAdap
 
     @Override
     public int getItemCount() {
-        return 0;
+        return folder_details.size();
     }
 
     public class MyViewHolder1 extends RecyclerView.ViewHolder{

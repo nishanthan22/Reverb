@@ -105,6 +105,7 @@ public class allvideos extends AppCompatActivity {
 
 
         RecyclerView recyclerView = findViewById(R.id.recyclerView_videos);
+
        // recyclerView.setLayoutManager(new GridLayoutManager(this, 3)); //3 = column count
         adapterVideoList = new AdapterVideoList(this, videosList);
 

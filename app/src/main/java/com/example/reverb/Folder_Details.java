@@ -24,13 +24,14 @@ public class Folder_Details extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_folder_details);
         recyclerView= findViewById(R.id.r_folderinfo);
-        f_name=findViewById(R.id.folder_name);
+        f_name=findViewById(R.id.folder_namevv);
 
         albumName = getIntent().getStringExtra("albumName");
         f_name.setText(albumName);
 
         int j = 0;
         for (int i = 0;i<videosList.size();i++){
+
             //if (videosList.get(i).getAlbum().equals(albumName))
             if(albumName.equals(videosList.get(i).getAlbum()))
             {
@@ -38,18 +39,16 @@ public class Folder_Details extends AppCompatActivity {
                 j++;
             }
         }
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
         if (!(folder_videos.size()<1)){
             folderDetailsAdapter = new FolderDetailsAdapter(this,folder_videos);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
             recyclerView.setAdapter(folderDetailsAdapter);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this,RecyclerView.VERTICAL,false));
+
 
         }
-
-
-
-
-
-
     }
-
 }
