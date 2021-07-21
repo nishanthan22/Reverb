@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.Manifest;
 import android.content.ContentUris;
@@ -27,10 +28,13 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.Locale;
+import java.util.Set;
 
 public class allvideos extends AppCompatActivity {
     TextView noofvid;
+    SwipeRefreshLayout s;
 
     final static ArrayList<ModelVideo> videosList = new ArrayList<>();
     static ArrayList<ModelVideo> folder= new ArrayList<>();
@@ -42,6 +46,22 @@ public class allvideos extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_allvideos);
+       s=findViewById(R.id.refresh);
+       //s.setProgressBackgroundColorSchemeColor(Integer.parseInt("#fff"));
+       s.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+           @Override
+            public void onRefresh() {
+               if(videosList.size()!=0)
+               {
+                videosList.clear();
+                   loadVideos();
+               }
+
+
+               s.setRefreshing(false);
+
+           }
+        });
         noofvid = findViewById(R.id.vidsize);
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.custom_action_bar);
@@ -123,8 +143,11 @@ public class allvideos extends AppCompatActivity {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
                 requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 123);
             } else {
-                if(videosList.size()==0)
+                if(videosList.size()==0){
                     loadVideos();
+                    //setsize(videosList.size());
+                }
+
                 if(videosList.size()!=0){
                  setsize(videosList.size());}
             }
@@ -198,6 +221,10 @@ public class allvideos extends AppCompatActivity {
                         ModelVideo m=new ModelVideo(id, data, title, duration_formatted,album);
 
                          videosList.add(m);
+//                        Set<ModelVideo> set = new LinkedHashSet<ModelVideo>();
+//                        set.addAll(videosList);
+//                        videosList.clear();
+//                        videosList.addAll(set);
                         if (!duplicate1.contains(album)){
                             folder.add(m);
                             duplicate1.add(album);
@@ -211,15 +238,15 @@ public class allvideos extends AppCompatActivity {
                                 adapterVideoList.notifyItemInserted(videosList.size() - 1);
                             }
                         });
-                        setsize(videosList.size());
+                        //setsize(videosList.size());
                     }
 
 
                 }
+                setsize(videosList.size());
 
             }
         }.start();
-
 
     }
     private void setsize(int s)

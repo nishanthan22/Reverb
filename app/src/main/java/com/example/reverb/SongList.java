@@ -26,6 +26,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SearchView;
 import android.widget.Toast;
 
@@ -52,17 +54,27 @@ public class SongList extends AppCompatActivity implements SearchView.OnQueryTex
     public static String SONGNAME_TO_FRAG =null;
     public static final String ARTIST_NAME = "ARTIST_NAME";
     public static final String SONG_NAME ="SONG_NAME";
+    LinearLayout fr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_song_list);
+        fr=findViewById(R.id.bottomframe);
         this.getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
         getSupportActionBar().setCustomView(R.layout.action);
         // getActionBar().setElevation(0);
         View view = getSupportActionBar().getCustomView();
 
         permission();
+        fr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                OnPlayBottomFrag onPlayBottomFrag= new OnPlayBottomFrag();
+                onPlayBottomFrag.show(getSupportFragmentManager(),onPlayBottomFrag.getTag());
+            }
+        });
+
     }
 
     private void initViewPager(){

@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.media.MediaMetadataRetriever;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
 import android.os.IBinder;
@@ -15,10 +16,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import org.jetbrains.annotations.NotNull;
 
 import static android.content.Context.MODE_PRIVATE;
 import static com.example.reverb.SongList.ARTIST_TO_FRAG;
@@ -27,9 +33,11 @@ import static com.example.reverb.SongList.SHOW_MINI_PLAYER;
 import static com.example.reverb.SongList.SONGNAME_TO_FRAG;
 
 
-public class OnPlayBottomFrag extends Fragment implements ServiceConnection {
+public class OnPlayBottomFrag extends BottomSheetDialogFragment implements ServiceConnection {
 
-    ImageView nextBtn,albumPic;
+    ImageView nextBtn,albumPic,slider;
+    private RelativeLayout mBothhomsheet;
+    private BottomSheetBehavior sheetBehavior;
     TextView artist,songname;
     FloatingActionButton playFloatBtn;
     MusicService musicService;
@@ -55,6 +63,34 @@ public class OnPlayBottomFrag extends Fragment implements ServiceConnection {
         nextBtn = view.findViewById(R.id.card_next);
         albumPic=view.findViewById(R.id.card_image);
         playFloatBtn=view.findViewById(R.id.card_play);
+
+//        slider=view.findViewById(R.id.bottom_slider);
+//        mBothhomsheet=view.findViewById(R.id.bottom_sheet_layout);
+//        sheetBehavior=BottomSheetBehavior.from(mBothhomsheet);
+//        slider.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(sheetBehavior.getState() != BottomSheetBehavior.STATE_EXPANDED)
+//                {
+//                    sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+//                }
+//                else{
+//                    sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+//                }
+//            }
+//        });
+//        sheetBehavior.addBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
+//            @Override
+//            public void onStateChanged(@NonNull @NotNull View bottomSheet, int newState) {
+//
+//            }
+//
+//            @Override
+//            public void onSlide(@NonNull @NotNull View bottomSheet, float slideOffset) {
+//                slider.setRotation(slideOffset*180);
+//
+//            }
+//        });
 
         nextBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +167,7 @@ public class OnPlayBottomFrag extends Fragment implements ServiceConnection {
 
 
 
+
         return view;
 
     }
@@ -148,7 +185,7 @@ public class OnPlayBottomFrag extends Fragment implements ServiceConnection {
 
                 }
                 else {
-                    Glide.with(getContext()).load(R.drawable.ic_baseline_music_note_24)
+                    Glide.with(getContext()).load(R.drawable.m1)
                             .into(albumPic);
                 }
 
