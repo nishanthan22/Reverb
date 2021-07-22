@@ -1,71 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".OnPlayBottomFrag"
-    >
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehaviour"
+    app:behavior_peekHeight="70dp"
+    app:behavior_hideable="false"
+    android:id="@+id/bottom_sheet_layout">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/card_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
         android:background="@drawable/background"
         android:padding="5dp">
 
+        <RelativeLayout
+            android:id="@+id/Song_info"
+            android:layout_width="match_parent"
+            android:layout_height="70dp">
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="18dp"
+                android:layout_centerHorizontal="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/remove"
+                android:id="@+id/bottom_slider"/>
+
+            <TextView
+                android:id="@+id/card_songname"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:layout_marginLeft="15dp"
+                android:maxLines="1"
+                android:text="Song Name"
+
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/card_artistname"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/card_songname"
+                android:layout_marginStart="15dp"
+                android:layout_marginTop="5dp"
+                android:maxLines="1"
+                android:text="Artist"
+
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/card_next"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:src="@drawable/ic_card_next" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/card_play"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="10dp"
+                android:layout_toStartOf="@+id/card_next"
+                android:clickable="true"
+                android:focusable="true"
+
+                app:backgroundTint="@color/white"
+                app:fabSize="mini" />
+
+
+        </RelativeLayout>
+
         <ImageView
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:src="@drawable/r_logo"
+            android:id="@+id/card_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_below="@+id/Song_info"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:padding="10dp"
             android:scaleType="centerCrop"
-            android:id="@+id/card_image"/>
-        <ImageView
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:id="@+id/card_next"
-            android:src="@drawable/ic_card_next"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="10dp"/>
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/card_play"
+             />
 
-            android:clickable="true"
-            android:focusable="true"
-            android:layout_toStartOf="@+id/card_next"
-            android:layout_marginEnd="10dp"
-            app:backgroundTint="@color/white"
-            app:fabSize="mini"
-            android:layout_centerVertical="true"/>
-        <TextView
-            android:layout_width="wrap_content"
+        <!--<SeekBar
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/card_songname"
-            android:text="Song Name"
-            android:textColor="@color/white"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/card_image"
-            android:textSize="18sp"
-            android:maxLines="1"
-            android:layout_toStartOf="@+id/card_play"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/card_artistname"
-            android:text="Artist"
-            android:layout_below="@+id/card_songname"
-            android:textColor="@color/white"
-            android:layout_marginTop="5dp"
-            android:layout_marginStart="15dp"
-            android:layout_toEndOf="@+id/card_image"
-            android:textSize="15sp"
-            android:maxLines="1"
-            android:layout_toStartOf="@+id/card_play"/>
+            android:layout_below="@+id/card_image"
+            android:layout_marginTop="16dp"
+            android:id="@+id/fragment_seek"/>-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginTop="48dp">
 
+            <SeekBar
+                android:id="@+id/f_seekbar"
+
+                android:layout_width="220dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="20dp" />
+
+            <TextView
+                android:id="@+id/f_seekstart"
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="false"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="20dp"
+                android:layout_toStartOf="@+id/f_seekbar"
+                android:text="0.00"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/f_seekstop"
+                android:layout_width="32dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="false"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="20dp"
+                android:layout_toEndOf="@+id/f_seekbar"
+                android:text="4.00"
+                android:textColor="#fff"
+                android:textSize="14sp" />
+        </RelativeLayout>
 
 
 
@@ -73,4 +151,4 @@
 
 
 
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
