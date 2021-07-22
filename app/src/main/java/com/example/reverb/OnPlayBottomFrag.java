@@ -35,9 +35,9 @@ import static com.example.reverb.SongList.SONGNAME_TO_FRAG;
 
 public class OnPlayBottomFrag extends BottomSheetDialogFragment implements ServiceConnection {
 
-    ImageView nextBtn,albumPic,slider;
-    private RelativeLayout mBothhomsheet;
-    private BottomSheetBehavior sheetBehavior;
+    ImageView nextBtn,albumPic;  //slider;
+    //private RelativeLayout mBothhomsheet;
+    //private BottomSheetBehavior sheetBehavior;
     TextView artist,songname;
     FloatingActionButton playFloatBtn;
     MusicService musicService;
