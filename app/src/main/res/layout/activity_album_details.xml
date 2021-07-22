@@ -12,7 +12,7 @@
         android:id="@+id/albumPic"
         android:layout_marginTop="25dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/r_logo"
+
         android:scaleType="centerCrop"/>
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
