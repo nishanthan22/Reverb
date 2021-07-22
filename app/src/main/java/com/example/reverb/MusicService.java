@@ -28,6 +28,7 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
     public static final String MUSIC_FILE ="STORED_MUSIC";
     public static final String ARTIST_NAME = "ARTIST_NAME";
     public static final String SONG_NAME ="SONG_NAME";
+    public static final String TOTAL_DURATION  ="TOTAL_DURATION";
 
     @Override
     public void onCreate() {
@@ -122,6 +123,7 @@ public class MusicService extends Service implements MediaPlayer.OnCompletionLis
         editor.putString(MUSIC_FILE, uri.toString());
         editor.putString(ARTIST_NAME,musicFiles.get(position).getArtist());
         editor.putString(SONG_NAME,musicFiles.get(position).getTitle());
+        editor.putString(TOTAL_DURATION,musicFiles.get(position).getDuration());
         editor.apply();
 
         mediaPlayer = MediaPlayer.create(getBaseContext(),uri);
