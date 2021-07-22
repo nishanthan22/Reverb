@@ -25,9 +25,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
-            android:layout_marginTop="16dp"
-            android:text="Recently Played"
+            android:text="Last Played"
             android:gravity="center"
             android:textColor="#fff"
             android:textSize="20sp"
@@ -37,10 +35,14 @@
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_margin="25dp"
+            android:layout_gravity="center_horizontal"
             android:src="@drawable/music_album"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="32dp"
+            android:layout_marginRight="32dp"
+            android:singleLine="true"
             android:text="Song Name"
             android:id="@+id/rp_name"
             android:textColor="@color/white"
@@ -50,6 +52,8 @@
             android:layout_height="wrap_content"
             android:textSize="15sp"
             android:textColor="@color/white"
+            android:layout_marginRight="32dp"
+            android:layout_marginLeft="32dp"
             android:text="Author"
             android:paddingTop="5dp"
             android:id="@+id/rp_author"/>
@@ -74,6 +78,7 @@
             android:layout_height="wrap_content"
             android:textColor="#fff"
             android:text="Favorites"
+            android:gravity="center"
             android:textSize="20sp"
             android:textStyle="bold"
             android:layout_marginLeft="16dp"
