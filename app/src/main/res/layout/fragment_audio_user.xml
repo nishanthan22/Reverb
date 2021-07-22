@@ -14,22 +14,46 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:id="@+id/li1"
-        android:layout_height="260dp"
+        android:layout_height="280dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/s2"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="16dp"
+
             android:layout_marginTop="16dp"
             android:text="Recently Played"
+            android:gravity="center"
             android:textColor="#fff"
             android:textSize="20sp"
             android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/rp_pic"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="25dp"
+            android:src="@drawable/music_album"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Song Name"
+            android:id="@+id/rp_name"
+            android:textColor="@color/white"
+            android:textSize="20sp"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:textColor="@color/white"
+            android:text="Author"
+            android:paddingTop="5dp"
+            android:id="@+id/rp_author"/>
+
 
 
     </LinearLayout>
@@ -54,33 +78,18 @@
             android:textStyle="bold"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="16dp"/>
-
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:id="@+id/li3"
-        android:layout_below="@id/li2"
-        android:layout_height="260dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginRight="16dp"
-        android:background="@drawable/s2"
-        android:orientation="vertical">
-
-        <TextView
+        <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="#fff"
-            android:text="Most Played"
-            android:textSize="20sp"
-            android:textStyle="bold"
+            android:layout_gravity="center"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"/>
+            android:layout_marginRight="16dp"
+            android:layout_marginTop="32dp"
+            android:id="@+id/fav_recV"/>
 
 
     </LinearLayout>
+
 
     </RelativeLayout>
 

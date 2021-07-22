@@ -23,6 +23,7 @@ public class AlbumDetailsAdapter extends RecyclerView.Adapter<AlbumDetailsAdapte
 
     private Context mContext;
     static ArrayList<MusicFiles> albumFiles;
+
     View view;
     static Uri uri;
 

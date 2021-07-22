@@ -23,7 +23,7 @@ import java.util.ArrayList;
 
 public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayListHolder> {
     private Context pContext;
-    private ArrayList<MusicFiles> pFiles;
+    static ArrayList<MusicFiles> pFiles;
     static Uri pl_uri;
     View view;
 
@@ -73,8 +73,8 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
                 Intent pPlay = new Intent(pContext,AudioPlayer.class);
                 pPlay.putExtra("position",position);
                 pPlay.putExtra("sender","PlaylistFiles");
+                pPlay.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 pContext.startActivity(pPlay);
-                ((Activity)pContext).finish();
 
             }
         });

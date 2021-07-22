@@ -43,6 +43,7 @@ import static com.example.reverb.ApplicationClass.ACTION_NEXT;
 import static com.example.reverb.ApplicationClass.ACTION_PLAY;
 import static com.example.reverb.ApplicationClass.ACTION_PREVIOUS;
 import static com.example.reverb.ApplicationClass.CHANNEL_ID_2;
+import static com.example.reverb.PlayListAdapter.pFiles;
 import static com.example.reverb.SongAdapter.mFiles;
 import static com.example.reverb.SongList.loopBoolean;
 import static com.example.reverb.SongList.musicFiles;
@@ -365,8 +366,8 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
         if(sender != null && sender.equals("albumDetails")){
             listFiles=albumFiles;
         }
-        else if(sender !=null && sender.equals("PlaylistFiles")){
-            listFiles=mFiles;
+        else if (sender!=null && sender.equals("PlaylistFiles")){
+            listFiles=pFiles;
         }
         else {
             listFiles = mFiles;

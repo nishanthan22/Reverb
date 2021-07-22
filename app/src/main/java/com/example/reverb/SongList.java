@@ -52,8 +52,12 @@ public class SongList extends AppCompatActivity implements SearchView.OnQueryTex
     public static String PATH_TO_FRAG =null;
     public static String ARTIST_TO_FRAG =null;
     public static String SONGNAME_TO_FRAG =null;
+    public static String TOTAL_DURATION_TO_FLAG =null;
     public static final String ARTIST_NAME = "ARTIST_NAME";
     public static final String SONG_NAME ="SONG_NAME";
+    public static final String SEEK_START ="SEEK_START";
+    public static final String SEEK_STOP ="SEEK_STOP";
+    public static final String TOTAL_DURATION  ="TOTAL_DURATION";
     LinearLayout fr;
 
     @Override
@@ -231,17 +235,20 @@ public class SongList extends AppCompatActivity implements SearchView.OnQueryTex
         String path = preferences.getString(MUSIC_FILE,null);
         String artist = preferences.getString(ARTIST_NAME,null);
         String song_name = preferences.getString(SONG_NAME,null);
+        String totalDuration1 = preferences.getString(TOTAL_DURATION,null);
         if (path!= null){
             SHOW_MINI_PLAYER = true;
             PATH_TO_FRAG= path;
             ARTIST_TO_FRAG=artist;
             SONGNAME_TO_FRAG=song_name;
+            TOTAL_DURATION_TO_FLAG=totalDuration1;
         }
         else {
             SHOW_MINI_PLAYER =false;
             PATH_TO_FRAG=null;
             ARTIST_TO_FRAG=null;
             SONGNAME_TO_FRAG=null;
+            TOTAL_DURATION_TO_FLAG=null;
         }
     }
     @Override
