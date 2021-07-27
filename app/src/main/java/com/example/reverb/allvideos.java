@@ -56,8 +56,6 @@ public class allvideos extends AppCompatActivity {
                 videosList.clear();
                    loadVideos();
                }
-
-
                s.setRefreshing(false);
 
            }

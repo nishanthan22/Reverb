@@ -56,7 +56,8 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.MyHolder> {
         } else {
             Glide.with(mContext)
                     .asBitmap()
-                    .load(R.drawable.reverb_logo)
+                    .load(R.drawable.r_album_logo)
+                    .centerCrop()
                     .into(holder.album_image);
 
         }
