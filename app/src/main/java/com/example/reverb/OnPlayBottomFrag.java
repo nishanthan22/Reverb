@@ -183,7 +183,7 @@ public class OnPlayBottomFrag extends BottomSheetDialogFragment implements Servi
 
                                 }
                                 else {
-                                    Glide.with(getContext()).load(R.drawable.ic_baseline_music_note_24)
+                                    Glide.with(getContext()).load(R.drawable.m1)
                                             .into(albumPic);
                                 }
                                 if (TOTAL_DURATION_TO_FLAG!=null){

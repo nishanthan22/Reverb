@@ -59,7 +59,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> 
           } else {
                Glide.with(mContext)
                        .asBitmap()
-                       .load(R.drawable.ic_baseline_music_note_24)
+                       .load(R.drawable.aa)
                        .into(holder.album_art);
 
           }
