@@ -98,7 +98,7 @@
         android:isScrollContainer="true"
 
 
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent" />
 
 
 </RelativeLayout>

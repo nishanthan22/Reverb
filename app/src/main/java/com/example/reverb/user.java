@@ -32,10 +32,10 @@ import de.hdodenhof.circleimageview.CircleImageView;
 import static com.example.reverb.WelcomePage.name;
 
 
-public class user extends AppCompatActivity{
+public class user extends AppCompatActivity {
 
-    TextView uiname ;
-    CircleImageView c_image,b_cimage;
+    TextView uiname;
+    CircleImageView c_image, b_cimage;
 
     FloatingActionButton fab;
 
@@ -50,7 +50,7 @@ public class user extends AppCompatActivity{
         b_cimage = findViewById(R.id.b_r);
         //uiname.setText(ni);
         //String u_name= s;
-        uiname.setText(name);
+
 
         c_image = findViewById(R.id.circleImageView);
         b_cimage = findViewById(R.id.b_r);
@@ -172,19 +172,33 @@ public class user extends AppCompatActivity{
 //        bottomNavigationView.setSelectedItemId(R.id.home);
 //    }
 
-        @Override
-        protected void onActivityResult ( int requestCode, int resultCode,
-        @Nullable @org.jetbrains.annotations.Nullable Intent data){
-            super.onActivityResult(requestCode, resultCode, data);
-            Uri uri = data.getData();
-            c_image.setImageURI(uri);
-            //ImagePicker.Companion.with(user.this).
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode,
+                                    @Nullable @org.jetbrains.annotations.Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        Uri uri = data.getData();
+        c_image.setImageURI(uri);
+        //ImagePicker.Companion.with(user.this).
 
-            //b_cimage.setImage(c_image);
+        //b_cimage.setImage(c_image);
 
-            //b_cimage.setImageMatrix(c_image.getImageMatrix());
+        //b_cimage.setImageMatrix(c_image.getImageMatrix());
 
-
-        }
 
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent i = new Intent(this, HomePage.class);
+        startActivity(i);
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        uiname.setText(name);
+    }
+
+}

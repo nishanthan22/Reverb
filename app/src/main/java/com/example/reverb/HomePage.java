@@ -6,11 +6,14 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -21,6 +24,8 @@ public class HomePage extends AppCompatActivity {
     ImageView all_songs,playlist,all_videos,video_folders;
     TextView song,play;
     CircleImageView c;
+    long backpress = 0;
+    boolean back= false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +39,7 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent us = new Intent(HomePage.this,user.class);
                 startActivity(us);
+                finish();
             }
         });
         //b1 = findViewById(R.id.AllSongs);
@@ -45,6 +51,7 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent allsongs = new Intent(HomePage.this, SongList.class);
                 startActivity(allsongs);
+                finish();
 
             }
         });
@@ -54,6 +61,7 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent allsong = new Intent(HomePage.this, SongList.class);
                 startActivity(allsong);
+                finish();
 
             }
         });
@@ -63,6 +71,7 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent allso = new Intent(HomePage.this, Playslists.class);
                 startActivity(allso);
+                finish();
 
             }
         });
@@ -121,6 +130,7 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent playlist = new Intent(HomePage.this, Playslists.class);
                 startActivity(playlist);
+                finish();
 
             }
         });
@@ -131,6 +141,7 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent vid = new Intent(HomePage.this, allvideos.class);
                 startActivity(vid);
+                finish();
 
             }
         });
@@ -141,6 +152,7 @@ public class HomePage extends AppCompatActivity {
             public void onClick(View v) {
                 Intent vplay = new Intent(HomePage.this, Vplaylist.class);
                 startActivity(vplay);
+                finish();
 
             }
         });
@@ -149,8 +161,38 @@ public class HomePage extends AppCompatActivity {
     }
 
 
-//    @Override
-//    public void onBackPressed() {
+   @Override
+  public void onBackPressed() {
+//        if(back)
+//        {
+//            super.onBackPressed();
+//            return;
+//        }
+//        this.back = true;
+//        Toast.makeText(this,"Press back again to exist",Toast.LENGTH_SHORT).show();
+//        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                back=false;
+//            }
+//        },2000);
+
+
+//       backpress = (backpress + 1);
+//       if (backpress == 1) {
+//           Toast.makeText(getApplicationContext(), "Press Back Again to Exist ", Toast.LENGTH_SHORT).show();
+//
+//       }
+//      // backpress+=1;
+//       if (backpress > 1) {
+           super.onBackPressed();
+
+       //}
+
+   }
+
+
+
 //        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
 //        int selectedItemId = bottomNavigationView.getSelectedItemId();
 //
@@ -158,10 +200,10 @@ public class HomePage extends AppCompatActivity {
 //            setHomeItem(HomePage.this);
 //
 //        } else {
-//           super.onBackPressed();
-//            //System.exit(0);
+
+
 //
-//        }
+
 //
 //
 //    }

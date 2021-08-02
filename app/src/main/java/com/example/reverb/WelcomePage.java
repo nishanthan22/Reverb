@@ -3,8 +3,10 @@ package com.example.reverb;
 import androidx.appcompat.app.AppCompatActivity;
 
 //import android.content.Context;
+import android.content.Context;
 import android.content.Intent;
 //import android.content.SharedPreferences;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
@@ -83,5 +85,21 @@ public class WelcomePage extends AppCompatActivity {
 
 
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        SharedPreferences sharedPreferences=getSharedPreferences(name, Context.MODE_PRIVATE);
+        if(!sharedPreferences.getBoolean(name,false))
+        {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putBoolean(name,true);
+            editor.apply();
+        } else {
+            Intent i = new Intent(this,HomePage.class);
+            startActivity(i);
+            finish();
+        }
     }
 }

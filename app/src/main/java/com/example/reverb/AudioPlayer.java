@@ -71,6 +71,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     MediaSessionCompat mediaSessionCompat;
     static PlayListAdapter pladapter;
 
+
     static ArrayList<MusicFiles> playList = new ArrayList<>();
 
 
@@ -385,6 +386,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
 
     private void metaData(Uri uri) {
         MediaMetadataRetriever retriever = new MediaMetadataRetriever();
+        GlideBlurTransformation glideBlurTransformation;
         retriever.setDataSource(uri.toString());
         int totalDuration = Integer.parseInt(listFiles.get(position).getDuration())/1000;
         seekstop.setText(formattedTime(totalDuration));
@@ -394,10 +396,11 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
                     .asBitmap()
                     .load(art)
                     .into(cover_image);
-            //Glide.with(this)
-                   // .asBitmap()
-                    //.load("#FF000000")
-                    //.into(bgim);
+//            Glide.with(this)
+//                    .asBitmap()
+//                    .load(art)
+//                    .transform(new GlideBlurTransformation(this))
+//                    .into(bgim);
 
 
         }

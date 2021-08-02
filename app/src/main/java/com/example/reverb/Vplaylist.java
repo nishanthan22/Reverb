@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -18,11 +21,13 @@ public class Vplaylist extends AppCompatActivity {
     //static ArrayList<String> f_files =new ArrayList();
     static ArrayList<ModelVideo> v = new ArrayList<>();
     int position = -1;
+    TextView t;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vplaylist);
+        t=findViewById(R.id.invisible);
         v=folder;
         for(int i=0;i<v.size();i++)
         {
@@ -46,7 +51,20 @@ public class Vplaylist extends AppCompatActivity {
         FolderAdapter folderAdapter = new FolderAdapter(this, v);
 
         recyclerView.setAdapter(folderAdapter);
+        if(folderAdapter.getItemCount()!=0)
+        {
+            t.setVisibility(View.INVISIBLE);
+        }
+
+
         //recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(),RecyclerView.VERTICAL,false));
 
+    }
+    @Override
+    public void onBackPressed()
+    {
+        super.onBackPressed();
+        Intent i = new Intent(this,HomePage.class);
+        startActivity(i);
     }
 }
