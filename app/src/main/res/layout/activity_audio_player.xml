@@ -12,6 +12,7 @@
         android:layout_height="match_parent"
         android:id="@+id/bgim"
         android:scaleType="centerCrop"
+
       />
 
 

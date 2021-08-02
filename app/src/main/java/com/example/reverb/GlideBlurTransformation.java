@@ -32,7 +32,7 @@ public class GlideBlurTransformation extends BitmapTransformation {
 
         ScriptIntrinsicBlur script = ScriptIntrinsicBlur.create(rs, Element.U8_4(rs));
         script.setInput(input);
-        script.setRadius(30);
+        script.setRadius(25);
 
         script.forEach(output);
 
