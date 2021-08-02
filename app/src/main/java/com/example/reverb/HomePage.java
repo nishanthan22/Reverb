@@ -9,19 +9,25 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomePage extends AppCompatActivity {
-    Button b1, b2, b3, b4;
+    Button  b2, b3, b4;
+    ImageView all_songs,playlist,all_videos,video_folders;
+    TextView song,play;
     CircleImageView c;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        all_videos = findViewById(R.id.all_videos);
+        video_folders=findViewById(R.id.v_folders);
         c=findViewById(R.id.circle_profile);
         c.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -30,10 +36,11 @@ public class HomePage extends AppCompatActivity {
                 startActivity(us);
             }
         });
-        b1 = findViewById(R.id.AllSongs);
+        //b1 = findViewById(R.id.AllSongs);
+        all_songs = findViewById(R.id.all_son);
         //Intent intent = getIntent();
         // String n = intent.getStringExtra("Username");
-        b1.setOnClickListener(new View.OnClickListener() {
+        all_songs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent allsongs = new Intent(HomePage.this, SongList.class);
@@ -41,6 +48,25 @@ public class HomePage extends AppCompatActivity {
 
             }
         });
+        song=findViewById(R.id.alls);
+        song.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent allsong = new Intent(HomePage.this, SongList.class);
+                startActivity(allsong);
+
+            }
+        });
+        play=findViewById(R.id.playl);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent allso = new Intent(HomePage.this, Playslists.class);
+                startActivity(allso);
+
+            }
+        });
+
 //        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
 //        bottomNavigationView.setSelectedItemId(R.id.home);
 //
@@ -89,8 +115,8 @@ public class HomePage extends AppCompatActivity {
 //
 //            }
 //        });
-        b2 = findViewById(R.id.Playlists);
-        b2.setOnClickListener(new View.OnClickListener() {
+        playlist = findViewById(R.id.Playlists);
+        playlist.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent playlist = new Intent(HomePage.this, Playslists.class);
@@ -99,8 +125,8 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        b3 = findViewById(R.id.AllVideos);
-        b3.setOnClickListener(new View.OnClickListener() {
+
+        all_videos.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent vid = new Intent(HomePage.this, allvideos.class);
@@ -109,8 +135,8 @@ public class HomePage extends AppCompatActivity {
             }
         });
 
-        b4 = findViewById(R.id.VPlaylists);
-        b4.setOnClickListener(new View.OnClickListener() {
+
+        video_folders.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent vplay = new Intent(HomePage.this, Vplaylist.class);
