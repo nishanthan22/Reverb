@@ -10,10 +10,12 @@
     tools:context=".MainActivity">
 
 
+
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/profile_image"
         android:layout_width="300dp"
         android:layout_height="300dp"
+
         android:scaleType="centerCrop"
         android:src="@drawable/reverb_logo" />
 

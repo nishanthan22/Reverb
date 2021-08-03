@@ -65,6 +65,7 @@ public class FolderAdapter extends RecyclerView.Adapter<FolderAdapter.MyViewHold
             super(itemView);
             f_img=itemView.findViewById(R.id.folder_image);
             f_title=itemView.findViewById(R.id.folder_name);
+
         }
     }
 }

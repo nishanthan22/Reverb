@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_bg">
+
+    android:background="@color/black">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circle_profile"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_marginTop="32dp"
         android:layout_marginLeft="16dp"
 
 
-        android:src="@drawable/user2"/>
+        android:src="@drawable/puser"/>
 
 
     <LinearLayout
@@ -23,8 +24,9 @@
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_below="@+id/circle_profile"
+        android:backgroundTint="#9D7AA6"
 
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:background="@drawable/lay"
@@ -34,52 +36,71 @@
             android:id="@+id/Audio"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:text="Audio"
             android:textColor="#fff"
-            android:textSize="26dp"
+            android:textSize="28dp"
             android:textStyle="bold" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/all_son"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
 
-            <Button
-                android:id="@+id/AllSongs"
-                android:layout_width="286dp"
-                android:layout_height="69dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/lay1"
-                android:gravity="center|start"
-                android:text="All Songs"
-                android:textColor="#fff"
-                app:backgroundTint="#07A3A2"
-                app:icon="@drawable/ic_baseline_library_music_24"
-                app:iconSize="64dp"
-                app:iconTint="#fff" />
+                android:src="@drawable/mn"
 
-            <Button
+                android:layout_gravity="center_vertical"
+                />
+            <ImageView
                 android:id="@+id/Playlists"
-                android:layout_width="286dp"
-                android:layout_height="69dp"
-                android:layout_marginLeft="32dp"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/lay1"
-                android:gravity="center|start"
-                android:text="Playlists"
-                android:textColor="#fff"
-                app:backgroundTint="#FBC215"
-                app:icon="@drawable/ic_baseline_playlist_play_24"
-                app:iconSize="64dp"
-                app:iconTint="#fff" />
+                android:layout_width="100dp"
 
+                android:layout_height="100dp"
+
+                android:src="@drawable/playlist6"
+                android:layout_marginStart="66dp"
+
+                android:layout_gravity="center_vertical"
+                />
+
+
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="16dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All Songs"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:id="@+id/alls"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Playlists"
+                android:layout_marginStart="100dp"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:id="@+id/playl"
+                android:textStyle="bold"/>
 
         </LinearLayout>
 
@@ -88,12 +109,13 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:id="@+id/l2"
-        android:layout_height="264dp"
+        android:layout_height="254dp"
         android:layout_below="@+id/l1"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="64dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:background="@drawable/lay"
+        android:backgroundTint="#7E839C"
         android:orientation="vertical"
         android:layout_marginLeft="16dp">
 
@@ -101,85 +123,75 @@
             android:id="@+id/Video"
             android:layout_width="match_parent"
             android:layout_height="48dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginLeft="24dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
             android:text="Video"
             android:textColor="#fff"
-            android:textSize="26dp"
+            android:textSize="28dp"
             android:textStyle="bold" />
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/all_videos"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
 
-            <Button
-                android:id="@+id/AllVideos"
-                android:layout_width="118dp"
-                android:layout_height="123dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="48dp"
-                android:layout_marginRight="48dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/lay1"
-                android:textColor="#fff"
-                app:backgroundTint="#CDDC39"
-                app:icon="@drawable/ic_baseline_video_library_24"
-                app:iconPadding="20dp"
-                app:iconSize="84dp"
-                app:iconTint="#fff" />
+                android:src="@drawable/allvideoss"
 
-            <Button
-                android:id="@+id/VPlaylists"
-                android:layout_width="118dp"
-                android:layout_height="123dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/lay1"
-                android:textColor="#fff"
-                app:backgroundTint="#FF5722"
-                app:icon="@drawable/ic_folder"
-                app:iconPadding="20dp"
+                android:layout_gravity="center_vertical"
+                />
+            <ImageView
+                android:id="@+id/v_folders"
+                android:layout_width="100dp"
+
+                android:layout_height="100dp"
+
+                android:src="@drawable/vfolder"
+                android:layout_marginStart="66dp"
+
+                android:layout_gravity="center_vertical"
+                />
 
 
-                app:iconSize="85dp"
-                app:iconTint="#fff" />
+
 
 
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:orientation="horizontal">
-
+            android:layout_marginTop="16dp">
             <TextView
-                android:id="@+id/text3"
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_marginEnd="48dp"
-                android:layout_marginRight="48dp"
-                android:gravity="top"
+                android:layout_height="wrap_content"
                 android:text="All Videos"
-                android:textColor="#fff"
-                android:textSize="18dp" />
-
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:id="@+id/allv"
+                android:textStyle="bold"/>
             <TextView
-                android:id="@+id/text4"
                 android:layout_width="wrap_content"
-                android:layout_height="32dp"
-                android:layout_marginStart="48dp"
-                android:layout_marginLeft="48dp"
-                android:gravity="top"
+                android:layout_height="wrap_content"
                 android:text="Folders"
-                android:textColor="#fff"
-                android:textSize="18dp" />
+                android:layout_marginStart="96dp"
+                android:textColor="@color/white"
+                android:textSize="18dp"
+                android:id="@+id/vfold"
+                android:textStyle="bold"/>
+
         </LinearLayout>
+
+
+
 
     </LinearLayout>
 

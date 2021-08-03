@@ -75,6 +75,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
                 pPlay.putExtra("sender","PlaylistFiles");
                 pPlay.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
                 pContext.startActivity(pPlay);
+                //((Activity)pContext).finish();
 
             }
         });

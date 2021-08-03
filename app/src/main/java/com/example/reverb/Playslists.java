@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import static com.example.reverb.AudioPlayer.playList;
@@ -41,6 +42,13 @@ public class Playslists extends AppCompatActivity {
 //        }
 //
 //    }
+@Override
+public void onBackPressed()
+{
+    super.onBackPressed();
+    Intent i = new Intent(this,HomePage.class);
+    startActivity(i);
+}
 }
 
 
