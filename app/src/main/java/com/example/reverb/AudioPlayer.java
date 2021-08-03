@@ -14,6 +14,8 @@ import android.content.ServiceConnection;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaMetadataRetriever;
 import android.net.Uri;
 import android.os.Bundle;
@@ -70,6 +72,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     MusicService musicService;
     MediaSessionCompat mediaSessionCompat;
     static PlayListAdapter pladapter;
+    View v;
 
 
     static ArrayList<MusicFiles> playList = new ArrayList<>();
@@ -79,6 +82,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_player);
+         v = findViewById(R.id.view);
 
 //        BottomNavigationView bottomNavigationView= findViewById(R.id.bot_navigation);
 //        bottomNavigationView.setSelectedItemId(R.id.musicitem);
@@ -393,36 +397,34 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
         seekstop.setText(formattedTime(totalDuration));
         byte[] art = retriever.getEmbeddedPicture();
 
-        if (art != null){
+
+        if (art != null)
+        {
+            Bitmap bitmap = BitmapFactory.decodeByteArray(art,0,art.length);
+            Bitmap blurredBitmap = BlurBuilder.blur(context,bitmap);
+            v.setBackgroundDrawable( new BitmapDrawable( getResources(), blurredBitmap ) );
+
             Glide.with(getApplicationContext())
                     .asBitmap()
                     .load(art)
                     .into(cover_image);
 
-
-
         }
         else {
             Glide.with(getApplicationContext())
                     .asBitmap()
-
                     .load(R.drawable.reverb_logo)
                     .into(cover_image);
 
         }
 
-//        if (art != null)
-//        {
-//            Glide.with(context)
-//                    .asBitmap()
-//                    .load(art)
-//                    .transform(new GlideBlurTransformation(context))
-//                    .into(bgim);
-//        }
-
-
-
     }
+//    private void blurimage()
+//        {
+//
+//
+//    }
+
 
 //    @Override
 //    public void onBackPressed() {
