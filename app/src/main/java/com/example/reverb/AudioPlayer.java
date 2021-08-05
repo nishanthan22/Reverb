@@ -411,6 +411,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
 
         }
         else {
+            v.setBackgroundResource(R.color.black);
             Glide.with(getApplicationContext())
                     .asBitmap()
                     .load(R.drawable.reverb_logo)
