@@ -42,6 +42,14 @@ public class HomePage extends AppCompatActivity {
                 finish();
             }
         });
+//        Button angryButton = (Button) findViewById(R.id.angry_btn);
+//        angryButton.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                Toast.makeText(getApplicationContext(),"Title",Toast.LENGTH_SHORT)
+//                        .show();
+//
+//            }
+//        });
         //b1 = findViewById(R.id.AllSongs);
         all_songs = findViewById(R.id.all_son);
         //Intent intent = getIntent();
