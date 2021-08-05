@@ -43,7 +43,7 @@ public class PlayListAdapter extends RecyclerView.Adapter<PlayListAdapter.PlayLi
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull PlayListAdapter.PlayListHolder holder, int position) {
+    public void onBindViewHolder(@NonNull @NotNull PlayListAdapter.PlayListHolder holder,int position) {
 
         holder.plSongname.setText(pFiles.get(position).getTitle());
         pl_uri=Uri.parse(pFiles.get(position).getPath());
