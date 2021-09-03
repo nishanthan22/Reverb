@@ -15,7 +15,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Reverb">
-        <activity android:name=".Folder_Details"></activity>
+        <activity android:name=".swipe"></activity>
+        <activity android:name=".Folder_Details" />
         <activity android:name=".AlbumDetails" />
         <activity
             android:name=".allvideos"
@@ -31,9 +32,9 @@
         <activity
             android:name=".SongList"
             android:theme="@style/Theme.AppCompat.DayNight.DarkActionBar" />
-        <activity android:name=".AudioPlayer"
+        <activity
+            android:name=".AudioPlayer"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode" />
-
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -53,7 +54,6 @@
         <receiver
             android:name=".NotificationReceiver"
             android:enabled="true">
-
             <intent-filter>
                 <action android:name="actionprevious" />
                 <action android:name="actionnext" />
