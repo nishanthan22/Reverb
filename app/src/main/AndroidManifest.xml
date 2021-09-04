@@ -15,7 +15,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Reverb">
-        <activity android:name=".swipe"></activity>
+        <activity android:name=".swipe"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode">
+        </activity>
         <activity android:name=".Folder_Details" />
         <activity android:name=".AlbumDetails" />
         <activity

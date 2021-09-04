@@ -137,18 +137,15 @@
                 android:background="@drawable/ic_baseline_replay_10_24"
                 app:srcCompat="@drawable/ic_baseline_replay_10_24" />
 
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
+            <ImageView
                 android:id="@+id/play1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="72dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
                 android:clickable="true"
-                android:focusable="true"
-                android:background="@drawable/ic_baseline_play_arrow_24"
-                app:backgroundTint="@color/white"
-                app:srcCompat="@drawable/ic_baseline_play_arrow_24" />
+                app:srcCompat="@drawable/ic_baseline_play_circle_filled_24" />
 
             <ImageButton
                 android:id="@+id/forward1"

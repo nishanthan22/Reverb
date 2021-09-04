@@ -27,14 +27,18 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 
+import static com.example.reverb.swipe.mediaplayer;
+
 public class viewpageradapter extends RecyclerView.Adapter<viewpageradapter.ViewHolder>{
     private Context musicContext;
     static ArrayList<MusicFiles> musicFiles;
+    //int pos;
     static Uri uri;
 
     viewpageradapter(Context musicContext, ArrayList<MusicFiles> musicFiles) {
         this.musicFiles = musicFiles;
         this.musicContext = musicContext;
+        //this.pos=pos;
     }
 
     @NonNull
@@ -103,13 +107,13 @@ public class viewpageradapter extends RecyclerView.Adapter<viewpageradapter.View
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView song_name,author,seekstart,seekstop;
-        ImageView loop,rewind,forward,cover_image;
-        ToggleButton like;
-        View v1;
+         TextView song_name,author,seekstart,seekstop;
+         ImageView loop,rewind,forward,cover_image;
+         ToggleButton like;
+         View v1;
 
-        FloatingActionButton playpausebtn;
-        SeekBar seekbar;
+         ImageView playpausebtn;
+         SeekBar seekbar;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -126,6 +130,19 @@ public class viewpageradapter extends RecyclerView.Adapter<viewpageradapter.View
             seekbar=itemView.findViewById(R.id.seekbar1);
             cover_image=itemView.findViewById(R.id.cover_image1);
             v1=itemView.findViewById(R.id.view1);
+
+//            if(mediaplayer.pause())
+//            {
+//                playpausebtn.setImageResource(R.drawable.ic_baseline_play_circle_filled_24);
+//                playpausebtn.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View v) {
+//                        playpausebtn.setImageResource(R.drawable.c);
+//
+//                    }
+//                });
+//
+//            }
 
 
 

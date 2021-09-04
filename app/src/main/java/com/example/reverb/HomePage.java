@@ -37,7 +37,7 @@ public class HomePage extends AppCompatActivity {
         c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent us = new Intent(HomePage.this,swipe.class);
+                Intent us = new Intent(HomePage.this,user.class);
                 startActivity(us);
                 finish();
             }

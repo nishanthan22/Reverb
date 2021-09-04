@@ -23,6 +23,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import static com.example.reverb.swipe.mediaplayer;
+
 
 public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> {
      private Context mContext;
@@ -68,8 +70,13 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> 
           holder.itemView.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                    Intent a_Player = new Intent(mContext, AudioPlayer.class);
+                    Intent a_Player = new Intent(mContext, swipe.class);
                     a_Player.putExtra("position", position);
+                    if(mediaplayer!=null)
+                    {
+                         mediaplayer.stop();
+                         mediaplayer.release();
+                    }
                     mContext.startActivity(a_Player);
                     ((Activity) mContext).finish();
 
