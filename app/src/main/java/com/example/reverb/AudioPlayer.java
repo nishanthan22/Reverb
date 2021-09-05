@@ -647,6 +647,8 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
         return art;
     }
 
+
+
     private class SwipeListener implements  View.OnTouchListener{
         GestureDetector gestureDetector;
 

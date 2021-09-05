@@ -8,35 +8,58 @@ import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
+import android.transition.Fade;
 import android.view.View;
+import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
-import static com.example.reverb.R.drawable.c;
+//import static com.example.reverb.R.drawable.ic_baseline_play_circle_filled_24;
+//import static com.example.reverb.R.drawable.playbtnn;
+//import static com.example.reverb.viewpageradapter.ViewHolder.playbtn;
+//import static com.example.reverb.viewpageradapter.ViewHolder.pausebtn;
+//import static com.example.reverb.viewpageradapter.play;
+import java.util.ArrayList;
+
+import static com.example.reverb.SongAdapter.mFiles;
 import static com.example.reverb.SongList.musicFiles;
+import static com.example.reverb.AlbumDetailsAdapter.albumFiles;
 
 
 public class swipe extends AppCompatActivity {
-    private ViewPager2 viewPager2;
+    static ViewPager2 viewPager2;
     static MediaPlayer mediaplayer;
     RelativeLayout r;
     ImageView i;
+    static ArrayList<MusicFiles> mfile =new ArrayList();
+  //  boolean play = true;
+    //Animation Fade;
     //ActionPlaying actionPlaying;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_swipe);
-        r=findViewById(R.id.audio_relative1);
-        i=findViewById(R.id.play1);
+        //r=findViewById(R.id.audio_relative1);
+        //i=findViewById(R.id.play1);
         //i.setImageResource(R.drawable.c);
 
         viewPager2 = findViewById(R.id.viewpager21);
+       //viewPager2.setLayoutTransition(android.transition.Fade);
         int pos = getIntent().getIntExtra("position",-1);
+        String sender = getIntent().getStringExtra("sender");
+        if(sender != null && sender.equals("albumDetails")){
+            mfile=albumFiles;}
+        else {
+            mfile=musicFiles;}
 
-        if (!(musicFiles.size() < 1)) {
-            viewpageradapter v2 = new viewpageradapter(this, musicFiles);
+
+
+
+        if (!(mfile.size() < 1)) {
+           // int i = viewPager2.getCurrentItem();
+            viewpageradapter v2 = new viewpageradapter(this, mfile);
+
 
             viewPager2.setAdapter(v2);
            viewPager2.setCurrentItem(pos);
@@ -52,15 +75,81 @@ public class swipe extends AppCompatActivity {
                 // This method is triggered when there is any scrolling activity for the current page
                 public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                     super.onPageScrolled(position, positionOffset, positionOffsetPixels);
+
                 }
 
                 // triggered when you select a new page
                 @Override
                 public void onPageSelected(int position) {
 
-
+//                    pausebtn.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            playbtn.setVisibility(View.VISIBLE);
+//                            pausebtn.setVisibility(View.INVISIBLE);
+//                            mediaplayer.pause();
+//                        }
+//                    })
                     super.onPageSelected(position);
+//                    if(mediaplayer.isPlaying())
+//                    {
+//                        pausebtn.setVisibility(View.VISIBLE);
+//                        playbtn.setVisibility(View.INVISIBLE);
+//                    }
+//                    pausebtn.setVisibility(View.VISIBLE);
+//                    playbtn.setVisibility(View.INVISIBLE);
+//                    play=true;
+//
+//                    pausebtn.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            if(play)
+//                            {
+//                                play=false;
+//                                pausebtn.setVisibility(View.INVISIBLE);
+//                                playbtn.setVisibility(View.VISIBLE);
+//                                mediaplayer.pause();
+//                            }
+//                            else {
+//                                play=true;
+//                                pausebtn.setVisibility(View.VISIBLE);
+//                                playbtn.setVisibility(View.INVISIBLE);
+//                                mediaplayer.start();
+//                            }
+//                        }
+//                    });
+//
+//                    playbtn.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            if(play)
+//                            {
+//                                play=false;
+//                                pausebtn.setVisibility(View.INVISIBLE);
+//                               playbtn.setVisibility(View.VISIBLE);
+//                                mediaplayer.pause();
+//                            }
+//                            else {
+//                                play=true;
+//                                pausebtn.setVisibility(View.VISIBLE);
+//                                playbtn.setVisibility(View.INVISIBLE);
+//                                mediaplayer.start();
+//                            }
+//                        }
+//                    });
+
+
+
+//                    playpausebtn.setImageResource(R.drawable.c);
+//                    playpausebtn.setOnClickListener(new View.OnClickListener() {
+//                        @Override
+//                        public void onClick(View v) {
+//                            playpausebtn.setImageResource(ic_baseline_play_circle_filled_24);
+//                            mediaplayer.pause();
+//                        }
+//                    });
                     init(viewPager2.getCurrentItem());
+
                 }
 
                 // triggered when there is
@@ -86,14 +175,15 @@ public class swipe extends AppCompatActivity {
             {
                 mediaplayer.stop();
                 mediaplayer.reset();
-//                i.setImageResource(R.drawable.c);
-//                i.setOnClickListener(new View.OnClickListener() {
+
+//                playpausebtn.setImageResource(R.drawable.c);
+//                playpausebtn.setOnClickListener(new View.OnClickListener() {
 //                    @Override
-//                        public void onClick(View v) {
-//                            i.setImageResource(R.drawable.ic_baseline_play_circle_filled_24);
-//                            mediaplayer.pause();
-//                        }
-//                    });
+//                    public void onClick(View v) {
+//                        playpausebtn.setImageResource(R.drawable.ic_baseline_play_circle_filled_24);
+//                        mediaplayer.pause();
+//                    }
+//                });
 //
             }
 
@@ -101,10 +191,13 @@ public class swipe extends AppCompatActivity {
         {
 
         }
+
+
+
         try{
             mediaplayer = new MediaPlayer();
 
-             Uri uri = Uri.parse(musicFiles.get(currentpos).getPath());
+             Uri uri = Uri.parse(mfile.get(currentpos).getPath());
              mediaplayer.setDataSource(this,uri);
              mediaplayer.prepareAsync();
              mediaplayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -126,6 +219,23 @@ public class swipe extends AppCompatActivity {
             }
         });
     }
+//    public void playpausebutton(View v)
+//    {
+//        if(play)
+//        {
+//            play=false;
+//            pausebtn.setVisibility(View.INVISIBLE);
+//            playbtn.setVisibility(View.VISIBLE);
+//            mediaplayer.pause();
+//        }
+//        else {
+//            play=true;
+//            pausebtn.setVisibility(View.VISIBLE);
+//            playbtn.setVisibility(View.INVISIBLE);
+//            mediaplayer.start();
+//        }
+//
+//    }
     @Override
     public void onBackPressed()
     {

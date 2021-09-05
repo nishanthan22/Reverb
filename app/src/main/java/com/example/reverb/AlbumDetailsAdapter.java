@@ -62,7 +62,7 @@ public class AlbumDetailsAdapter extends RecyclerView.Adapter<AlbumDetailsAdapte
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent iaa = new Intent(mContext,AudioPlayer.class);
+                Intent iaa = new Intent(mContext,swipe.class);
                 iaa.putExtra("sender","albumDetails");
                 iaa.putExtra("position",position);
                 mContext.startActivity(iaa);

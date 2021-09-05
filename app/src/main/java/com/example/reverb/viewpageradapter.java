@@ -18,6 +18,7 @@ import android.widget.ToggleButton;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.bitmap.CenterCrop;
@@ -28,17 +29,19 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 
 import static com.example.reverb.swipe.mediaplayer;
+import static com.example.reverb.swipe.viewPager2;
 
 public class viewpageradapter extends RecyclerView.Adapter<viewpageradapter.ViewHolder>{
     private Context musicContext;
     static ArrayList<MusicFiles> musicFiles;
-    //int pos;
+    int pos;
     static Uri uri;
+     boolean play = true;
 
     viewpageradapter(Context musicContext, ArrayList<MusicFiles> musicFiles) {
         this.musicFiles = musicFiles;
         this.musicContext = musicContext;
-        //this.pos=pos;
+       // this.pos=pos;
     }
 
     @NonNull
@@ -84,6 +87,73 @@ public class viewpageradapter extends RecyclerView.Adapter<viewpageradapter.View
                     .into(holder.cover_image);
 
         }
+
+
+        holder.pausebtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(play)
+                {
+                    play=false;
+                    holder.pausebtn.setVisibility(View.INVISIBLE);
+                    holder.playbtn.setVisibility(View.VISIBLE);
+                    mediaplayer.pause();
+                }
+                else {
+                    play=true;
+                    holder.pausebtn.setVisibility(View.VISIBLE);
+                    holder.playbtn.setVisibility(View.INVISIBLE);
+                    mediaplayer.start();
+                }
+            }
+        });
+
+        holder.playbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(play)
+                {
+                    play=false;
+                    holder.pausebtn.setVisibility(View.INVISIBLE);
+                    holder.playbtn.setVisibility(View.VISIBLE);
+                    mediaplayer.pause();
+
+                }
+                else {
+                    play=true;
+                    holder.pausebtn.setVisibility(View.VISIBLE);
+                    holder.playbtn.setVisibility(View.INVISIBLE);
+                    mediaplayer.start();
+
+
+                }
+            }
+        });
+        viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                holder.pausebtn.setVisibility(View.VISIBLE);
+                holder.playbtn.setVisibility(View.INVISIBLE);
+                play=true;
+
+                super.onPageSelected(position);
+            }
+        });
+//        if(mediaplayer.getCurrentPosition()!= pos){
+//            holder.pausebtn.setVisibility(View.VISIBLE);
+//            holder.playbtn.setVisibility(View.INVISIBLE);
+//        }
+
+//        holder.pausebtn.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                holder.pausebtn.setVisibility(View.INVISIBLE);
+//                holder.playbtn.setVisibility(View.VISIBLE);
+//                mediaplayer.pause();
+//            }
+//        });
+
+
     }
 
     @Override
@@ -112,8 +182,8 @@ public class viewpageradapter extends RecyclerView.Adapter<viewpageradapter.View
          ToggleButton like;
          View v1;
 
-         ImageView playpausebtn;
-         SeekBar seekbar;
+         ImageView playbtn,pausebtn;
+         static SeekBar seekbar;
 
 
         public ViewHolder(@NonNull View itemView) {
@@ -126,10 +196,23 @@ public class viewpageradapter extends RecyclerView.Adapter<viewpageradapter.View
             rewind=itemView.findViewById(R.id.rewind1);
             forward=itemView.findViewById(R.id.forward1);
             like=itemView.findViewById(R.id.like1);
-            playpausebtn=itemView.findViewById(R.id.play1);
+            playbtn=itemView.findViewById(R.id.play1);
+            pausebtn=itemView.findViewById(R.id.pause1);
             seekbar=itemView.findViewById(R.id.seekbar1);
             cover_image=itemView.findViewById(R.id.cover_image1);
             v1=itemView.findViewById(R.id.view1);
+
+
+//            pausebtn.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    playbtn.setVisibility(View.VISIBLE);
+//                    pausebtn.setVisibility(View.INVISIBLE);
+//                    mediaplayer.pause();
+//                }
+//            });
+
+
 
 //            if(mediaplayer.pause())
 //            {

@@ -7,7 +7,7 @@
     android:background="@color/black"
     android:id="@+id/audio_relative1"
     android:fitsSystemWindows="false"
-    tools:context=".AudioPlayer">
+    tools:context=".swipe">
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -112,18 +112,19 @@
                 android:textSize="14sp" />
         </RelativeLayout>
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_gravity="center"
+
             >
 
             <ImageView
                 android:id="@+id/loop1"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_gravity="left"
-                android:paddingTop="2dp"
+                android:layout_alignLeft="@id/rewind1"
+                android:layout_marginLeft="-64dp"
                 android:background="@drawable/ic_baseline_loop_24"
                 app:srcCompat="@drawable/ic_baseline_loop_24" />
 
@@ -131,28 +132,41 @@
                 android:id="@+id/rewind1"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
+                android:layout_alignLeft="@id/pause1"
+                android:layout_marginLeft="-58dp"
                 android:background="@drawable/ic_baseline_replay_10_24"
                 app:srcCompat="@drawable/ic_baseline_replay_10_24" />
 
             <ImageView
                 android:id="@+id/play1"
-                android:layout_width="72dp"
+                android:layout_width="84dp"
                 android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
-                android:clickable="true"
+
+                android:layout_centerInParent="true"
+                android:visibility="invisible"
                 app:srcCompat="@drawable/ic_baseline_play_circle_filled_24" />
+
+
+            <ImageView
+                android:id="@+id/pause1"
+                android:layout_width="84dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+
+                android:layout_centerInParent="true"
+                app:srcCompat="@drawable/c" />
 
             <ImageButton
                 android:id="@+id/forward1"
                 android:layout_width="48dp"
                 android:layout_height="48dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
+                android:layout_alignRight="@id/pause1"
+                android:layout_marginRight="-58dp"
                 android:background="@drawable/ic_baseline_forward_10_24"
                 app:srcCompat="@drawable/ic_baseline_forward_10_24" />
 
@@ -160,14 +174,14 @@
                 android:id="@+id/like1"
                 android:layout_width="44dp"
                 android:layout_height="44dp"
-                android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
+                android:layout_alignRight="@id/forward1"
+                android:layout_marginRight="-64dp"
                 android:textOff=""
                 android:textOn=""
                 android:background="@drawable/ic_baseline_favorite_border_24"
                 />
 
-        </LinearLayout>
+        </RelativeLayout>
 
 
     </LinearLayout>
