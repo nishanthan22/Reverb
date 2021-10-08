@@ -8,4 +8,7 @@
     <string name="welcome_page">Enter your name to start using your Media Player</string>
     <string name="hello">Hello !</string>
     <string name="anusri">Anusri</string>
+    <string name="title_activity_animation_full_screen">AnimationFullScreen</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

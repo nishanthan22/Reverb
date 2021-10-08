@@ -4,6 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,36 +23,40 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class HomePage extends AppCompatActivity {
-    Button  b2, b3, b4;
-    ImageView all_songs,playlist,all_videos,video_folders;
-    TextView song,play;
+    Button b2, b3, b4;
+    ImageView all_songs, playlist, all_videos, video_folders;
+    TextView song, play, titlebar;
     CircleImageView c;
     long backpress = 0;
-    boolean back= false;
+    boolean back = false;
+    private Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
         all_videos = findViewById(R.id.all_videos);
-        video_folders=findViewById(R.id.v_folders);
-        c=findViewById(R.id.circle_profile);
+        video_folders = findViewById(R.id.v_folders);
+        titlebar = findViewById(R.id.title_name);
+
+        titlebar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Intent anim_intent = new Intent(HomePage.this,FullscreenFragment.class);
+//                startActivity(anim_intent);
+
+            }
+        });
+        c = findViewById(R.id.circle_profile);
         c.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent us = new Intent(HomePage.this,user.class);
+                Intent us = new Intent(HomePage.this, user.class);
                 startActivity(us);
                 finish();
             }
         });
-//        Button angryButton = (Button) findViewById(R.id.angry_btn);
-//        angryButton.setOnClickListener(new View.OnClickListener() {
-//            public void onClick(View v) {
-//                Toast.makeText(getApplicationContext(),"Title",Toast.LENGTH_SHORT)
-//                        .show();
-//
-//            }
-//        });
+
         //b1 = findViewById(R.id.AllSongs);
         all_songs = findViewById(R.id.all_son);
         //Intent intent = getIntent();
@@ -63,7 +70,7 @@ public class HomePage extends AppCompatActivity {
 
             }
         });
-        song=findViewById(R.id.alls);
+        song = findViewById(R.id.alls);
         song.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -73,7 +80,7 @@ public class HomePage extends AppCompatActivity {
 
             }
         });
-        play=findViewById(R.id.playl);
+        play = findViewById(R.id.playl);
         play.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -169,36 +176,34 @@ public class HomePage extends AppCompatActivity {
     }
 
 
-   @Override
-  public void onBackPressed() {
-//        if(back)
-//        {
-//            super.onBackPressed();
-//            return;
-//        }
-//        this.back = true;
-//        Toast.makeText(this,"Press back again to exist",Toast.LENGTH_SHORT).show();
-//        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                back=false;
-//            }
-//        },2000);
+    @Override
+    public void onBackPressed() {
+        if (back) {
+            super.onBackPressed();
+            return;
+        }
+        this.back = true;
+        //Toast.makeText(this, "Press back again to exit", Toast.LENGTH_SHORT).show();
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                back = false;
+            }
+        }, 2000);
 
 
-//       backpress = (backpress + 1);
-//       if (backpress == 1) {
-//           Toast.makeText(getApplicationContext(), "Press Back Again to Exist ", Toast.LENGTH_SHORT).show();
-//
-//       }
-//      // backpress+=1;
-//       if (backpress > 1) {
-           super.onBackPressed();
+        backpress = (backpress + 1);
+        if (backpress == 1) {
+            Toast.makeText(getApplicationContext(), "Press Back Again to exit ", Toast.LENGTH_SHORT).show();
 
-       //}
+        }
+        // backpress+=1;
+        if (backpress > 1) {
+            super.onBackPressed();
 
-   }
+            //}
 
+        }
 
 
 //        BottomNavigationView bottomNavigationView = findViewById(R.id.bot_navigation);
@@ -223,4 +228,5 @@ public class HomePage extends AppCompatActivity {
 //
 //
 //}
+    }
 }

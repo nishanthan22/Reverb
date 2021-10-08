@@ -178,48 +178,7 @@ public class AudioPlayer extends AppCompatActivity implements ActionPlaying, Ser
             }
         });
 
-//        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-//            @Override
-//            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-//
-//                switch (item.getItemId())
-//                {
-//                    case R.id.musicitem:
-//                        return true;
-//
-//                    case R.id.Video:
-//                        startActivity(new Intent(getApplicationContext()
-//                                ,VideoPlayer.class));
-//                        finish();
-//                        overridePendingTransition(0,0);
-//                        return true;
-//
-//                    case R.id.home:
-//                        startActivity(new Intent(getApplicationContext()
-//                                ,HomePage.class));
-//                        finish();
-//                        overridePendingTransition(0,0);
-//                        return true;
-//
-//                    case R.id.NameUser:
-//                        startActivity(new Intent(getApplicationContext()
-//                                ,user.class));
-//                        finish();
-//                        overridePendingTransition(0,0);
-//                        return true;
-//                    default:
-//                    bottomNavigationView.setSelectedItemId(R.id.home);
-//
-//                }
-//
-//
-//                return false;
-//
-//
-//            }
-//        });
 
-        //Forward 10s button
 
         forward.setOnClickListener(new View.OnClickListener() {
             @Override

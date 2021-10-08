@@ -46,7 +46,7 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> 
      }
 
      @Override
-     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+     public void onBindViewHolder(@NonNull MyViewHolder holder,int position) {
 
           holder.filename.setText(mFiles.get(position).getTitle());
           uri = Uri.parse(mFiles.get(position).getPath());
@@ -70,8 +70,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.MyViewHolder> 
           holder.itemView.setOnClickListener(new View.OnClickListener() {
                @Override
                public void onClick(View v) {
-                    Intent a_Player = new Intent(mContext, swipe.class);
-                    a_Player.putExtra("position", position);
+                    Intent a_Player = new Intent(mContext,swipe.class);
+                    a_Player.putExtra("position",position);
                     if(mediaplayer!=null)
                     {
                          mediaplayer.stop();
