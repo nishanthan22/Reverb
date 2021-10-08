@@ -92,13 +92,13 @@
 
 
     <androidx.viewpager.widget.ViewPager
-        android:layout_below="@id/tablayout2"
         android:id="@+id/viewpager2"
         android:layout_width="match_parent"
-        android:isScrollContainer="true"
+        android:layout_height="match_parent"
+        android:layout_below="@id/tablayout2"
 
 
-        android:layout_height="match_parent" />
+        android:isScrollContainer="true" />
 
 
 </RelativeLayout>

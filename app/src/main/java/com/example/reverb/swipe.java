@@ -31,6 +31,8 @@ public class swipe extends AppCompatActivity {
     static MediaPlayer mediaplayer;
     RelativeLayout r;
     ImageView i;
+
+    private Thread playPauseTh;
     static ArrayList<MusicFiles> mfile =new ArrayList();
   //  boolean play = true;
     //Animation Fade;
@@ -168,6 +170,9 @@ public class swipe extends AppCompatActivity {
 //        i.putExtra("servicePosition",position);
 //        startService(i);
     }
+
+
+
     public void init(int currentpos)
     {
         try {

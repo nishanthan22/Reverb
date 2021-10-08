@@ -14,9 +14,36 @@
         <entry key="..\:/Reverb/app/src/main/res/drawable/ic_playlist.xml" value="0.2703125" />
         <entry key="..\:/Reverb/app/src/main/res/drawable/lay.xml" value="0.2703125" />
         <entry key="..\:/Reverb/app/src/main/res/drawable/title_format.xml" value="0.2703125" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/action.xml" value="0.25416666666666665" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/activity_album_details.xml" value="0.2351851851851852" />
         <entry key="..\:/Reverb/app/src/main/res/layout/activity_allvideos.xml" value="0.25416666666666665" />
-        <entry key="..\:/Reverb/app/src/main/res/layout/activity_home_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/activity_animation_full_screen.xml" value="0.24010416666666667" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/activity_audio_player.xml" value="0.2351851851851852" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/activity_folder_details.xml" value="0.24722222222222223" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/activity_home_page.xml" value="0.264" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/activity_main.xml" value="0.2351851851851852" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/activity_playslists.xml" value="0.25025641025641027" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/activity_song_list.xml" value="0.25025641025641027" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/activity_swipe.xml" value="0.25416666666666665" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/activity_user.xml" value="0.24722222222222223" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/activity_video_player.xml" value="0.24722222222222223" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/activity_vplaylist.xml" value="0.24722222222222223" />
         <entry key="..\:/Reverb/app/src/main/res/layout/activity_welcome_page.xml" value="0.25416666666666665" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/custom_action_bar.xml" value="0.25416666666666665" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/exo_playback_control_view.xml" value="0.25416666666666665" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/fragment_album.xml" value="0.2351851851851852" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/fragment_audio_user.xml" value="0.2351851851851852" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/fragment_fullscreen.xml" value="0.25416666666666665" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/fragment_on_play_bottom.xml" value="0.2351851851851852" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/fragment_song.xml" value="0.2351851851851852" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/fragment_video_user.xml" value="0.2351851851851852" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/navi.xml" value="0.25025641025641027" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/playlist_item.xml" value="0.24722222222222223" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/row_video.xml" value="0.25025641025641027" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/song_items.xml" value="0.24722222222222223" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/swipe1.xml" value="0.25416666666666665" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/try_out.xml" value="0.25416666666666665" />
+        <entry key="..\:/Reverb/app/src/main/res/layout/vfolder.xml" value="0.25025641025641027" />
       </map>
     </option>
   </component>

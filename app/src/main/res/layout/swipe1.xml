@@ -144,7 +144,6 @@
                 android:layout_gravity="center"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
-
                 android:layout_centerInParent="true"
                 android:visibility="invisible"
                 app:srcCompat="@drawable/ic_baseline_play_circle_filled_24" />
@@ -154,12 +153,25 @@
                 android:id="@+id/pause1"
                 android:layout_width="84dp"
                 android:layout_height="48dp"
+                android:layout_centerInParent="true"
                 android:layout_gravity="center"
                 android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"
 
-                android:layout_centerInParent="true"
+                android:layout_marginLeft="32dp"
                 app:srcCompat="@drawable/c" />
+<!--            <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--                android:id="@+id/pause1"-->
+<!--                android:layout_width="54dp"-->
+<!--                android:layout_height="54dp"-->
+<!--                android:layout_centerInParent="true"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginStart="32dp"-->
+<!--                android:layout_marginLeft="32dp"-->
+<!--                android:background="@drawable/ic_baseline_play_arrow_24"-->
+<!--                android:clickable="true"-->
+<!--                android:focusable="true"-->
+<!--                app:backgroundTint="@color/white"-->
+<!--                app:srcCompat="@drawable/ic_baseline_play_arrow_24" />-->
 
             <ImageButton
                 android:id="@+id/forward1"
